@@ -1,34 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\cuu\\C#\\QLBG\\QLBG\\",
+  "WorkspaceRootPath": "D:\\C#\\QLBG\\QLBG\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\cuu\\c#\\qlbg\\qlbg\\gui\\nhanvien\\thongtinnhanviengui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\nhanvien\\thongtinnhanviengui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\C#\\QLBG\\QLBG\\GUI\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GUI\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|D:\\cuu\\C#\\QLBG\\QLBG\\gui\\nhanvien\\nhanviengui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\nhanvien\\nhanviengui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\C#\\QLBG\\QLBG\\GUI\\GUI.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GUI\\GUI.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|D:\\cuu\\C#\\QLBG\\QLBG\\gui\\nhanvien\\nhanviengui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\nhanvien\\nhanviengui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\C#\\QLBG\\QLBG\\GUI\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GUI\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|D:\\cuu\\C#\\QLBG\\QLBG\\gui\\nhanvien\\suathongtinnhanviengui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\nhanvien\\suathongtinnhanviengui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|D:\\cuu\\C#\\QLBG\\QLBG\\gui\\nhanvien\\thongtinnhanviengui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\nhanvien\\thongtinnhanviengui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|D:\\cuu\\C#\\QLBG\\QLBG\\gui\\nhanvien\\suathongtinnhanviengui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\nhanvien\\suathongtinnhanviengui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|D:\\cuu\\C#\\QLBG\\QLBG\\gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\C#\\QLBG\\QLBG\\GUI\\Form1.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GUI\\Form1.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,12 +26,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -51,84 +35,54 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ThongTinNhanVienGUI.cs",
-              "DocumentMoniker": "D:\\cuu\\C#\\QLBG\\QLBG\\GUI\\NhanVien\\ThongTinNhanVienGUI.cs",
-              "RelativeDocumentMoniker": "GUI\\NhanVien\\ThongTinNhanVienGUI.cs",
-              "ToolTip": "D:\\cuu\\C#\\QLBG\\QLBG\\GUI\\NhanVien\\ThongTinNhanVienGUI.cs",
-              "RelativeToolTip": "GUI\\NhanVien\\ThongTinNhanVienGUI.cs",
-              "ViewState": "AQIAADUAAAAAAAAAAAAWwEIAAAA1AAAA",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\Program.cs",
+              "RelativeDocumentMoniker": "GUI\\Program.cs",
+              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\Program.cs",
+              "RelativeToolTip": "GUI\\Program.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T07:55:50.303Z",
+              "WhenOpened": "2024-09-26T14:42:48.779Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ThongTinNhanVienGUI.cs [Design]",
-              "DocumentMoniker": "D:\\cuu\\C#\\QLBG\\QLBG\\GUI\\NhanVien\\ThongTinNhanVienGUI.cs",
-              "RelativeDocumentMoniker": "GUI\\NhanVien\\ThongTinNhanVienGUI.cs",
-              "ToolTip": "D:\\cuu\\C#\\QLBG\\QLBG\\GUI\\NhanVien\\ThongTinNhanVienGUI.cs [Design]",
-              "RelativeToolTip": "GUI\\NhanVien\\ThongTinNhanVienGUI.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T07:55:48.702Z"
+              "DocumentIndex": 2,
+              "Title": "packages.config",
+              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\packages.config",
+              "RelativeDocumentMoniker": "GUI\\packages.config",
+              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\packages.config",
+              "RelativeToolTip": "GUI\\packages.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-09-26T14:42:32.82Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "SuaThongTinNhanVienGUI.cs",
-              "DocumentMoniker": "D:\\cuu\\C#\\QLBG\\QLBG\\GUI\\NhanVien\\SuaThongTinNhanVienGUI.cs",
-              "RelativeDocumentMoniker": "GUI\\NhanVien\\SuaThongTinNhanVienGUI.cs",
-              "ToolTip": "D:\\cuu\\C#\\QLBG\\QLBG\\GUI\\NhanVien\\SuaThongTinNhanVienGUI.cs",
-              "RelativeToolTip": "GUI\\NhanVien\\SuaThongTinNhanVienGUI.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAjwDUAAAAZAAAA",
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "GUI\\Form1.Designer.cs",
+              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\Form1.Designer.cs",
+              "RelativeToolTip": "GUI\\Form1.Designer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T07:46:46.503Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\cuu\\C#\\QLBG\\QLBG\\GUI\\Program.cs",
-              "RelativeDocumentMoniker": "GUI\\Program.cs",
-              "ToolTip": "D:\\cuu\\C#\\QLBG\\QLBG\\GUI\\Program.cs",
-              "RelativeToolTip": "GUI\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAA4AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T07:36:05.661Z"
+              "WhenOpened": "2024-09-26T14:40:54.891Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "NhanVienGUI.cs",
-              "DocumentMoniker": "D:\\cuu\\C#\\QLBG\\QLBG\\GUI\\NhanVien\\NhanVienGUI.cs",
-              "RelativeDocumentMoniker": "GUI\\NhanVien\\NhanVienGUI.cs",
-              "ToolTip": "D:\\cuu\\C#\\QLBG\\QLBG\\GUI\\NhanVien\\NhanVienGUI.cs",
-              "RelativeToolTip": "GUI\\NhanVien\\NhanVienGUI.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAjwDYAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T07:33:06.299Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NhanVienGUI.cs [Design]",
-              "DocumentMoniker": "D:\\cuu\\C#\\QLBG\\QLBG\\GUI\\NhanVien\\NhanVienGUI.cs",
-              "RelativeDocumentMoniker": "GUI\\NhanVien\\NhanVienGUI.cs",
-              "ToolTip": "D:\\cuu\\C#\\QLBG\\QLBG\\GUI\\NhanVien\\NhanVienGUI.cs [Design]",
-              "RelativeToolTip": "GUI\\NhanVien\\NhanVienGUI.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T07:33:05.19Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SuaThongTinNhanVienGUI.cs [Design]",
-              "DocumentMoniker": "D:\\cuu\\C#\\QLBG\\QLBG\\GUI\\NhanVien\\SuaThongTinNhanVienGUI.cs",
-              "RelativeDocumentMoniker": "GUI\\NhanVien\\SuaThongTinNhanVienGUI.cs",
-              "ToolTip": "D:\\cuu\\C#\\QLBG\\QLBG\\GUI\\NhanVien\\SuaThongTinNhanVienGUI.cs [Design]",
-              "RelativeToolTip": "GUI\\NhanVien\\SuaThongTinNhanVienGUI.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T07:46:44.739Z"
+              "Title": "GUI.csproj",
+              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\GUI.csproj",
+              "RelativeDocumentMoniker": "GUI\\GUI.csproj",
+              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\GUI.csproj",
+              "RelativeToolTip": "GUI\\GUI.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-26T14:40:52.925Z",
+              "EditorCaption": ""
             }
           ]
         }
