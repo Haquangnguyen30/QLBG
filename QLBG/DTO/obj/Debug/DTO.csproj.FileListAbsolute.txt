@@ -1,0 +1,6 @@
+D:\cuu\C#\QLBG\QLBG\DTO\bin\Debug\DTO.dll
+D:\cuu\C#\QLBG\QLBG\DTO\bin\Debug\DTO.pdb
+D:\cuu\C#\QLBG\QLBG\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+D:\cuu\C#\QLBG\QLBG\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+D:\cuu\C#\QLBG\QLBG\DTO\obj\Debug\DTO.dll
+D:\cuu\C#\QLBG\QLBG\DTO\obj\Debug\DTO.pdb
