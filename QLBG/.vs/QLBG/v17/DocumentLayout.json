@@ -3,20 +3,36 @@
   "WorkspaceRootPath": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|d:\\demopl\\c#project\\qlbg\\qlbg\\dto\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|solutionrelative:dto\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{40981372-F701-41BC-8B8E-0769BBDFC511}|DAL\\DAL.csproj|d:\\demopl\\c#project\\qlbg\\qlbg\\dal\\databaseconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40981372-F701-41BC-8B8E-0769BBDFC511}|DAL\\DAL.csproj|solutionrelative:dal\\databaseconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EBA2BF09-34FF-43D4-96FD-53E7B6F1326A}|BLL\\BLL.csproj|d:\\demopl\\c#project\\qlbg\\qlbg\\bll\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EBA2BF09-34FF-43D4-96FD-53E7B6F1326A}|BLL\\BLL.csproj|solutionrelative:bll\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|d:\\demopl\\c#project\\qlbg\\qlbg\\dto\\chitiethoadondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|solutionrelative:dto\\chitiethoadondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40981372-F701-41BC-8B8E-0769BBDFC511}|DAL\\DAL.csproj|d:\\demopl\\c#project\\qlbg\\qlbg\\dal\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40981372-F701-41BC-8B8E-0769BBDFC511}|DAL\\DAL.csproj|solutionrelative:dal\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|d:\\demopl\\c#project\\qlbg\\qlbg\\dto\\khachhangdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|solutionrelative:dto\\khachhangdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\demopl\\c#project\\qlbg\\qlbg\\gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|d:\\demopl\\c#project\\qlbg\\qlbg\\dto\\hoadondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|solutionrelative:dto\\hoadondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|d:\\demopl\\c#project\\qlbg\\qlbg\\dto\\taikhoandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|solutionrelative:dto\\taikhoandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|d:\\demopl\\c#project\\qlbg\\qlbg\\dto\\nhanviendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|solutionrelative:dto\\nhanviendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|d:\\demopl\\c#project\\qlbg\\qlbg\\dto\\mausacdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|solutionrelative:dto\\mausacdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|d:\\demopl\\c#project\\qlbg\\qlbg\\dto\\kichcodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E18DCA02-90B2-4F35-93E1-487C3EB6AD71}|DTO\\DTO.csproj|solutionrelative:dto\\kichcodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,8 +42,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -35,53 +55,106 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\Class1.cs",
-              "RelativeDocumentMoniker": "DTO\\Class1.cs",
-              "ToolTip": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\Class1.cs",
-              "RelativeToolTip": "DTO\\Class1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "DatabaseConnect.cs",
+              "DocumentMoniker": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DAL\\DatabaseConnect.cs",
+              "RelativeDocumentMoniker": "DAL\\DatabaseConnect.cs",
+              "ToolTip": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DAL\\DatabaseConnect.cs",
+              "RelativeToolTip": "DAL\\DatabaseConnect.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T09:06:02.433Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\BLL\\Class1.cs",
-              "RelativeDocumentMoniker": "BLL\\Class1.cs",
-              "ToolTip": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\BLL\\Class1.cs",
-              "RelativeToolTip": "BLL\\Class1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T09:05:47.095Z",
+              "WhenOpened": "2024-09-26T06:31:03.402Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DAL\\Class1.cs",
-              "RelativeDocumentMoniker": "DAL\\Class1.cs",
-              "ToolTip": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DAL\\Class1.cs",
-              "RelativeToolTip": "DAL\\Class1.cs",
+              "Title": "KhachHangDTO.cs",
+              "DocumentMoniker": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\KhachHangDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\KhachHangDTO.cs",
+              "ToolTip": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\KhachHangDTO.cs",
+              "RelativeToolTip": "DTO\\KhachHangDTO.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAkwBQAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T06:19:13.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChiTietHoaDonDTO.cs",
+              "DocumentMoniker": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\ChiTietHoaDonDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\ChiTietHoaDonDTO.cs",
+              "ToolTip": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\ChiTietHoaDonDTO.cs",
+              "RelativeToolTip": "DTO\\ChiTietHoaDonDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T06:13:14.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TaiKhoanDTO.cs",
+              "DocumentMoniker": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\TaiKhoanDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\TaiKhoanDTO.cs",
+              "ToolTip": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\TaiKhoanDTO.cs",
+              "RelativeToolTip": "DTO\\TaiKhoanDTO.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAYwBcAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T06:12:14.043Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MauSacDTO.cs",
+              "DocumentMoniker": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\MauSacDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\MauSacDTO.cs",
+              "ToolTip": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\MauSacDTO.cs",
+              "RelativeToolTip": "DTO\\MauSacDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T09:05:18.648Z",
+              "WhenOpened": "2024-09-26T06:11:11.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "KichCoDTO.cs",
+              "DocumentMoniker": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\KichCoDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\KichCoDTO.cs",
+              "ToolTip": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\KichCoDTO.cs",
+              "RelativeToolTip": "DTO\\KichCoDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T06:11:09.191Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\GUI\\Form1.cs",
-              "RelativeDocumentMoniker": "GUI\\Form1.cs",
-              "ToolTip": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\GUI\\Form1.cs [Design]",
-              "RelativeToolTip": "GUI\\Form1.cs [Design]",
+              "Title": "HoaDonDTO.cs",
+              "DocumentMoniker": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\HoaDonDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\HoaDonDTO.cs",
+              "ToolTip": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\HoaDonDTO.cs",
+              "RelativeToolTip": "DTO\\HoaDonDTO.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAABUAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T09:04:57.973Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-09-26T06:11:05.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NhanVienDTO.cs",
+              "DocumentMoniker": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\NhanVienDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\NhanVienDTO.cs",
+              "ToolTip": "D:\\DemoPL\\C#Project\\QLBG\\QLBG\\DTO\\NhanVienDTO.cs",
+              "RelativeToolTip": "DTO\\NhanVienDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T06:10:44.831Z",
+              "EditorCaption": ""
             }
           ]
         }
