@@ -1,0 +1,11 @@
+D:\C#\QLBG\QLBG\BLL\bin\Debug\BLL.dll
+D:\C#\QLBG\QLBG\BLL\bin\Debug\BLL.pdb
+D:\C#\QLBG\QLBG\BLL\bin\Debug\DAL.dll
+D:\C#\QLBG\QLBG\BLL\bin\Debug\DTO.dll
+D:\C#\QLBG\QLBG\BLL\bin\Debug\DAL.pdb
+D:\C#\QLBG\QLBG\BLL\bin\Debug\DTO.pdb
+D:\C#\QLBG\QLBG\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+D:\C#\QLBG\QLBG\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\C#\QLBG\QLBG\BLL\obj\Debug\BLL.csproj.Up2Date
+D:\C#\QLBG\QLBG\BLL\obj\Debug\BLL.dll
+D:\C#\QLBG\QLBG\BLL\obj\Debug\BLL.pdb
