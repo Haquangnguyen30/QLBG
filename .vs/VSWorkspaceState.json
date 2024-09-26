@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\QLBG",
+    "\\QLBG\\GUI"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\QLBG\\GUI\\Form1.cs",
   "PreviewInSolutionExplorer": false
 }
