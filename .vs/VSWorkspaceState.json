@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\QLBG",
-    "\\QLBG\\GUI"
+    "\\QLBG"
   ],
-  "SelectedNode": "\\QLBG\\GUI\\Form1.cs",
+  "SelectedNode": "\\QLBG\\QLBG.sln",
   "PreviewInSolutionExplorer": false
 }
