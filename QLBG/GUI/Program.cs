@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI.Home;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NhanVien.NhanVienGUI());
+            Application.Run(new MainGUI());
         }
     }
 }
