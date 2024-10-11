@@ -1,26 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\DemoPL\\dotNet\\QLBG\\QLBG\\",
+  "WorkspaceRootPath": "D:\\C#\\QLBG\\QLBG\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{40981372-F701-41BC-8B8E-0769BBDFC511}|DAL\\DAL.csproj|d:\\demopl\\dotnet\\qlbg\\qlbg\\dal\\databaseconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40981372-F701-41BC-8B8E-0769BBDFC511}|DAL\\DAL.csproj|solutionrelative:dal\\databaseconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\c#\\qlbg\\qlbg\\gui\\home\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\home\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40981372-F701-41BC-8B8E-0769BBDFC511}|DAL\\DAL.csproj|d:\\demopl\\dotnet\\qlbg\\qlbg\\dal\\nhanviendal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40981372-F701-41BC-8B8E-0769BBDFC511}|DAL\\DAL.csproj|solutionrelative:dal\\nhanviendal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\c#\\qlbg\\qlbg\\gui\\home\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\home\\maingui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40981372-F701-41BC-8B8E-0769BBDFC511}|DAL\\DAL.csproj|d:\\demopl\\dotnet\\qlbg\\qlbg\\dal\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{40981372-F701-41BC-8B8E-0769BBDFC511}|DAL\\DAL.csproj|solutionrelative:dal\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\demopl\\dotnet\\qlbg\\qlbg\\gui\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\demopl\\dotnet\\qlbg\\qlbg\\gui\\nhanvien\\nhanviengui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\nhanvien\\nhanviengui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|D:\\C#\\QLBG\\QLBG\\gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,83 +22,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DatabaseConnect.cs",
-              "DocumentMoniker": "D:\\DemoPL\\dotNet\\QLBG\\QLBG\\DAL\\DatabaseConnect.cs",
-              "RelativeDocumentMoniker": "DAL\\DatabaseConnect.cs",
-              "ToolTip": "D:\\DemoPL\\dotNet\\QLBG\\QLBG\\DAL\\DatabaseConnect.cs",
-              "RelativeToolTip": "DAL\\DatabaseConnect.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAACUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T14:14:19.706Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "NhanVienDAL.cs",
-              "DocumentMoniker": "D:\\DemoPL\\dotNet\\QLBG\\QLBG\\DAL\\NhanVienDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\NhanVienDAL.cs",
-              "ToolTip": "D:\\DemoPL\\dotNet\\QLBG\\QLBG\\DAL\\NhanVienDAL.cs",
-              "RelativeToolTip": "DAL\\NhanVienDAL.cs",
-              "ViewState": "AQIAAFkAAAAAAAAAAAAmwFcAAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T13:56:10.248Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainGUI.cs [Design]",
+              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\MainGUI.cs",
+              "RelativeDocumentMoniker": "GUI\\Home\\MainGUI.cs",
+              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\MainGUI.cs [Design]*",
+              "RelativeToolTip": "GUI\\Home\\MainGUI.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T14:45:21.703Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "packages.config",
-              "DocumentMoniker": "D:\\DemoPL\\dotNet\\QLBG\\QLBG\\GUI\\packages.config",
-              "RelativeDocumentMoniker": "GUI\\packages.config",
-              "ToolTip": "D:\\DemoPL\\dotNet\\QLBG\\QLBG\\GUI\\packages.config",
-              "RelativeToolTip": "GUI\\packages.config",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-10-03T14:12:45.254Z",
+              "DocumentIndex": 1,
+              "Title": "MainGUI.cs",
+              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\MainGUI.cs",
+              "RelativeDocumentMoniker": "GUI\\Home\\MainGUI.cs",
+              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\MainGUI.cs*",
+              "RelativeToolTip": "GUI\\Home\\MainGUI.cs*",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAswFIAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T14:26:01.471Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "packages.config",
-              "DocumentMoniker": "D:\\DemoPL\\dotNet\\QLBG\\QLBG\\DAL\\packages.config",
-              "RelativeDocumentMoniker": "DAL\\packages.config",
-              "ToolTip": "D:\\DemoPL\\dotNet\\QLBG\\QLBG\\DAL\\packages.config",
-              "RelativeToolTip": "DAL\\packages.config",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-10-03T14:12:08.34Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "NhanVienGUI.cs [Design]",
-              "DocumentMoniker": "D:\\DemoPL\\dotNet\\QLBG\\QLBG\\GUI\\NhanVien\\NhanVienGUI.cs",
-              "RelativeDocumentMoniker": "GUI\\NhanVien\\NhanVienGUI.cs",
-              "ToolTip": "D:\\DemoPL\\dotNet\\QLBG\\QLBG\\GUI\\NhanVien\\NhanVienGUI.cs [Design]",
-              "RelativeToolTip": "GUI\\NhanVien\\NhanVienGUI.cs [Design]",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\Program.cs",
+              "RelativeDocumentMoniker": "GUI\\Program.cs",
+              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\Program.cs",
+              "RelativeToolTip": "GUI\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T14:11:56.397Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-10-11T13:18:25.613Z",
+              "EditorCaption": ""
             }
           ]
         }
