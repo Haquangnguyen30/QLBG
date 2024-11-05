@@ -24,7 +24,7 @@ namespace GUI.Home
         {
             Guna2Button btn = (Guna2Button) sender;
             imgSlide.Location = new Point(btn.Location.X + 123, btn.Location.Y - 48);
-            imgSlide.SendToBack();
+            
             switch (btn.Name)
             {
                 case "btnBanHang":
@@ -54,6 +54,7 @@ namespace GUI.Home
                 default:
                     break;
             }
+            imgSlide.SendToBack();
         }
         private void guna2CustomRadioButton1_CheckedChanged(object sender, EventArgs e)
         {

@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\C#\\QLBG\\QLBG\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\c#\\qlbg\\qlbg\\gui\\usercontrols\\uc_nhaphang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\usercontrols\\uc_nhaphang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\c#\\qlbg\\qlbg\\gui\\usercontrols\\uc_khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\usercontrols\\uc_khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\c#\\qlbg\\qlbg\\gui\\home\\homegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|D:\\C#\\QLBG\\QLBG\\gui\\home\\homegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\home\\homegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\c#\\qlbg\\qlbg\\gui\\home\\homegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\home\\homegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\c#\\qlbg\\qlbg\\gui\\usercontrols\\uc_thongke.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\usercontrols\\uc_thongke.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -63,37 +63,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UC_KhachHang.cs [Design]",
-              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\UserControls\\UC_KhachHang.cs",
-              "RelativeDocumentMoniker": "GUI\\UserControls\\UC_KhachHang.cs",
-              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\UserControls\\UC_KhachHang.cs [Design]",
-              "RelativeToolTip": "GUI\\UserControls\\UC_KhachHang.cs [Design]",
+              "Title": "HomeGUI.cs",
+              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\HomeGUI.cs",
+              "RelativeDocumentMoniker": "GUI\\Home\\HomeGUI.cs",
+              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\HomeGUI.cs*",
+              "RelativeToolTip": "GUI\\Home\\HomeGUI.cs*",
+              "ViewState": "AQIAAFIAAAAAAAAAAAAQwGAAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T15:09:41.032Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-11-05T01:44:03.072Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UC_NhapHang.cs [Design]",
-              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\UserControls\\UC_NhapHang.cs",
-              "RelativeDocumentMoniker": "GUI\\UserControls\\UC_NhapHang.cs",
-              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\UserControls\\UC_NhapHang.cs [Design]*",
-              "RelativeToolTip": "GUI\\UserControls\\UC_NhapHang.cs [Design]*",
+              "Title": "HomeGUI.cs [Design]",
+              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\HomeGUI.cs",
+              "RelativeDocumentMoniker": "GUI\\Home\\HomeGUI.cs",
+              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\HomeGUI.cs [Design]*",
+              "RelativeToolTip": "GUI\\Home\\HomeGUI.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T15:09:31.431Z",
+              "WhenOpened": "2024-10-24T08:32:36.704Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "HomeGUI.cs [Design]",
-              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\HomeGUI.cs",
-              "RelativeDocumentMoniker": "GUI\\Home\\HomeGUI.cs",
-              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\HomeGUI.cs [Design]",
-              "RelativeToolTip": "GUI\\Home\\HomeGUI.cs [Design]",
+              "Title": "UC_ThongKe.cs [Design]",
+              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\UserControls\\UC_ThongKe.cs",
+              "RelativeDocumentMoniker": "GUI\\UserControls\\UC_ThongKe.cs",
+              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\UserControls\\UC_ThongKe.cs [Design]",
+              "RelativeToolTip": "GUI\\UserControls\\UC_ThongKe.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T15:09:09.961Z",
+              "WhenOpened": "2024-10-24T08:23:43.22Z",
               "EditorCaption": " [Design]"
             }
           ]

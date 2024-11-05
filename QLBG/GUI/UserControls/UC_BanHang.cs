@@ -36,5 +36,10 @@ namespace GUI.UserControls
         {
 
         }
+
+        private void uC_ComponentSP3_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
