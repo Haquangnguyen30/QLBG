@@ -215,6 +215,12 @@
     <Compile Include="UserControls\UC_ComponentSP.Designer.cs">
       <DependentUpon>UC_ComponentSP.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UC_GioHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_GioHang.Designer.cs">
+      <DependentUpon>UC_GioHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UC_KhachHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -286,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_ComponentSP.resx">
       <DependentUpon>UC_ComponentSP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_GioHang.resx">
+      <DependentUpon>UC_GioHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_KhachHang.resx">
       <DependentUpon>UC_KhachHang.cs</DependentUpon>

@@ -157,3 +157,4 @@ D:\C#\QLBG\QLBG\GUI\obj\Debug\GUI.UserControls.UC_NhapHang.resources
 D:\C#\QLBG\QLBG\GUI\obj\Debug\GUI.UserControls.UC_PhanQuyen.resources
 D:\C#\QLBG\QLBG\GUI\obj\Debug\GUI.UserControls.UC_SanPham.resources
 D:\C#\QLBG\QLBG\GUI\obj\Debug\GUI.UserControls.UC_ThongKe.resources
+D:\C#\QLBG\QLBG\GUI\obj\Debug\GUI.UserControls.UC_GioHang.resources
