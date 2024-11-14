@@ -41,5 +41,15 @@ namespace GUI.UserControls
         {
 
         }
+
+        private void guna2Button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
