@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\QLBG"
+    "\\QLBG",
+    "\\QLBG\\GUI",
+    "\\QLBG\\GUI\\UserControls"
   ],
-  "SelectedNode": "\\QLBG\\QLBG.sln",
+  "SelectedNode": "\\QLBG\\GUI\\UserControls\\UC_BanHang.cs",
   "PreviewInSolutionExplorer": false
 }
