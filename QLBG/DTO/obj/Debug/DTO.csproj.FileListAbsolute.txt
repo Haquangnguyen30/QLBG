@@ -10,3 +10,32 @@ D:\C#\QLBG\QLBG\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
 D:\C#\QLBG\QLBG\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 D:\C#\QLBG\QLBG\DTO\obj\Debug\DTO.dll
 D:\C#\QLBG\QLBG\DTO\obj\Debug\DTO.pdb
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\DTO.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\DTO.pdb
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\obj\Debug\DTO.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\obj\Debug\DTO.pdb
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\EPPlus.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\EPPlus.Interfaces.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\EPPlus.System.Drawing.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\System.Buffers.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\System.ComponentModel.Annotations.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\System.Memory.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\System.Numerics.Vectors.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\EPPlus.xml
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\System.Buffers.xml
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\System.Memory.xml
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\System.Numerics.Vectors.xml
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\obj\Debug\DTO.csproj.CopyComplete
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\Syncfusion.Compression.Base.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\Syncfusion.Licensing.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\Syncfusion.Compression.Base.xml
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\BouncyCastle.Cryptography.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\itextsharp.dll
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\BouncyCastle.Cryptography.xml
+D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\DTO\bin\Debug\itextsharp.xml

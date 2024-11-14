@@ -394,7 +394,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(194, 94);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
+            this.label1.Size = new System.Drawing.Size(48, 19);
             this.label1.TabIndex = 4;
             this.label1.Text = "MÀU";
             // 
@@ -406,7 +406,7 @@
             this.tenSp.ForeColor = System.Drawing.Color.Black;
             this.tenSp.Location = new System.Drawing.Point(193, 16);
             this.tenSp.Name = "tenSp";
-            this.tenSp.Size = new System.Drawing.Size(37, 15);
+            this.tenSp.Size = new System.Drawing.Size(47, 19);
             this.tenSp.TabIndex = 3;
             this.tenSp.Text = "SIZE";
             this.tenSp.Click += new System.EventHandler(this.tenSp_Click);

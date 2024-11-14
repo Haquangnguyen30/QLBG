@@ -15,9 +15,11 @@ namespace DTO
         public float thanhTien { get; set; }
         public bool tinhTrang { get; set; }
 
+        public int makichCo { get; set; }
+
         public ChiTietPhieuNhapDTO() { }
 
-        public ChiTietPhieuNhapDTO(int maPN, string maSP, float giaNhap, int soLuong, float thanhTien, bool tinhTrang)
+        public ChiTietPhieuNhapDTO(int maPN, string maSP, float giaNhap, int soLuong, float thanhTien, bool tinhTrang, int makichCo)
         {
             this.maPN = maPN;
             this.maSP = maSP;
@@ -25,6 +27,7 @@ namespace DTO
             this.soLuong = soLuong;
             this.thanhTien= thanhTien;
             this.tinhTrang = tinhTrang;
+            this.makichCo = makichCo;
         }
     }
 }

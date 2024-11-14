@@ -3,6 +3,7 @@ using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,29 @@ namespace BUS
         {
             return dalNhanVien.ThemDS();
         }
+
+        public DataTable getDSTenNV()
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.Columns.Add("Mã NV", typeof(string));
+            dataTable.Columns.Add("Tên NV", typeof(string));
+
+            SqlDataReader reader = dalNhanVien.getDSTenNV();
+
+            while (reader.Read())
+            {
+                DataRow row = dataTable.NewRow();
+                row["Mã NV"] = reader.GetString(0);
+                row["Tên NV"] = reader.GetString(1);
+
+                dataTable.Rows.Add(row);
+            }
+
+            reader.Close();
+            return dataTable;
+        }
+
 
     }
 }

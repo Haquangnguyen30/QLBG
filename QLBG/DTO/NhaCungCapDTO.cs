@@ -13,7 +13,9 @@ namespace DTO
         public string sdt { get; set; }
         public string diaChi { get; set; }
         public bool tinhTrang { get; set; }
+
         public NhaCungCapDTO() { }
+
         public NhaCungCapDTO(int maNCC, string tenNCC, string sdt, string diaChi, bool tinhTrang)
         {
             this.maNCC = maNCC;
