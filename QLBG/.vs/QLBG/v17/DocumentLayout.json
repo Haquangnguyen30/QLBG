@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "D:\\C#\\QLBG\\QLBG\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|D:\\C#\\QLBG\\QLBG\\gui\\home\\homegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\home\\homegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\c#\\qlbg\\qlbg\\gui\\usercontrols\\uc_banhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\usercontrols\\uc_banhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\c#\\qlbg\\qlbg\\gui\\home\\homegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\c#\\qlbg\\qlbg\\gui\\usercontrols\\uc_componentsp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\usercontrols\\uc_componentsp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|D:\\C#\\QLBG\\QLBG\\gui\\home\\homegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\home\\homegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|d:\\c#\\qlbg\\qlbg\\gui\\usercontrols\\uc_thongke.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\usercontrols\\uc_thongke.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|D:\\C#\\QLBG\\QLBG\\gui\\home\\homegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DE5A8FE5-0EF8-44BC-8AD3-8CF6446E32DE}|GUI\\GUI.csproj|solutionrelative:gui\\home\\homegui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,12 +70,36 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UC_BanHang.cs [Design]",
+              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\UserControls\\UC_BanHang.cs",
+              "RelativeDocumentMoniker": "GUI\\UserControls\\UC_BanHang.cs",
+              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\UserControls\\UC_BanHang.cs [Design]*",
+              "RelativeToolTip": "GUI\\UserControls\\UC_BanHang.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T07:08:44.471Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "UC_ComponentSP.cs [Design]",
+              "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\UserControls\\UC_ComponentSP.cs",
+              "RelativeDocumentMoniker": "GUI\\UserControls\\UC_ComponentSP.cs",
+              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\UserControls\\UC_ComponentSP.cs [Design]",
+              "RelativeToolTip": "GUI\\UserControls\\UC_ComponentSP.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T06:46:48.229Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "HomeGUI.cs",
               "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\HomeGUI.cs",
               "RelativeDocumentMoniker": "GUI\\Home\\HomeGUI.cs",
-              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\HomeGUI.cs*",
-              "RelativeToolTip": "GUI\\Home\\HomeGUI.cs*",
+              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\HomeGUI.cs",
+              "RelativeToolTip": "GUI\\Home\\HomeGUI.cs",
               "ViewState": "AQIAAFIAAAAAAAAAAAAQwGAAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-05T01:44:03.072Z",
@@ -75,19 +107,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "HomeGUI.cs [Design]",
               "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\HomeGUI.cs",
               "RelativeDocumentMoniker": "GUI\\Home\\HomeGUI.cs",
-              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\HomeGUI.cs [Design]*",
-              "RelativeToolTip": "GUI\\Home\\HomeGUI.cs [Design]*",
+              "ToolTip": "D:\\C#\\QLBG\\QLBG\\GUI\\Home\\HomeGUI.cs [Design]",
+              "RelativeToolTip": "GUI\\Home\\HomeGUI.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-24T08:32:36.704Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UC_ThongKe.cs [Design]",
               "DocumentMoniker": "D:\\C#\\QLBG\\QLBG\\GUI\\UserControls\\UC_ThongKe.cs",
               "RelativeDocumentMoniker": "GUI\\UserControls\\UC_ThongKe.cs",
