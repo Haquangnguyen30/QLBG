@@ -327,6 +327,21 @@ namespace DAL
             return 0;
         }
 
+        public SqlDataReader getDSTenNV()
+        {
+            try
+            {
+                String sSql = "SELECT nv.maNV, nv.tenNV FROM nhanVien nv WHERE nv.tinhTrang = 1";
+                SqlDataReader reader = DatabaseConnect.queryData(sSql);
+
+                return reader;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi lấy danh sách tên nhân viên: " + ex.ToString());
+                return null;
+            }
+        }
 
 
     }

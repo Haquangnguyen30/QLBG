@@ -1,2 +1,19 @@
-*.vsidx
+# Các thư mục tạm thời của Visual Studio
 .vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Các tệp nhị phân đã biên dịch
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+
+# Các tệp tạm thời khác
+*.log
+*.tmp
+*.temp
