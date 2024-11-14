@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_ComponentSP));
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.tenSp = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.label2 = new System.Windows.Forms.Label();
+            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tenSp = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +47,7 @@
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(90, 100);
+            this.guna2PictureBox1.Size = new System.Drawing.Size(101, 100);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;
@@ -69,31 +69,17 @@
             this.guna2Panel1.Size = new System.Drawing.Size(180, 100);
             this.guna2Panel1.TabIndex = 1;
             // 
-            // tenSp
+            // label2
             // 
-            this.tenSp.AutoSize = true;
-            this.tenSp.BackColor = System.Drawing.Color.Transparent;
-            this.tenSp.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tenSp.ForeColor = System.Drawing.Color.White;
-            this.tenSp.Location = new System.Drawing.Point(51, 12);
-            this.tenSp.Name = "tenSp";
-            this.tenSp.Size = new System.Drawing.Size(142, 18);
-            this.tenSp.TabIndex = 0;
-            this.tenSp.Text = "Giày Jordan One";
-            this.tenSp.Click += new System.EventHandler(this.tenSp_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(51, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "800.000 VNĐ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(61, 67);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "3 Màu, 4 Size";
             // 
             // guna2CircleButton1
             // 
@@ -108,24 +94,39 @@
             this.guna2CircleButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CircleButton1.Image")));
             this.guna2CircleButton1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.guna2CircleButton1.ImageOffset = new System.Drawing.Point(-5, 0);
-            this.guna2CircleButton1.Location = new System.Drawing.Point(140, 62);
+            this.guna2CircleButton1.ImageSize = new System.Drawing.Size(15, 15);
+            this.guna2CircleButton1.Location = new System.Drawing.Point(145, 62);
             this.guna2CircleButton1.Name = "guna2CircleButton1";
             this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton1.Size = new System.Drawing.Size(30, 30);
+            this.guna2CircleButton1.Size = new System.Drawing.Size(25, 25);
             this.guna2CircleButton1.TabIndex = 2;
             this.guna2CircleButton1.Click += new System.EventHandler(this.guna2CircleButton1_Click);
             // 
-            // label2
+            // label1
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(51, 67);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 17);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "3 Màu, 4 Size";
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(61, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "800.000 VNĐ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // tenSp
+            // 
+            this.tenSp.AutoSize = true;
+            this.tenSp.BackColor = System.Drawing.Color.Transparent;
+            this.tenSp.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tenSp.ForeColor = System.Drawing.Color.White;
+            this.tenSp.Location = new System.Drawing.Point(61, 12);
+            this.tenSp.Name = "tenSp";
+            this.tenSp.Size = new System.Drawing.Size(115, 16);
+            this.tenSp.TabIndex = 0;
+            this.tenSp.Text = "Giày Jordan One";
+            this.tenSp.Click += new System.EventHandler(this.tenSp_Click);
             // 
             // UC_ComponentSP
             // 

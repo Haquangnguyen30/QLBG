@@ -157,6 +157,7 @@ D:\C#\QLBG\QLBG\GUI\obj\Debug\GUI.UserControls.UC_NhapHang.resources
 D:\C#\QLBG\QLBG\GUI\obj\Debug\GUI.UserControls.UC_PhanQuyen.resources
 D:\C#\QLBG\QLBG\GUI\obj\Debug\GUI.UserControls.UC_SanPham.resources
 D:\C#\QLBG\QLBG\GUI\obj\Debug\GUI.UserControls.UC_ThongKe.resources
+<<<<<<< HEAD
 D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\GUI\bin\Debug\GUI.exe.config
 D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\GUI\bin\Debug\GUI.exe
 D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\GUI\bin\Debug\GUI.pdb
@@ -258,3 +259,6 @@ D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\GUI\bin\Debug\Syncfusion.Licensing.d
 D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\GUI\bin\Debug\Syncfusion.Compression.Base.xml
 D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\GUI\bin\Debug\itextsharp.dll
 D:\CNTT K21\HK1_2024-2025\C#\QLBG\QLBG\QLBG\GUI\bin\Debug\itextsharp.xml
+=======
+D:\C#\QLBG\QLBG\GUI\obj\Debug\GUI.UserControls.UC_GioHang.resources
+>>>>>>> main
