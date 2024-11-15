@@ -131,5 +131,15 @@ namespace DAL
                 return 0;
             }
         }
+        
+        //PhuocDo
+        public DataTable getDSSanPham()
+        {
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT sk.maSP, s.tenSP, s.giaBan, sk.soLuong, s.img, s.giaNhap, s.maLoai, s.mau, sk.maKichCo, sk.tinhTrang " +
+                                                   "FROM sanPham s JOIN sanPham_KichCo sk ON s.maSP = sk.maSP", _conn);
+            da.Fill(dt);
+            return dt;
+        }
     }
 }

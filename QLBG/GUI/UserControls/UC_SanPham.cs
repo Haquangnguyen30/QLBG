@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,36 @@ namespace GUI.UserControls
 {
     public partial class UC_SanPham : UserControl
     {
+        SanPhamBUS spBUS = new SanPhamBUS();
         public UC_SanPham()
         {
             InitializeComponent();
+        }
+
+        private void grid_SanPham_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void UC_SanPham_Load(object sender, EventArgs e)
+        {
+            //SanPham
+            grid_SanPham.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grid_SanPham.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(80, 17, 132);
+
+            grid_SanPham.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grid_SanPham.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grid_SanPham.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grid_SanPham.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grid_SanPham.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grid_SanPham.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grid_SanPham.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grid_SanPham.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grid_SanPham.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grid_SanPham.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grid_SanPham.DataSource = this.spBUS.getDSSanPham();
+            
+
         }
     }
 }
