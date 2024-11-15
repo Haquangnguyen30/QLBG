@@ -433,8 +433,6 @@
             this.guna2Button1.Size = new System.Drawing.Size(140, 40);
             this.guna2Button1.TabIndex = 5;
             this.guna2Button1.Text = "Thêm vào giỏ";
-            // 
-<<<<<<< HEAD
             // label1
             // 
             this.label1.AutoSize = true;
@@ -446,9 +444,7 @@
             this.label1.Size = new System.Drawing.Size(48, 19);
             this.label1.TabIndex = 4;
             this.label1.Text = "MÀU";
-            // 
-=======
->>>>>>> main
+             
             // tenSp
             // 
             this.tenSp.AutoSize = true;
