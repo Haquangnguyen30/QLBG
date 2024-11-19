@@ -272,11 +272,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SanPham\ThemSanPham.cs">
+    <Compile Include="SanPham\ThemSanPhamGUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SanPham\ThemSanPham.Designer.cs">
-      <DependentUpon>ThemSanPham.cs</DependentUpon>
+    <Compile Include="SanPham\ThemSanPhamGUI.Designer.cs">
+      <DependentUpon>ThemSanPhamGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UC_BanHang.cs">
       <SubType>UserControl</SubType>
@@ -378,8 +378,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SanPham\ThemSanPham.resx">
-      <DependentUpon>ThemSanPham.cs</DependentUpon>
+    <EmbeddedResource Include="SanPham\ThemSanPhamGUI.resx">
+      <DependentUpon>ThemSanPhamGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_BanHang.resx">
       <DependentUpon>UC_BanHang.cs</DependentUpon>
@@ -412,6 +412,9 @@
       <DependentUpon>UC_ThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DTO.KichCoDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.LoaiSanPhamDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.MauSacDTO.datasource" />
     <None Include="Properties\DataSources\DTO.SanPhamDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -447,6 +450,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\White_Plus.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\ImgSanPham\G001.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

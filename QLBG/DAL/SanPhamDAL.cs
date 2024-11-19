@@ -136,10 +136,10 @@ namespace DAL
         public DataTable getDSSanPham()
         {
             DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(
-                                    "SELECT sk.maSP, s.tenSP, s.giaBan, sk.soLuong, s.img, s.giaNhap, s.maLoai, s.mau, sk.maKichCo " +
-                                    "FROM sanPham s JOIN sanPham_KichCo sk ON s.maSP = sk.maSP " +
-                                    "WHERE sk.tinhTrang = 1",_conn);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT s.maSP, s.tenSP, s.giaBan, SUM(sk.soLuong) as soLuong, s.giaNhap, s.mau, s.maLoai " +
+                                                   "FROM sanPham s JOIN sanPham_KichCo sk ON s.maSP = sk.maSP " +
+                                                   "WHERE s.tinhTrang = 1 " +
+                                                   "GROUP BY s.maSP, s.tenSP, s.giaBan, s.giaNhap, s.mau, s.maLoai; ", _conn);
 
             da.Fill(dt);
             return dt;

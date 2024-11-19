@@ -8,8 +8,8 @@ namespace DTO
 {
     public class KichCoDTO
     {
-        public int makhichCo { get; set; }
-        public string tenkichCo { get; set; }
+        public int maKichCo { get; set; }
+        public string kichCo { get; set; }
         public bool tinhTrang { get; set; }
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GUI.SanPham
 {
-    public partial class ThemSanPham : Form
+    public partial class ThemSanPhamGUI : Form
     {
-        public ThemSanPham()
+        public ThemSanPhamGUI()
         {
             InitializeComponent();
         }

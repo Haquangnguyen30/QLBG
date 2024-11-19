@@ -16,11 +16,10 @@ namespace DTO
         public float giaNhap { get; set; }
         public bool tinhTrang { get; set; }
         public int maLoai { get; set; }
-        public int maMau { get; set; }
-        public int makichCo { get; set; }
+        public int mau { get; set; }
         public SanPhamDTO() { }
 
-        public SanPhamDTO(string maSP, string tenSP, float giaBan, int soLuong, byte[] img, float giaNhap, bool tinhTrang, int maLoai, int maMau, int makichCo)
+        public SanPhamDTO(string maSP, string tenSP, float giaBan, int soLuong, byte[] img, float giaNhap, bool tinhTrang, int maLoai, int mau)
         {
             this.maSP = maSP;
             this.tenSP = tenSP;
@@ -30,8 +29,8 @@ namespace DTO
             this.giaNhap = giaNhap;
             this.tinhTrang = tinhTrang;
             this.maLoai = maLoai;
-            this.maMau = maMau;
-            this.makichCo = makichCo;
+            this.mau= mau;
+       
         }
     }
 }
