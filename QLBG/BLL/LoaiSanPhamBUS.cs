@@ -1,4 +1,5 @@
 ﻿using DAL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,6 +15,18 @@ namespace BLL
         public DataTable getDSLoaiSanPham()
         {
             return lspDAL.getDSLoaiSanPham();
+        }
+        public bool addLoaiSanPham(LoaiSanPhamDTO loai)
+        {
+            return lspDAL.addLoaiSanPham(loai);
+        }
+        public bool updateLoaiSanPham(LoaiSanPhamDTO loai)
+        {
+            return lspDAL.updateLoaiSanPham(loai);
+        }
+        public bool deleteLoaiSanPham(LoaiSanPhamDTO loai)
+        {
+            return lspDAL.deleteLoaiSanPham(loai);
         }
     }
 }

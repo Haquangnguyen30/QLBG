@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using GUI.SanPham;
 using NPOI.POIFS.NIO;
 using NPOI.SS.Formula.Functions;
+using DTO;
 
 namespace GUI.UserControls
 {
@@ -22,6 +23,8 @@ namespace GUI.UserControls
         LoaiSanPhamBUS lspBUS = new LoaiSanPhamBUS();
         KichCoBUS kcBUS = new KichCoBUS();
         SanPham_KichCoBUS spkcBUS = new SanPham_KichCoBUS();
+        private DataTable tbKichCo;
+        private DataTable tbLoaiSanPham;
         public UC_SanPham()
         {
             InitializeComponent();
@@ -54,7 +57,8 @@ namespace GUI.UserControls
             grid_KichCo.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid_KichCo.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid_KichCo.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(80, 17, 132);
-            grid_KichCo.DataSource = this.kcBUS.getDSKichCo();
+            tbKichCo = this.kcBUS.getDSKichCo();
+            grid_KichCo.DataSource = tbKichCo;
             textKichCo(0);
            
             //LoaiSanPham
@@ -62,7 +66,8 @@ namespace GUI.UserControls
             grid_LoaiSanPham.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid_LoaiSanPham.Columns[1].DefaultCellStyle.Alignment= DataGridViewContentAlignment.MiddleCenter;
             grid_LoaiSanPham.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(80, 17, 132);
-            grid_LoaiSanPham.DataSource = this.lspBUS.getDSLoaiSanPham();
+            tbLoaiSanPham = this.lspBUS.getDSLoaiSanPham();
+            grid_LoaiSanPham.DataSource = tbLoaiSanPham;
             textLoaiSanPham(0);
 
         }
@@ -98,12 +103,6 @@ namespace GUI.UserControls
                 textSanPham(e.RowIndex);
             }
         }
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            grid_SanPham.DataSource = null;
-            grid_SanPham.DataSource = this.spBUS.getDSSanPham();
-            textSanPham(0);
-        }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -115,7 +114,6 @@ namespace GUI.UserControls
             if(e.RowIndex >= 0)
             {
                 textKichCo(e.RowIndex);
- 
             }
         }
         private void grid_LoaiSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -123,8 +121,99 @@ namespace GUI.UserControls
             if (e.RowIndex >= 0)
             {
                 textLoaiSanPham(e.RowIndex);
-
             }
+        }
+
+        private void btnThemLoai_Click(object sender, EventArgs e)
+        {
+            int maxLoaiSanPham = 0;
+            foreach(DataRow row in tbLoaiSanPham.Rows)
+            {
+                int temp = Convert.ToInt32(row["maLoai"]);
+                if(temp > maxLoaiSanPham)
+                {
+                    maxLoaiSanPham = temp;
+                }
+            }
+            int newLoaiSanPham = maxLoaiSanPham + 1;
+            ThemLoaiSanPhamGUI newForm = new ThemLoaiSanPhamGUI(newLoaiSanPham.ToString(), grid_LoaiSanPham);
+            newForm.ShowDialog();
+        }
+
+        private void btnSuaLoai_Click(object sender, EventArgs e)
+        {   
+            LoaiSanPhamDTO loai = new LoaiSanPhamDTO();
+            loai.maLoai = Convert.ToInt32(txtMaLoaiSanPham.Text);
+            loai.tenLoai = txtTenLoaiSanPham.Text;
+            SuaLoaiSanPhamGUI newForm = new SuaLoaiSanPhamGUI(loai, grid_LoaiSanPham);
+            newForm.ShowDialog();
+        }
+
+        private void btnThemKichCo_Click(object sender, EventArgs e)
+        {
+            int maxMaKichCo = 0;
+            foreach (DataRow row in tbKichCo.Rows)
+            {
+                int temp = Convert.ToInt32(row["maKichCo"]);
+                if (temp > maxMaKichCo)
+                {
+                    maxMaKichCo = temp;
+                }
+            }
+            int newMaKichCo = maxMaKichCo+ 1;
+            ThemKichCoGUI newForm = new ThemKichCoGUI(newMaKichCo.ToString());
+            newForm.ShowDialog();
+        }
+
+        private void btnSuaKichCo_Click(object sender, EventArgs e)
+        {
+            SuaKichCoGUI newForm = new SuaKichCoGUI();
+            newForm.ShowDialog();
+        }
+
+        private void btnSuaSanPham_Click(object sender, EventArgs e)
+        {
+            SuaSanPhamGUI newForm = new SuaSanPhamGUI();
+            newForm.ShowDialog();
+        }
+
+        private void btnReloadSanPham_Click(object sender, EventArgs e)
+        {
+            grid_SanPham.DataSource = null;
+            grid_SanPham.DataSource = this.spBUS.getDSSanPham();
+            textSanPham(0);
+        }
+
+        private void btnXoaLoaiSanPham_Click(object sender, EventArgs e)
+        {
+            string maLSP = txtMaLoaiSanPham.Text;
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa loại sản phẩm có mã = " +maLSP +" không?", "Xóa sản phẩm", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes) { 
+                LoaiSanPhamDTO loai = new LoaiSanPhamDTO();
+                loai.maLoai = Convert.ToInt32(txtMaLoaiSanPham.Text.Trim());
+                loai.tenLoai = txtTenLoaiSanPham.Text;
+                loai.tinhTrang = 0;
+                if (lspBUS.deleteLoaiSanPham(loai))
+                {
+                    MessageBox.Show("Xóa loại sản phẩm thành công");
+                    tbLoaiSanPham = lspBUS.getDSLoaiSanPham();
+                    grid_LoaiSanPham.DataSource = tbLoaiSanPham;
+                }
+                else
+                {
+                    MessageBox.Show("Xóa loại sản phẩm thất bại");
+                }
+            }
+            else{
+                return;
+            }
+        }
+
+        private void btnReloadLoaiSanPham_Click(object sender, EventArgs e)
+        {
+            grid_LoaiSanPham.DataSource = null;
+            grid_LoaiSanPham.DataSource = this.lspBUS.getDSLoaiSanPham();
+            textLoaiSanPham(0);
         }
     }
 }
