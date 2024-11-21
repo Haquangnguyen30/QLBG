@@ -92,6 +92,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChiTietKhuyenMaiBUS.cs" />
+    <Compile Include="KhachHangBUS.cs" />
+    <Compile Include="KhuyenMaiBUS.cs" />
     <Compile Include="NhaCungCapBUS.cs" />
     <Compile Include="NhanVienBUS.cs" />
     <Compile Include="ChiTietPhieuNhapBUS.cs" />

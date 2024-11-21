@@ -169,7 +169,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChiTietKhuyenMaiDAL.cs" />
     <Compile Include="DatabaseConnect.cs" />
+    <Compile Include="KhachHangDAL.cs" />
+    <Compile Include="KhuyenMaiDAL.cs" />
     <Compile Include="NhaCungCapDAL.cs" />
     <Compile Include="NhanVienDAL.cs" />
     <Compile Include="ChiTietPhieuNhapDAL.cs" />

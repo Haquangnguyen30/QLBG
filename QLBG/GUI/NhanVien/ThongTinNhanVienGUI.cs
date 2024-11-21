@@ -1,5 +1,6 @@
 ﻿using BUS;
 using DTO;
+using GUI.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,8 +20,8 @@ namespace GUI.NhanVien
         NhanVienDTO nvDto;
         TaiKhoanDTO tkDto;
         NhanVienBUS nvBus = new NhanVienBUS();
-        NhanVienGUI nvGui;
-        public ThongTinNhanVienGUI(NhanVienGUI nvGui, DataGridView tblNv)
+        UC_NhanVien nvGui;
+        public ThongTinNhanVienGUI(UC_NhanVien nvGui, DataGridView tblNv)
         {
             InitializeComponent();
             this.nvGui = nvGui;
