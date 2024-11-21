@@ -1,4 +1,5 @@
 ﻿using DAL;
+using Org.BouncyCastle.Crypto.Engines;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,6 +15,10 @@ namespace BLL
         public DataTable getDSKichCo()
         {
             return kcDAL.getDSKichCo();
+        }
+        public DataTable getMaKC()
+        {
+            return kcDAL.getMaKC();
         }
     }
 }

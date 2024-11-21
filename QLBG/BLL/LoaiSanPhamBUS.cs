@@ -16,6 +16,11 @@ namespace BLL
         {
             return lspDAL.getDSLoaiSanPham();
         }
+        
+        public DataTable getMaLSP()
+        {
+            return lspDAL.getMaLSP();
+        }
         public bool addLoaiSanPham(LoaiSanPhamDTO loai)
         {
             return lspDAL.addLoaiSanPham(loai);

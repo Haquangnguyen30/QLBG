@@ -11,5 +11,10 @@ namespace DTO
         public int maKichCo { get; set; }
         public string kichCo { get; set; }
         public bool tinhTrang { get; set; }
+
+        public KichCoDTO() 
+        {
+            this.tinhTrang = true;
+        }
     }
 }

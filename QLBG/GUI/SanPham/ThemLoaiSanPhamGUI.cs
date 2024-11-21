@@ -17,7 +17,7 @@ namespace GUI.SanPham
         private string maLoai;
         DataGridView grid_LoaiSanPham;
         LoaiSanPhamDTO loai;
-        LoaiSanPhamBUS lspBUS = new LoaiSanPhamBUS();
+        LoaiSanPhamBUS lspBUS;
         public ThemLoaiSanPhamGUI(string maLoai, DataGridView grid_LoaiSanPham)
         {
             InitializeComponent();
@@ -41,7 +41,9 @@ namespace GUI.SanPham
                 loai = new LoaiSanPhamDTO();
                 loai.maLoai = Convert.ToInt32(txtMaLoai.Text.Trim());
                 loai.tenLoai = txtTenLoai.Text.Trim();
-                loai.tinhTrang = 1;
+                loai.tinhTrang = true;
+
+                lspBUS = new LoaiSanPhamBUS();
                 if (lspBUS.addLoaiSanPham(loai))
                 {
                     MessageBox.Show("Thêm thành công");

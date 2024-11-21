@@ -24,7 +24,6 @@ namespace GUI.UserControls
         KichCoBUS kcBUS = new KichCoBUS();
         SanPham_KichCoBUS spkcBUS = new SanPham_KichCoBUS();
         private DataTable tbKichCo;
-        private DataTable tbLoaiSanPham;
         public UC_SanPham()
         {
             InitializeComponent();
@@ -66,8 +65,7 @@ namespace GUI.UserControls
             grid_LoaiSanPham.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid_LoaiSanPham.Columns[1].DefaultCellStyle.Alignment= DataGridViewContentAlignment.MiddleCenter;
             grid_LoaiSanPham.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(80, 17, 132);
-            tbLoaiSanPham = this.lspBUS.getDSLoaiSanPham();
-            grid_LoaiSanPham.DataSource = tbLoaiSanPham;
+            grid_LoaiSanPham.DataSource = this.lspBUS.getDSLoaiSanPham();
             textLoaiSanPham(0);
 
         }
@@ -125,9 +123,10 @@ namespace GUI.UserControls
         }
 
         private void btnThemLoai_Click(object sender, EventArgs e)
-        {
+        {   
+            DataTable tbMaLSP = this.lspBUS.getMaLSP();
             int maxLoaiSanPham = 0;
-            foreach(DataRow row in tbLoaiSanPham.Rows)
+            foreach(DataRow row in tbMaLSP.Rows)
             {
                 int temp = Convert.ToInt32(row["maLoai"]);
                 if(temp > maxLoaiSanPham)
@@ -147,12 +146,14 @@ namespace GUI.UserControls
             loai.tenLoai = txtTenLoaiSanPham.Text;
             SuaLoaiSanPhamGUI newForm = new SuaLoaiSanPhamGUI(loai, grid_LoaiSanPham);
             newForm.ShowDialog();
+            textLoaiSanPham(0);
         }
 
         private void btnThemKichCo_Click(object sender, EventArgs e)
         {
+            DataTable tbMaKC = this.kcBUS.getMaKC();
             int maxMaKichCo = 0;
-            foreach (DataRow row in tbKichCo.Rows)
+            foreach (DataRow row in tbMaKC.Rows)
             {
                 int temp = Convert.ToInt32(row["maKichCo"]);
                 if (temp > maxMaKichCo)
@@ -160,14 +161,17 @@ namespace GUI.UserControls
                     maxMaKichCo = temp;
                 }
             }
-            int newMaKichCo = maxMaKichCo+ 1;
-            ThemKichCoGUI newForm = new ThemKichCoGUI(newMaKichCo.ToString());
+            int newMaKichCo = maxMaKichCo + 1;
+            ThemKichCoGUI newForm = new ThemKichCoGUI(newMaKichCo.ToString(), grid_KichCo);
             newForm.ShowDialog();
         }
 
         private void btnSuaKichCo_Click(object sender, EventArgs e)
         {
-            SuaKichCoGUI newForm = new SuaKichCoGUI();
+            KichCoDTO kc = new KichCoDTO();
+            kc.maKichCo = Convert.ToInt32(txtMaKichCo.Text);
+            kc.kichCo = txtKichCo.Text;
+            SuaKichCoGUI newForm = new SuaKichCoGUI(kc, grid_KichCo);
             newForm.ShowDialog();
         }
 
@@ -192,12 +196,13 @@ namespace GUI.UserControls
                 LoaiSanPhamDTO loai = new LoaiSanPhamDTO();
                 loai.maLoai = Convert.ToInt32(txtMaLoaiSanPham.Text.Trim());
                 loai.tenLoai = txtTenLoaiSanPham.Text;
-                loai.tinhTrang = 0;
+                loai.tinhTrang = false;
                 if (lspBUS.deleteLoaiSanPham(loai))
                 {
                     MessageBox.Show("Xóa loại sản phẩm thành công");
-                    tbLoaiSanPham = lspBUS.getDSLoaiSanPham();
-                    grid_LoaiSanPham.DataSource = tbLoaiSanPham;
+                    grid_LoaiSanPham.DataSource = lspBUS.getDSLoaiSanPham();
+                    textLoaiSanPham(0);
+
                 }
                 else
                 {
@@ -215,5 +220,49 @@ namespace GUI.UserControls
             grid_LoaiSanPham.DataSource = this.lspBUS.getDSLoaiSanPham();
             textLoaiSanPham(0);
         }
+
+        private void btnReloadMauSac_Click(object sender, EventArgs e)
+        {
+            grid_KichCo.DataSource = null;
+            grid_KichCo.DataSource = this.kcBUS.getDSKichCo();
+            textKichCo(0);
+        }
+
+        private void ptSanPham_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog op1 = new OpenFileDialog
+            {
+                Multiselect = false, // Chỉ cho phép chọn một ảnh để hiển thị
+                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif"
+            };
+
+            if (op1.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = op1.FileName; // Lấy đường dẫn của ảnh được chọn
+                //textBox1.Text = filePath; // Hiển thị đường dẫn trong TextBox
+
+                try
+                {
+                    string fileName = txtMaSanPham.Text; // Lấy tên file
+
+                    // Lấy đường dẫn gốc của ứng dụng khi chạy
+                    string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+                    string destPath = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\ImgSanPham", fileName); // Đường dẫn đích
+
+                    Directory.CreateDirectory("C:\\file\\"); // Tạo thư mục nếu chưa tồn tại
+                    File.Copy(filePath, destPath, true); // Sao chép và ghi đè nếu file tồn tại
+
+                    // Hiển thị ảnh trong PictureBox
+                    ptSanPham.Image = new Bitmap(filePath); // Gán ảnh vào PictureBox
+                    ptSanPham.SizeMode = PictureBoxSizeMode.Zoom; // Căn chỉnh ảnh để vừa khung
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }

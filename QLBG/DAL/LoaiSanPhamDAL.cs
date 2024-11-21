@@ -19,6 +19,13 @@ namespace DAL
             da.Fill(dt);
             return dt;
         }
+        public DataTable getMaLSP()
+        {
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT maLoai FROM loaiSP", _conn);
+            da.Fill(dt);
+            return dt;
+        }
         public bool addLoaiSanPham(LoaiSanPhamDTO loai)
         {
             try

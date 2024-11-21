@@ -526,6 +526,7 @@
             this.ptSanPham.Size = new System.Drawing.Size(234, 222);
             this.ptSanPham.TabIndex = 21;
             this.ptSanPham.TabStop = false;
+            this.ptSanPham.Click += new System.EventHandler(this.ptSanPham_Click);
             // 
             // guna2ShadowPanel1
             // 
@@ -1245,6 +1246,7 @@
             this.btnReloadMauSac.Size = new System.Drawing.Size(180, 45);
             this.btnReloadMauSac.TabIndex = 7;
             this.btnReloadMauSac.Text = "Reload";
+            this.btnReloadMauSac.Click += new System.EventHandler(this.btnReloadMauSac_Click);
             // 
             // btnThemKichCo
             // 

@@ -10,16 +10,16 @@ namespace DTO
     {
         public int maLoai { get; set; }
         public string tenLoai { get; set; }
-        public int tinhTrang { get; set; }
+        public bool tinhTrang { get; set; }
         public LoaiSanPhamDTO() 
         {
-            this.tinhTrang = 1;
+            this.tinhTrang = true;
         }
         public LoaiSanPhamDTO(int maLoai, string tenLoai)
         {
             this.maLoai = maLoai;
             this.tenLoai = tenLoai;
-            this.tinhTrang = 1;
+            this.tinhTrang = true;
         }
     }
 }
