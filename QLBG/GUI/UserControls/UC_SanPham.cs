@@ -46,6 +46,7 @@ namespace GUI.UserControls
             grid_SanPham.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid_SanPham.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid_SanPham.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // cột img
+            grid_SanPham.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid_SanPham.DataSource = this.spBUS.getDSSanPham();
             textSanPham(0);
 
@@ -81,10 +82,25 @@ namespace GUI.UserControls
             txtTenSanPham.Text = row.Cells[1].Value.ToString();
             txtGiaBan.Text = row.Cells[2].Value.ToString();
             txtSoLuong.Text = row.Cells[3].Value.ToString();
-            txtGiaNhap.Text = row.Cells[4].Value.ToString();
-            txtMau.Text = row.Cells[5].Value.ToString(); 
-            txtMaLoai.Text = row.Cells[6].Value.ToString();
+            txtGiaNhap.Text = row.Cells[5].Value.ToString();
+            txtMau.Text = row.Cells[6].Value.ToString(); 
+            txtMaLoai.Text = row.Cells[7].Value.ToString();
             DataTable tbSoLuong = this.spkcBUS.getChiTietSoLuong(row.Cells[0].Value.ToString());
+
+            string imageFileName = row.Cells[4].Value.ToString();
+            string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string imagePath = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\ImgSanPham", imageFileName);
+            try
+            {
+                ptSanPham.Image = new Bitmap(imagePath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading image: {ex.Message}");
+                ptSanPham.Image = null;
+            }
+
+            ptSanPham.SizeMode = PictureBoxSizeMode.Zoom;
             grid_ChiTietSoLuong.DataSource = tbSoLuong;
         }
         public void textLoaiSanPham(int id)

@@ -111,5 +111,19 @@ namespace GUI.SanPham
               
             }
         }
+
+        private void ptbHinhAnh_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                Multiselect = false,
+                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif"
+            };
+            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+
+        }
     }
 }

@@ -136,10 +136,10 @@ namespace DAL
         public DataTable getDSSanPham()
         {
             DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT s.maSP, s.tenSP, s.giaBan, COALESCE(SUM(sk.soLuong), 0) AS soLuong, s.giaNhap, s.mau, s.maLoai " +
+            SqlDataAdapter da = new SqlDataAdapter("SELECT s.maSP, s.tenSP, s.giaBan, COALESCE(SUM(sk.soLuong), 0) AS soLuong, s.img, s.giaNhap, s.mau, s.maLoai " +
                                                    "FROM sanPham s LEFT JOIN sanPham_KichCo sk ON s.maSP = sk.maSP " +
                                                    "WHERE s.tinhTrang = 1 " +
-                                                   "GROUP BY s.maSP, s.tenSP, s.giaBan, s.giaNhap, s.mau, s.maLoai;", _conn);
+                                                   "GROUP BY s.maSP, s.tenSP, s.giaBan, s.img, s.giaNhap, s.mau, s.maLoai;", _conn);
 
             da.Fill(dt);
             return dt;
@@ -244,10 +244,10 @@ namespace DAL
         public DataTable searchSanPham(string strSearch)
         {
             DataTable dt = new DataTable();
-            string query = "SELECT s.maSP, s.tenSP, s.giaBan, COALESCE(SUM(sk.soLuong), 0) AS soLuong, s.giaNhap, s.mau, s.maLoai " +
+            string query = "SELECT s.maSP, s.tenSP, s.giaBan, COALESCE(SUM(sk.soLuong), 0) AS soLuong, s.img, s.giaNhap, s.mau, s.maLoai " +
                            "FROM sanPham s LEFT JOIN sanPham_KichCo sk ON s.maSP = sk.maSP " +
                            "WHERE s.tinhTrang = 1 AND (s.maSP LIKE @search OR s.tenSP LIKE @search OR s.mau LIKE @search OR s.maLoai LIKE @search)" +
-                           "GROUP BY s.maSP, s.tenSP, s.giaBan, s.giaNhap, s.mau, s.maLoai;";
+                           "GROUP BY s.maSP, s.tenSP, s.giaBan, s.img, s.giaNhap, s.mau, s.maLoai;";
 
             using (SqlDataAdapter da = new SqlDataAdapter(query, _conn))
             {
