@@ -18,33 +18,6 @@ namespace DAL
             da.Fill(dt);
             return dt;
         }
-        public DataTable getMaKC()
-        {
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT maKichCo FROM kichCo", _conn);
-            da.Fill(dt);
-            return dt;
-        }
-        public bool addKichCo(KichCoDTO kichco)
-        {
-            try
-            {
-                _conn.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO kichCo(maKichCo, kichCo, tinhTrang) " +
-                                    "VALUES(@maKichCo, @kichCo, @tinhTrang)", _conn);
-                cmd.Parameters.AddWithValue("@maKichCo", kichco.maKichCo);
-                cmd.Parameters.AddWithValue("@kichCo", kichco.kichCo);
-                cmd.Parameters.AddWithValue("@kichCo", kichco.kichCo);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Lỗi: " + ex.Message);
-            }
-            finally
-            {
-                _conn.Close();  
-            }
-            return false;
-        }
+        
     }
 }

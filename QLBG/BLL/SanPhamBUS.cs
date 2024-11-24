@@ -1,4 +1,5 @@
 ﻿using DAL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -21,6 +22,23 @@ namespace BLL
         public DataTable getDSSanPham()
         {
             return spDAL.getDSSanPham();
+        }
+        public DataTable getMaSP()
+        {
+            return spDAL.getMaSP(); 
+        }
+      
+        public bool addSanPham(SanPhamDTO sanPham)
+        {
+            return spDAL.addSanPham(sanPham);
+        }
+        public bool updateSanPham(SanPhamDTO sanPham)
+        {
+            return spDAL.updateSanPham(sanPham);
+        }
+        public bool deleteSanPham(SanPhamDTO sanPham) 
+        {
+            return spDAL.deleteSanPham(sanPham);
         }
     }
 }

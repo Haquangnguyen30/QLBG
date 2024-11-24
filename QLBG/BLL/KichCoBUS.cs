@@ -16,9 +16,5 @@ namespace BLL
         {
             return kcDAL.getDSKichCo();
         }
-        public DataTable getMaKC()
-        {
-            return kcDAL.getMaKC();
-        }
     }
 }
