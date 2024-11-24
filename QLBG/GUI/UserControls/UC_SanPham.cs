@@ -14,6 +14,11 @@ using GUI.SanPham;
 using NPOI.POIFS.NIO;
 using NPOI.SS.Formula.Functions;
 using DTO;
+using OfficeOpenXml;
+using System.IO;
+using OfficeOpenXml;
+using Excel = Microsoft.Office.Interop.Excel;
+using OfficeOpenXml.Drawing.Slicer.Style;
 
 namespace GUI.UserControls
 {
@@ -41,10 +46,8 @@ namespace GUI.UserControls
             grid_SanPham.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid_SanPham.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid_SanPham.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // cột img
-            grid_SanPham.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid_SanPham.DataSource = this.spBUS.getDSSanPham();
             textSanPham(0);
-
 
             //ChiTietSoLuong
             grid_ChiTietSoLuong.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -59,7 +62,6 @@ namespace GUI.UserControls
             grid_KichCo.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(80, 17, 132);
             grid_KichCo.DataSource = this.kcBUS.getDSKichCo();
 
-
             //LoaiSanPham
             grid_LoaiSanPham.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid_LoaiSanPham.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -69,6 +71,9 @@ namespace GUI.UserControls
             textLoaiSanPham(0);
 
         }
+
+
+
         public void textSanPham(int id) 
         {
             DataGridViewRow row = grid_SanPham.Rows[id];
@@ -76,9 +81,9 @@ namespace GUI.UserControls
             txtTenSanPham.Text = row.Cells[1].Value.ToString();
             txtGiaBan.Text = row.Cells[2].Value.ToString();
             txtSoLuong.Text = row.Cells[3].Value.ToString();
-            txtGiaNhap.Text = row.Cells[5].Value.ToString();
-            txtMau.Text = row.Cells[6].Value.ToString(); 
-            txtMaLoai.Text = row.Cells[7].Value.ToString();
+            txtGiaNhap.Text = row.Cells[4].Value.ToString();
+            txtMau.Text = row.Cells[5].Value.ToString(); 
+            txtMaLoai.Text = row.Cells[6].Value.ToString();
             DataTable tbSoLuong = this.spkcBUS.getChiTietSoLuong(row.Cells[0].Value.ToString());
             grid_ChiTietSoLuong.DataSource = tbSoLuong;
         }
@@ -88,6 +93,9 @@ namespace GUI.UserControls
             txtMaLoaiSanPham.Text = row.Cells[0].Value.ToString();
             txtTenLoaiSanPham.Text = row.Cells[1].Value.ToString();
         }
+
+
+
         private void grid_SanPham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -102,14 +110,18 @@ namespace GUI.UserControls
                 textLoaiSanPham(e.RowIndex);
             }
         }
-        private void btnThem_Click(object sender, EventArgs e)
+
+
+
+        private string newMaSP()
         {
+            string MaSP;
             DataTable tbMaSP = spBUS.getMaSP();
             string maxMaSP = tbMaSP.Rows[0]["maSP"].ToString();
-            foreach(DataRow row in tbMaSP.Rows)
+            foreach (DataRow row in tbMaSP.Rows)
             {
                 string temp = row["maSP"].ToString();
-                if(String.Compare(temp, maxMaSP) > 0)
+                if (String.Compare(temp, maxMaSP) > 0)
                 {
                     maxMaSP = temp;
                 }
@@ -118,7 +130,13 @@ namespace GUI.UserControls
             string hauto = maxMaSP.Substring(1);
 
             int number = int.Parse(hauto) + 1;
-            string MaSP = tiento + number.ToString("D3");
+            MaSP = tiento + number.ToString("D3");
+            return MaSP;
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            string MaSP = newMaSP();
             ThemSanPhamGUI newForm = new ThemSanPhamGUI(MaSP, grid_SanPham);
             newForm.ShowDialog();
         }
@@ -139,6 +157,9 @@ namespace GUI.UserControls
             ThemLoaiSanPhamGUI newForm = new ThemLoaiSanPhamGUI(newLoaiSanPham.ToString(), grid_LoaiSanPham);
             newForm.ShowDialog();
         }
+
+
+
 
         private void btnSuaSanPham_Click(object sender, EventArgs e)
         {
@@ -164,6 +185,8 @@ namespace GUI.UserControls
             textLoaiSanPham(0);
         }
 
+
+
         private void btnReloadSanPham_Click(object sender, EventArgs e)
         {
             grid_SanPham.DataSource = null;
@@ -176,6 +199,8 @@ namespace GUI.UserControls
             grid_LoaiSanPham.DataSource = this.lspBUS.getDSLoaiSanPham();
             textLoaiSanPham(0);
         }
+
+
 
         private void btnXoaSanPham_Click(object sender, EventArgs e)
         {
@@ -229,6 +254,124 @@ namespace GUI.UserControls
             }
         }
      
+
+       
+        private void ImportExcel(string path)
+        {   
+            using (ExcelPackage excelPackage = new ExcelPackage(new FileInfo(path)))
+            {
+                ExcelWorksheet excelWorksheet = excelPackage.Workbook.Worksheets[0];
+                DataTable Dttable = new DataTable();
+                for (int i = excelWorksheet.Dimension.Start.Column; i <= excelWorksheet.Dimension.End.Column; i++)
+                {
+                    Dttable.Columns.Add(excelWorksheet.Cells[1, i].Value.ToString());          
+                }
+                for (int i = excelWorksheet.Dimension.Start.Row + 1; i <= excelWorksheet.Dimension.End.Row;i++)
+                {
+                    List<string> list = new List<string>();
+                    for (int j = excelWorksheet.Dimension.Start.Column; j <= excelWorksheet.Dimension.End.Column; j++)
+                    {
+                        list.Add(excelWorksheet.Cells[i, j].Value.ToString());
+                    }
+                    Dttable.Rows.Add(list.ToArray());
+                }
+                SanPhamBUS sanPhamBUS = new SanPhamBUS();
+                foreach (DataRow row in Dttable.Rows)
+                {
+                    SanPhamDTO sanPham = new SanPhamDTO();
+
+                    sanPham.maSP = newMaSP();
+                    sanPham.tenSP = row["tenSP"].ToString();
+                    sanPham.giaBan = float.Parse(row["giaBan"].ToString());
+                    sanPham.giaNhap = float.Parse(row["giaNhap"].ToString());
+                    sanPham.mau = row["mau"].ToString();
+                    sanPham.maLoai = Convert.ToInt32(row["maLoai"].ToString());
+                    sanPham.img = " ";
+                    sanPham.tinhTrang = true;
+                    if (sanPhamBUS.addSanPham(sanPham))
+                    {
+                        grid_SanPham.DataSource = sanPhamBUS.getDSSanPham();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm thất bại");
+                    }
+                }
+            }
+        }
+        private void btnImportExcel_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Title = "Import Excel";
+            openFile.Filter = "Excel (*.xlsx)|*.xlsx|Excel 2003 (*.xls)|*.xls";
+            if(openFile.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    ImportExcel(openFile.FileName);
+                    MessageBox.Show("Nhập file thành công");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nhập file không thành công:\n" + ex.Message);
+                }
+            }
+        }
+
+
+
+        private void ExportExcel(string path)
+        {
+            Excel.Application application = new Excel.Application();
+            application.Application.Workbooks.Add(Type.Missing);
+            for (int i = 0; i < grid_SanPham.Columns.Count; i++)
+            {
+                application.Cells[1, i + 1] = grid_SanPham.Columns[i].HeaderText;
+            }
+            for (int i = 0; i < grid_SanPham.Rows.Count; i++)
+            {
+                for (int j = 0; j < grid_SanPham.Columns.Count; j++) 
+                {
+                    application.Cells[i + 2, j + 1] = grid_SanPham.Rows[i].Cells[j].Value;
+                }
+            }
+            application.Columns.AutoFit();
+            application.ActiveWorkbook.SaveCopyAs(path);
+            application.ActiveWorkbook.Saved = true;
+        }
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "Export Excel";
+            saveFileDialog.Filter = "Excel (*.xlsx)|*.xlsx|Excel 2003 (*.xls)|*.xls";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    ExportExcel(saveFileDialog.FileName);
+                    MessageBox.Show("Xuất file thành công!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Xuất file không thành công!\n"+ ex.Message);
+                }
+            }
+        }
+
+
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                grid_SanPham.DataSource = spBUS.getDSSanPham();
+            }
+            else
+            {
+                grid_SanPham.DataSource = spBUS.searchSanPham(txtSearch.Text);
+            }
+        }
+
         private void ptSanPham_Click(object sender, EventArgs e)
         {
             OpenFileDialog op1 = new OpenFileDialog
@@ -265,6 +408,6 @@ namespace GUI.UserControls
             }
         }
 
- 
+   
     }
 }

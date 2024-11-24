@@ -306,7 +306,7 @@ namespace GUI.UserControls
                     }
 
                     if (!IsSizeExist(listRows[0], listRows[1]))
-                    {
+                    { 
                         dgvDSSPCN.Rows.Add(listRows.ToArray());
                     }
                     else

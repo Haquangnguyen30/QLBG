@@ -40,5 +40,9 @@ namespace BLL
         {
             return spDAL.deleteSanPham(sanPham);
         }
+        public DataTable searchSanPham(string strSearch)
+        {
+            return spDAL.searchSanPham(strSearch);
+        }
     }
 }
