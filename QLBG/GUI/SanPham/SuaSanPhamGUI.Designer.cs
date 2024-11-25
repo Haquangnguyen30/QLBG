@@ -30,7 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtMau = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.ptbHinhAnh = new Guna.UI2.WinForms.Guna2PictureBox();
             this.cbMaLoai = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtGiaNhap = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtGiaBan = new Guna.UI2.WinForms.Guna2TextBox();
@@ -46,13 +46,13 @@
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbHinhAnh)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.txtMau);
-            this.panel1.Controls.Add(this.guna2PictureBox1);
+            this.panel1.Controls.Add(this.ptbHinhAnh);
             this.panel1.Controls.Add(this.cbMaLoai);
             this.panel1.Controls.Add(this.txtGiaNhap);
             this.panel1.Controls.Add(this.txtGiaBan);
@@ -96,15 +96,16 @@
             this.txtMau.Size = new System.Drawing.Size(257, 54);
             this.txtMau.TabIndex = 22;
             // 
-            // guna2PictureBox1
+            // ptbHinhAnh
             // 
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(586, 58);
-            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(226, 237);
-            this.guna2PictureBox1.TabIndex = 21;
-            this.guna2PictureBox1.TabStop = false;
+            this.ptbHinhAnh.ImageRotate = 0F;
+            this.ptbHinhAnh.Location = new System.Drawing.Point(586, 58);
+            this.ptbHinhAnh.Margin = new System.Windows.Forms.Padding(4);
+            this.ptbHinhAnh.Name = "ptbHinhAnh";
+            this.ptbHinhAnh.Size = new System.Drawing.Size(226, 237);
+            this.ptbHinhAnh.TabIndex = 21;
+            this.ptbHinhAnh.TabStop = false;
+            this.ptbHinhAnh.Click += new System.EventHandler(this.ptbHinhAnh_Click);
             // 
             // cbMaLoai
             // 
@@ -342,7 +343,7 @@
             this.Text = "Sửa Sản Phẩm";
             this.Load += new System.EventHandler(this.SuaSanPhamGUI_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbHinhAnh)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -350,7 +351,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2PictureBox ptbHinhAnh;
         private Guna.UI2.WinForms.Guna2ComboBox cbMaLoai;
         private Guna.UI2.WinForms.Guna2TextBox txtGiaNhap;
         private Guna.UI2.WinForms.Guna2TextBox txtGiaBan;

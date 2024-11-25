@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +49,18 @@ namespace GUI.SanPham
             txtGiaNhap.Text = sanPham.giaNhap.ToString();
             txtMau.Text = sanPham.mau.ToString();
             cbMaLoai.SelectedItem = sanPham.maLoai.ToString();
-
+            string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string imagePath = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\ImgSanPham", sanPham.img);
+            try
+            {
+                ptbHinhAnh.Image = new Bitmap(imagePath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading image: {ex.Message}");
+                ptbHinhAnh.Image = null;
+            }
+            ptbHinhAnh.SizeMode = PictureBoxSizeMode.Zoom;
         }
         private bool checkNull()
         {
@@ -77,6 +89,7 @@ namespace GUI.SanPham
                 return false;
             }
         }
+        private string tempImagePath = null;
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (!checkNull())
@@ -100,9 +113,32 @@ namespace GUI.SanPham
                 sanPham.giaNhap = float.Parse(txtGiaNhap.Text);
                 sanPham.mau = txtMau.Text.Trim();
                 sanPham.maLoai = int.Parse(cbMaLoai.SelectedItem.ToString());
+                sanPham.img = txtMaSanPham.Text;
 
                 if (spBUS.updateSanPham(sanPham))
                 {
+                    if (tempImagePath != null)
+                    {
+                        try
+                        {
+                            string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                            string destPath = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\ImgSanPham", txtMaSanPham.Text);
+                            Directory.CreateDirectory(Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\ImgSanPham"));
+                          
+
+                            if (File.Exists(destPath)) 
+                            { 
+                            
+                                File.Delete(destPath);  
+                            }
+
+                            File.Copy(tempImagePath, destPath, true);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi lưu ảnh: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                     MessageBox.Show("Cập nhật thành công");
                     grid_SanPham.DataSource = spBUS.getDSSanPham();
                     this.Close();
@@ -110,6 +146,33 @@ namespace GUI.SanPham
                 else
                 {
                     MessageBox.Show("Cập nhật thất bại");
+                }
+            }
+        }
+
+        private void ptbHinhAnh_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                Multiselect = false,
+                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif"
+            };
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                tempImagePath = openFileDialog.FileName;
+                try
+                {
+                    if (ptbHinhAnh.Image != null)
+                    {
+                        ptbHinhAnh.Image.Dispose();
+                    }
+
+                    ptbHinhAnh.Image = new Bitmap(tempImagePath);
+                    ptbHinhAnh.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

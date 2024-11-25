@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace GUI.SanPham
         DataGridView grid_SanPham;
         SanPhamBUS spBUS = new SanPhamBUS();
         LoaiSanPhamBUS lspBUS = new LoaiSanPhamBUS();
+        private string tempImagePath = null;
         public ThemSanPhamGUI(string maSp, DataGridView grid_SanPham)
         {
             InitializeComponent();
@@ -95,10 +97,25 @@ namespace GUI.SanPham
                 sanPham.mau = txtMau.Text;
                 sanPham.maLoai = int.Parse(cbMaLoai.SelectedItem.ToString());
                 sanPham.tinhTrang = true;
-                sanPham.img = "";
+                sanPham.img = txtMaSanPham.Text; 
 
                 if (spBUS.addSanPham(sanPham))
                 {
+                    if (tempImagePath != null)
+                    {
+                        try
+                        {
+                            string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                            string destPath = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\ImgSanPham", txtMaSanPham.Text);
+
+                            Directory.CreateDirectory(Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\ImgSanPham"));
+                            File.Copy(tempImagePath, destPath, true);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi lưu ảnh: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                     MessageBox.Show("Thêm thành công");
                     grid_SanPham.DataSource = this.spBUS.getDSSanPham();
                     this.Close();
@@ -107,11 +124,9 @@ namespace GUI.SanPham
                 {
                     MessageBox.Show("Thêm thất bại");
                 }
-                
-              
             }
         }
-
+        
         private void ptbHinhAnh_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog()
@@ -121,7 +136,16 @@ namespace GUI.SanPham
             };
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
-
+                tempImagePath = openFileDialog.FileName;
+                try
+                {
+                    ptbHinhAnh.Image = new Bitmap(tempImagePath);
+                    ptbHinhAnh.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
         }

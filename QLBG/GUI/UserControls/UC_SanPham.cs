@@ -61,7 +61,16 @@ namespace GUI.UserControls
             grid_KichCo.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid_KichCo.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid_KichCo.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(80, 17, 132);
-            grid_KichCo.DataSource = this.kcBUS.getDSKichCo();
+            DataTable dt = this.kcBUS.getDSKichCo();
+
+            dt.Columns.Add("chieuDaiBanChan", typeof(double));
+            double[] chieuDaiValues = { 24, 24.5, 25, 25.5, 26 };
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                dt.Rows[i]["chieuDaiBanChan"] = chieuDaiValues[i % chieuDaiValues.Length];
+            }
+            grid_KichCo.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grid_KichCo.DataSource = dt;
 
             //LoaiSanPham
             grid_LoaiSanPham.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -129,7 +138,7 @@ namespace GUI.UserControls
 
 
 
-        private string newMaSP()
+        public string newMaSP()
         {
             string MaSP;
             DataTable tbMaSP = spBUS.getMaSP();
@@ -187,6 +196,7 @@ namespace GUI.UserControls
             sanPham.soLuong = int.Parse(txtSoLuong.Text);
             sanPham.maLoai = int.Parse(txtMaLoai.Text);
             sanPham.mau = txtMau.Text;
+            sanPham.img = txtMaSanPham.Text;
             SuaSanPhamGUI newForm = new SuaSanPhamGUI(sanPham, grid_SanPham);
             newForm.ShowDialog();
         }
@@ -302,7 +312,7 @@ namespace GUI.UserControls
                     sanPham.giaNhap = float.Parse(row["giaNhap"].ToString());
                     sanPham.mau = row["mau"].ToString();
                     sanPham.maLoai = Convert.ToInt32(row["maLoai"].ToString());
-                    sanPham.img = " ";
+                    sanPham.img = newMaSP();
                     sanPham.tinhTrang = true;
                     if (sanPhamBUS.addSanPham(sanPham))
                     {
@@ -388,42 +398,9 @@ namespace GUI.UserControls
             }
         }
 
-        private void ptSanPham_Click(object sender, EventArgs e)
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
-            OpenFileDialog op1 = new OpenFileDialog
-            {
-                Multiselect = false, // Chỉ cho phép chọn một ảnh để hiển thị
-                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif"
-            };
 
-            if (op1.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = op1.FileName; // Lấy đường dẫn của ảnh được chọn
-                //textBox1.Text = filePath; // Hiển thị đường dẫn trong TextBox
-
-                try
-                {
-                    string fileName = txtMaSanPham.Text; // Lấy tên file
-
-                    // Lấy đường dẫn gốc của ứng dụng khi chạy
-                    string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-                    string destPath = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\ImgSanPham", fileName); // Đường dẫn đích
-
-                    Directory.CreateDirectory("C:\\file\\"); // Tạo thư mục nếu chưa tồn tại
-                    File.Copy(filePath, destPath, true); // Sao chép và ghi đè nếu file tồn tại
-
-                    // Hiển thị ảnh trong PictureBox
-                    ptSanPham.Image = new Bitmap(filePath); // Gán ảnh vào PictureBox
-                    ptSanPham.SizeMode = PictureBoxSizeMode.Zoom; // Căn chỉnh ảnh để vừa khung
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
         }
-
-   
     }
 }
