@@ -16,7 +16,28 @@ namespace GUI.UserControls
         {
             InitializeComponent();
         }
+        public string ProductName
+        {
+            get => tenSP.Text;
+            set => tenSP.Text = value;
+        }
 
+        public string ProductPrice
+        {
+            get => giaBanSP.Text;
+            set => giaBanSP.Text = value;
+        }
+
+        public Image ProductImage
+        {
+            get => imgSp.Image;
+            set => imgSp.Image = value;
+        }
+        public string ProductColor
+        {
+            get => mauSp.Text;
+            set => mauSp.Text = value;
+        }
         private void tenSp_Click(object sender, EventArgs e)
         {
 
@@ -26,10 +47,10 @@ namespace GUI.UserControls
         {
 
         }
-
-        private void guna2CircleButton1_Click(object sender, EventArgs e)
+        public event EventHandler OnViewDetailsClicked;
+        private void btnViewDetails_Click(object sender, EventArgs e)
         {
-
+            OnViewDetailsClicked?.Invoke(this, EventArgs.Empty); // Kích hoạt sự kiện khi nhấn nút "+"
         }
     }
 }

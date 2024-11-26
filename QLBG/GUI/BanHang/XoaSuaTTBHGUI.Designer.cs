@@ -1,6 +1,6 @@
-﻿namespace GUI.NhapHang
+﻿namespace GUI.BanHang
 {
-    partial class XoaSuaSPCNGUI
+    partial class XoaSuaTTBHGUI
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             this.btnXoa = new Guna.UI2.WinForms.Guna2Button();
             this.txtSize = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtSoLuong = new Guna.UI2.WinForms.Guna2NumericUpDown();
-            this.txtMaSP = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtTenSP = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnSua = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -49,17 +49,17 @@
             this.guna2Panel3.Controls.Add(this.btnXoa);
             this.guna2Panel3.Controls.Add(this.txtSize);
             this.guna2Panel3.Controls.Add(this.txtSoLuong);
-            this.guna2Panel3.Controls.Add(this.txtMaSP);
+            this.guna2Panel3.Controls.Add(this.txtTenSP);
             this.guna2Panel3.Controls.Add(this.guna2HtmlLabel5);
             this.guna2Panel3.Controls.Add(this.btnSua);
             this.guna2Panel3.Controls.Add(this.guna2HtmlLabel2);
             this.guna2Panel3.Controls.Add(this.guna2HtmlLabel6);
             this.guna2Panel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.guna2Panel3.Location = new System.Drawing.Point(12, 12);
+            this.guna2Panel3.Location = new System.Drawing.Point(52, 26);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.guna2Panel3.Size = new System.Drawing.Size(320, 373);
-            this.guna2Panel3.TabIndex = 6;
+            this.guna2Panel3.Size = new System.Drawing.Size(315, 455);
+            this.guna2Panel3.TabIndex = 7;
             // 
             // btnXoa
             // 
@@ -73,7 +73,7 @@
             this.btnXoa.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(25, 302);
+            this.btnXoa.Location = new System.Drawing.Point(20, 384);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(126, 48);
             this.btnXoa.TabIndex = 75;
@@ -95,7 +95,7 @@
             this.txtSize.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSize.IconRightCursor = System.Windows.Forms.Cursors.Hand;
             this.txtSize.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtSize.Location = new System.Drawing.Point(25, 136);
+            this.txtSize.Location = new System.Drawing.Point(20, 158);
             this.txtSize.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSize.Name = "txtSize";
             this.txtSize.PasswordChar = '\0';
@@ -110,7 +110,7 @@
             this.txtSoLuong.BackColor = System.Drawing.Color.Transparent;
             this.txtSoLuong.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSoLuong.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtSoLuong.Location = new System.Drawing.Point(25, 224);
+            this.txtSoLuong.Location = new System.Drawing.Point(20, 240);
             this.txtSoLuong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSoLuong.Maximum = new decimal(new int[] {
             1000,
@@ -133,40 +133,40 @@
             0,
             0});
             // 
-            // txtMaSP
+            // txtTenSP
             // 
-            this.txtMaSP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMaSP.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMaSP.DefaultText = "";
-            this.txtMaSP.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtMaSP.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtMaSP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaSP.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaSP.Enabled = false;
-            this.txtMaSP.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaSP.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtMaSP.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaSP.IconRightCursor = System.Windows.Forms.Cursors.Hand;
-            this.txtMaSP.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtMaSP.Location = new System.Drawing.Point(25, 54);
-            this.txtMaSP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtMaSP.Name = "txtMaSP";
-            this.txtMaSP.PasswordChar = '\0';
-            this.txtMaSP.PlaceholderText = "";
-            this.txtMaSP.SelectedText = "";
-            this.txtMaSP.Size = new System.Drawing.Size(270, 42);
-            this.txtMaSP.TabIndex = 68;
+            this.txtTenSP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTenSP.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTenSP.DefaultText = "";
+            this.txtTenSP.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTenSP.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTenSP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTenSP.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTenSP.Enabled = false;
+            this.txtTenSP.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTenSP.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtTenSP.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTenSP.IconRightCursor = System.Windows.Forms.Cursors.Hand;
+            this.txtTenSP.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtTenSP.Location = new System.Drawing.Point(20, 80);
+            this.txtTenSP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTenSP.Name = "txtTenSP";
+            this.txtTenSP.PasswordChar = '\0';
+            this.txtTenSP.PlaceholderText = "";
+            this.txtTenSP.SelectedText = "";
+            this.txtTenSP.Size = new System.Drawing.Size(270, 42);
+            this.txtTenSP.TabIndex = 68;
             // 
             // guna2HtmlLabel5
             // 
             this.guna2HtmlLabel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(25, 25);
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(20, 51);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(127, 22);
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(132, 22);
             this.guna2HtmlLabel5.TabIndex = 71;
-            this.guna2HtmlLabel5.Text = "Mã sản phẩm:__";
+            this.guna2HtmlLabel5.Text = "Tên sản phẩm:__";
             // 
             // btnSua
             // 
@@ -180,7 +180,7 @@
             this.btnSua.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.btnSua.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Location = new System.Drawing.Point(169, 302);
+            this.btnSua.Location = new System.Drawing.Point(164, 384);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(126, 48);
             this.btnSua.TabIndex = 61;
@@ -192,7 +192,7 @@
             this.guna2HtmlLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(25, 195);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(20, 207);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(91, 22);
             this.guna2HtmlLabel2.TabIndex = 60;
@@ -203,22 +203,21 @@
             this.guna2HtmlLabel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(25, 107);
+            this.guna2HtmlLabel6.Location = new System.Drawing.Point(20, 129);
             this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
             this.guna2HtmlLabel6.Size = new System.Drawing.Size(59, 22);
             this.guna2HtmlLabel6.TabIndex = 59;
             this.guna2HtmlLabel6.Text = "Size:__";
             // 
-            // XoaSuaSPCNGUI
+            // XoaSuaTTBHGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 397);
+            this.ClientSize = new System.Drawing.Size(422, 507);
             this.Controls.Add(this.guna2Panel3);
-            this.Name = "XoaSuaSPCNGUI";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "XoaSuaSPCNGUI";
-            this.Load += new System.EventHandler(this.XoaSuaSPCNGUI_Load);
+            this.Name = "XoaSuaTTBHGUI";
+            this.Text = "XoaSuaTTBH";
+            this.Load += new System.EventHandler(this.XoaSuaTTBHGUI_Load);
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLuong)).EndInit();
@@ -229,13 +228,13 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
+        private Guna.UI2.WinForms.Guna2Button btnXoa;
+        private Guna.UI2.WinForms.Guna2TextBox txtSize;
         private Guna.UI2.WinForms.Guna2NumericUpDown txtSoLuong;
-        private Guna.UI2.WinForms.Guna2TextBox txtMaSP;
+        private Guna.UI2.WinForms.Guna2TextBox txtTenSP;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2Button btnSua;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
-        private Guna.UI2.WinForms.Guna2TextBox txtSize;
-        private Guna.UI2.WinForms.Guna2Button btnXoa;
     }
 }

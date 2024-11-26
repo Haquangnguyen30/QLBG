@@ -48,5 +48,10 @@ namespace GUI.NhapHang
 
             this.Close();
         }
+
+        private void XoaSuaSPCNGUI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
