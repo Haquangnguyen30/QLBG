@@ -101,15 +101,15 @@ namespace GUI.UserControls
             string imagePath = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\ImgSanPham", imageFileName);
             try
             {
-                ptSanPham.Image = new Bitmap(imagePath);
+                ptbSanPham.Image = new Bitmap(imagePath);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error loading image: {ex.Message}");
-                ptSanPham.Image = null;
+                ptbSanPham.Image = null;
             }
 
-            ptSanPham.SizeMode = PictureBoxSizeMode.Zoom;
+            ptbSanPham.SizeMode = PictureBoxSizeMode.Zoom;
             grid_ChiTietSoLuong.DataSource = tbSoLuong;
         }
         public void textLoaiSanPham(int id)
@@ -181,6 +181,7 @@ namespace GUI.UserControls
             int newLoaiSanPham = maxLoaiSanPham + 1;
             ThemLoaiSanPhamGUI newForm = new ThemLoaiSanPhamGUI(newLoaiSanPham.ToString(), grid_LoaiSanPham);
             newForm.ShowDialog();
+            textSanPham(0);
         }
 
 
@@ -197,8 +198,15 @@ namespace GUI.UserControls
             sanPham.maLoai = int.Parse(txtMaLoai.Text);
             sanPham.mau = txtMau.Text;
             sanPham.img = txtMaSanPham.Text;
+            if (ptbSanPham.Image != null)
+            {
+                ptbSanPham.Image.Dispose();
+            }
             SuaSanPhamGUI newForm = new SuaSanPhamGUI(sanPham, grid_SanPham);
             newForm.ShowDialog();
+            textSanPham(0);
+
+
         }
 
         private void btnSuaLoai_Click(object sender, EventArgs e)

@@ -60,7 +60,7 @@
             this.grid_ChiTietSoLuong = new Guna.UI2.WinForms.Guna2DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ptSanPham = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.ptbSanPham = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.btnThemSanPham = new Guna.UI2.WinForms.Guna2Button();
             this.btnReloadSanPham = new Guna.UI2.WinForms.Guna2Button();
@@ -102,14 +102,14 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.grid_KichCo = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.kichCoDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            this.guna2ContextMenuStrip2 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            this.mauSacDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.makhichCoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenkichCoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chieuDaiBanChan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tinhTrangDataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.kichCoDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.guna2ContextMenuStrip2 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.mauSacDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.guna2TabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -117,7 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sanPhamDTOBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_ChiTietSoLuong)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptSanPham)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbSanPham)).BeginInit();
             this.guna2ShadowPanel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -351,7 +351,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.grid_ChiTietSoLuong);
-            this.panel1.Controls.Add(this.ptSanPham);
+            this.panel1.Controls.Add(this.ptbSanPham);
             this.panel1.Controls.Add(this.guna2ShadowPanel1);
             this.panel1.Controls.Add(this.guna2HtmlLabel10);
             this.panel1.Controls.Add(this.txtGiaNhap);
@@ -446,15 +446,15 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
-            // ptSanPham
+            // ptbSanPham
             // 
-            this.ptSanPham.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ptSanPham.ImageRotate = 0F;
-            this.ptSanPham.Location = new System.Drawing.Point(795, 29);
-            this.ptSanPham.Name = "ptSanPham";
-            this.ptSanPham.Size = new System.Drawing.Size(234, 222);
-            this.ptSanPham.TabIndex = 21;
-            this.ptSanPham.TabStop = false;
+            this.ptbSanPham.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ptbSanPham.ImageRotate = 0F;
+            this.ptbSanPham.Location = new System.Drawing.Point(795, 29);
+            this.ptbSanPham.Name = "ptbSanPham";
+            this.ptbSanPham.Size = new System.Drawing.Size(234, 222);
+            this.ptbSanPham.TabIndex = 21;
+            this.ptbSanPham.TabStop = false;
             // 
             // guna2ShadowPanel1
             // 
@@ -1196,6 +1196,39 @@
             this.grid_KichCo.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.grid_KichCo.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // makhichCoDataGridViewTextBoxColumn
+            // 
+            this.makhichCoDataGridViewTextBoxColumn.DataPropertyName = "maKichCo";
+            this.makhichCoDataGridViewTextBoxColumn.HeaderText = "Mã Kích Cỡ";
+            this.makhichCoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.makhichCoDataGridViewTextBoxColumn.Name = "makhichCoDataGridViewTextBoxColumn";
+            this.makhichCoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tenkichCoDataGridViewTextBoxColumn
+            // 
+            this.tenkichCoDataGridViewTextBoxColumn.DataPropertyName = "kichCo";
+            this.tenkichCoDataGridViewTextBoxColumn.HeaderText = "Kích Cỡ";
+            this.tenkichCoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.tenkichCoDataGridViewTextBoxColumn.Name = "tenkichCoDataGridViewTextBoxColumn";
+            this.tenkichCoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // chieuDaiBanChan
+            // 
+            this.chieuDaiBanChan.DataPropertyName = "chieuDaiBanChan";
+            this.chieuDaiBanChan.HeaderText = "Chiều Dài Bàn Chân";
+            this.chieuDaiBanChan.MinimumWidth = 6;
+            this.chieuDaiBanChan.Name = "chieuDaiBanChan";
+            this.chieuDaiBanChan.ReadOnly = true;
+            // 
+            // tinhTrangDataGridViewCheckBoxColumn2
+            // 
+            this.tinhTrangDataGridViewCheckBoxColumn2.DataPropertyName = "tinhTrang";
+            this.tinhTrangDataGridViewCheckBoxColumn2.HeaderText = "tinhTrang";
+            this.tinhTrangDataGridViewCheckBoxColumn2.MinimumWidth = 6;
+            this.tinhTrangDataGridViewCheckBoxColumn2.Name = "tinhTrangDataGridViewCheckBoxColumn2";
+            this.tinhTrangDataGridViewCheckBoxColumn2.ReadOnly = true;
+            this.tinhTrangDataGridViewCheckBoxColumn2.Visible = false;
+            // 
             // kichCoDTOBindingSource
             // 
             this.kichCoDTOBindingSource.DataSource = typeof(DTO.KichCoDTO);
@@ -1230,39 +1263,6 @@
             this.guna2ContextMenuStrip2.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.guna2ContextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
-            // makhichCoDataGridViewTextBoxColumn
-            // 
-            this.makhichCoDataGridViewTextBoxColumn.DataPropertyName = "maKichCo";
-            this.makhichCoDataGridViewTextBoxColumn.HeaderText = "Mã Kích Cỡ";
-            this.makhichCoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.makhichCoDataGridViewTextBoxColumn.Name = "makhichCoDataGridViewTextBoxColumn";
-            this.makhichCoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tenkichCoDataGridViewTextBoxColumn
-            // 
-            this.tenkichCoDataGridViewTextBoxColumn.DataPropertyName = "kichCo";
-            this.tenkichCoDataGridViewTextBoxColumn.HeaderText = "Kích Cỡ";
-            this.tenkichCoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.tenkichCoDataGridViewTextBoxColumn.Name = "tenkichCoDataGridViewTextBoxColumn";
-            this.tenkichCoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // chieuDaiBanChan
-            // 
-            this.chieuDaiBanChan.DataPropertyName = "chieuDaiBanChan";
-            this.chieuDaiBanChan.HeaderText = "Chiều Dài Bàn Chân";
-            this.chieuDaiBanChan.MinimumWidth = 6;
-            this.chieuDaiBanChan.Name = "chieuDaiBanChan";
-            this.chieuDaiBanChan.ReadOnly = true;
-            // 
-            // tinhTrangDataGridViewCheckBoxColumn2
-            // 
-            this.tinhTrangDataGridViewCheckBoxColumn2.DataPropertyName = "tinhTrang";
-            this.tinhTrangDataGridViewCheckBoxColumn2.HeaderText = "tinhTrang";
-            this.tinhTrangDataGridViewCheckBoxColumn2.MinimumWidth = 6;
-            this.tinhTrangDataGridViewCheckBoxColumn2.Name = "tinhTrangDataGridViewCheckBoxColumn2";
-            this.tinhTrangDataGridViewCheckBoxColumn2.ReadOnly = true;
-            this.tinhTrangDataGridViewCheckBoxColumn2.Visible = false;
-            // 
             // UC_SanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1279,7 +1279,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sanPhamDTOBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid_ChiTietSoLuong)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptSanPham)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbSanPham)).EndInit();
             this.guna2ShadowPanel1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -1347,7 +1347,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2DataGridView grid_LoaiSanPham;
-        private Guna.UI2.WinForms.Guna2PictureBox ptSanPham;
+        private Guna.UI2.WinForms.Guna2PictureBox ptbSanPham;
         private System.Windows.Forms.BindingSource kichCoDTOBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn maLoaiDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenLoaiDataGridViewTextBoxColumn;

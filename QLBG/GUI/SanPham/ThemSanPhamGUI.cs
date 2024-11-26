@@ -27,7 +27,6 @@ namespace GUI.SanPham
             this.maSP = maSp;
             this.grid_SanPham = grid_SanPham;
         }
-
         private void ThemSanPhamGUI_Load(object sender, EventArgs e)
         {
             txtMaSanPham.Text = maSP;
