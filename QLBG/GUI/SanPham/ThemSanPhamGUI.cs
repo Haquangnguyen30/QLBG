@@ -17,7 +17,7 @@ namespace GUI.SanPham
     public partial class ThemSanPhamGUI : Form
     {
         private string maSP;
-        DataGridView grid_SanPham;
+        DataGridView grid_SanPham = new DataGridView();
         SanPhamBUS spBUS = new SanPhamBUS();
         LoaiSanPhamBUS lspBUS = new LoaiSanPhamBUS();
         private string tempImagePath = null;
@@ -26,6 +26,11 @@ namespace GUI.SanPham
             InitializeComponent();
             this.maSP = maSp;
             this.grid_SanPham = grid_SanPham;
+        }
+        public ThemSanPhamGUI(string maSp)
+        {
+            InitializeComponent();
+            this.maSP = maSp;
         }
         private void ThemSanPhamGUI_Load(object sender, EventArgs e)
         {

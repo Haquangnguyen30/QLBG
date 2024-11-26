@@ -330,6 +330,8 @@ namespace GUI.UserControls
         {
             UC_SanPham uC_SanPham = new UC_SanPham();
             string newMaSP = uC_SanPham.newMaSP();
+            ThemSanPhamGUI newForm = new ThemSanPhamGUI(newMaSP);
+            newForm.ShowDialog();
            
         }
     }
