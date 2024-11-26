@@ -124,6 +124,7 @@
     <Compile Include="NhaCungCapDAL.cs" />
     <Compile Include="NhanVienDAL.cs" />
     <Compile Include="ChiTietPhieuNhapDAL.cs" />
+    <Compile Include="PhanQuyenDAL.cs" />
     <Compile Include="PhieuNhapDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SanPhamDAL.cs" />

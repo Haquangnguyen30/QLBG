@@ -191,6 +191,11 @@ namespace GUI.UserControls
             return false;
         }
 
+        private bool IsMaSPExist(string maSP)
+        {
+            return spBUS.isMaSPExist(maSP);
+        }
+
         private void dgvDSSPCN_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.RowIndex >= 0)
@@ -279,8 +284,6 @@ namespace GUI.UserControls
                 try
                 {
                     ImportExcel(openFileDialog.FileName);
-                    
-
                 }
                 catch (Exception ex)
                 {
@@ -305,15 +308,22 @@ namespace GUI.UserControls
                         listRows.Add(excelWorksheet.Cells[i, j].Value.ToString());
                     }
 
-                    if (!IsSizeExist(listRows[0], listRows[1]))
-                    {
-                        dgvDSSPCN.Rows.Add(listRows.ToArray());
-                    }
-                    else
+                    if (IsSizeExist(listRows[0], listRows[1]))
                     {
                         DialogResult result = MessageBox.Show($"Mã sản phẩm {listRows[0]} với size {listRows[1]} đã tồn tại!\nQuá trình import sẽ dừng lại.", "Thông báo",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
+                        
+                    }
+                    else if (!IsMaSPExist(listRows[0]))
+                    {
+                        DialogResult result = MessageBox.Show($"Mã sản phẩm {listRows[0]} chưa tồn tại!\nQuá trình import sẽ dừng lại.", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    else
+                    {
+                        dgvDSSPCN.Rows.Add(listRows.ToArray());
                     }
                 }
                 MessageBox.Show("Import thành công.");

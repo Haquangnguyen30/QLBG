@@ -15,5 +15,10 @@ namespace BLL
         {
            return spDAL.suaGiaNhapSP(maSP, giaNhap);
         }
+
+        public bool isMaSPExist(String maSP)
+        {
+            return spDAL.isMaSPExist(maSP);
+        }
     }
 }
