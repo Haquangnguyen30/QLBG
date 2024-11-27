@@ -3,6 +3,7 @@ using BUS;
 using DTO;
 using GUI.NhaCungCap;
 using GUI.NhapHang;
+using GUI.SanPham;
 using NPOI.SS.Formula.Functions;
 using OfficeOpenXml;
 using System;
@@ -306,7 +307,7 @@ namespace GUI.UserControls
                     }
 
                     if (!IsSizeExist(listRows[0], listRows[1]))
-                    {
+                    { 
                         dgvDSSPCN.Rows.Add(listRows.ToArray());
                     }
                     else
@@ -323,6 +324,15 @@ namespace GUI.UserControls
         private void btnClear_Click(object sender, EventArgs e)
         {
             dgvDSSPCN.Rows.Clear();
+        }
+
+        private void btnSPMoi_Click(object sender, EventArgs e)
+        {
+            UC_SanPham uC_SanPham = new UC_SanPham();
+            string newMaSP = uC_SanPham.newMaSP();
+            ThemSanPhamGUI newForm = new ThemSanPhamGUI(newMaSP);
+            newForm.ShowDialog();
+           
         }
 
         private void guna2Panel6_Paint(object sender, PaintEventArgs e)

@@ -208,9 +208,10 @@ namespace GUI.NhapHang
 
                     if (dgvSP.Columns[i].HeaderText == "Giá nhập" || dgvSP.Columns[i].HeaderText == "Thành tiền")
                     {
-                        if (decimal.TryParse(cellText, out decimal number))
+                        if (decimal.TryParse(cellText, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out decimal number))
                         {
-                            cellText = string.Format("{0:n0}", number);
+                            // Định dạng lại số lớn
+                            cellText = number.ToString("N0", System.Globalization.CultureInfo.InvariantCulture);
                         }
                     }
 
@@ -219,6 +220,7 @@ namespace GUI.NhapHang
                     productTable.AddCell(pdfCell);
                 }
             }
+
 
             doc.Add(productTable);
 

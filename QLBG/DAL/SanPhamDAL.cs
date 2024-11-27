@@ -131,5 +131,131 @@ namespace DAL
                 return 0;
             }
         }
+        
+        //PhuocDo
+        public DataTable getDSSanPham()
+        {
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT s.maSP, s.tenSP, s.giaBan, COALESCE(SUM(sk.soLuong), 0) AS soLuong, s.img, s.giaNhap, s.mau, s.maLoai " +
+                                                   "FROM sanPham s LEFT JOIN sanPham_KichCo sk ON s.maSP = sk.maSP " +
+                                                   "WHERE s.tinhTrang = 1 " +
+                                                   "GROUP BY s.maSP, s.tenSP, s.giaBan, s.img, s.giaNhap, s.mau, s.maLoai;", _conn);
+
+            da.Fill(dt);
+            return dt;
+        }
+        public DataTable getMaSP()
+        {
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT maSP FROM sanPham", _conn);
+            da.Fill(dt);
+            return dt;
+        }
+        public bool addSanPham(SanPhamDTO sanPham)
+        {
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO sanPham (maSP, tenSP, giaBan, img, giaNhap, mau, tinhTrang, maLoai) " +
+                                                "VALUES (@maSP, @tenSP, @giaBan, @img, @giaNhap, @mau, @tinhTrang, @maLoai)", _conn);
+                cmd.Parameters.AddWithValue("@maSP", sanPham.maSP);
+                cmd.Parameters.AddWithValue("@tenSP", sanPham.tenSP);
+                cmd.Parameters.AddWithValue("@giaBan", sanPham.giaBan);
+                cmd.Parameters.AddWithValue("@img", sanPham.img);
+                cmd.Parameters.AddWithValue("@giaNhap", sanPham.giaNhap);
+                cmd.Parameters.AddWithValue("@mau", sanPham.mau);
+                cmd.Parameters.AddWithValue("@tinhTrang", sanPham.tinhTrang);
+                cmd.Parameters.AddWithValue("@maLoai", sanPham.maLoai);
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi: " + ex.Message);
+            }
+            finally
+            {
+                _conn.Close();
+            }
+            return false;
+        }
+        public bool updateSanPham(SanPhamDTO sanPham)
+        {
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE sanPham " +
+                                                "SET tenSP = @tenSP, giaBan = @giaBan, giaNhap = @giaNhap, mau = @mau, maLoai = @maLoai " +
+                                                "WHERE  maSP = @maSP; "
+                                                , _conn);
+                cmd.Parameters.AddWithValue("@tenSP", sanPham.tenSP);
+                cmd.Parameters.AddWithValue("@giaBan", sanPham.giaBan);
+                cmd.Parameters.AddWithValue("@giaNhap", sanPham.giaNhap);
+                cmd.Parameters.AddWithValue("@mau", sanPham.mau);
+                cmd.Parameters.AddWithValue("@maLoai", sanPham.maLoai);
+                cmd.Parameters.AddWithValue("@maSP", sanPham.maSP);
+                if (cmd.ExecuteNonQuery () > 0)
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi: " + ex.Message);
+            }
+            finally
+            {
+                _conn.Close();
+            }
+            return false;
+        }
+        public bool deleteSanPham(SanPhamDTO sanPham)
+        {
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE sanPham " +
+                                                "SET tinhTrang = @tinhTrang " +
+                                                "WHERE maSP = @maSP; "
+                                                , _conn);
+                cmd.Parameters.AddWithValue("@tinhTrang", sanPham.tinhTrang);
+                cmd.Parameters.AddWithValue("@maSP", sanPham.maSP);
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi: " + ex.Message);
+            }
+            finally
+            {
+                _conn.Close();
+            }
+            return false;
+        }
+        //"SELECT s.maSP, s.tenSP, s.giaBan, COALESCE(SUM(sk.soLuong), 0) AS soLuong, s.giaNhap, s.mau, s.maLoai " +
+        //                                           "FROM sanPham s LEFT JOIN sanPham_KichCo sk ON s.maSP = sk.maSP " +
+        //                                           "WHERE s.tinhTrang = 1 AND (maSP LIKE @search OR tenSP LIKE @search OR mau LIKE @search OR maLoai LIKE @search)" +
+        //                                           "GROUP BY s.maSP, s.tenSP, s.giaBan, s.giaNhap, s.mau, s.maLoai;"
+        public DataTable searchSanPham(string strSearch)
+        {
+            DataTable dt = new DataTable();
+            string query = "SELECT s.maSP, s.tenSP, s.giaBan, COALESCE(SUM(sk.soLuong), 0) AS soLuong, s.img, s.giaNhap, s.mau, s.maLoai " +
+                           "FROM sanPham s LEFT JOIN sanPham_KichCo sk ON s.maSP = sk.maSP " +
+                           "WHERE s.tinhTrang = 1 AND (s.maSP LIKE @search OR s.tenSP LIKE @search OR s.mau LIKE @search OR s.maLoai LIKE @search)" +
+                           "GROUP BY s.maSP, s.tenSP, s.giaBan, s.img, s.giaNhap, s.mau, s.maLoai;";
+
+            using (SqlDataAdapter da = new SqlDataAdapter(query, _conn))
+            {
+                da.SelectCommand.Parameters.AddWithValue("@search", "%" + strSearch + "%");
+                da.Fill(dt);
+
+            }
+            return dt;
+        }
     }
 }

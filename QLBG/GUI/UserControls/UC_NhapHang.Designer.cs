@@ -422,7 +422,7 @@
             // 
             this.lblDSSPCN.AutoSize = true;
             this.lblDSSPCN.BackColor = System.Drawing.Color.Transparent;
-            this.lblDSSPCN.Font = new System.Drawing.Font("Century Schoolbook", 9F, System.Drawing.FontStyle.Bold);
+            this.lblDSSPCN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.lblDSSPCN.ForeColor = System.Drawing.Color.Black;
             this.lblDSSPCN.Location = new System.Drawing.Point(13, 14);
             this.lblDSSPCN.Name = "lblDSSPCN";
@@ -632,6 +632,7 @@
             this.btnSPMoi.Size = new System.Drawing.Size(125, 48);
             this.btnSPMoi.TabIndex = 72;
             this.btnSPMoi.Text = "SP mới";
+            this.btnSPMoi.Click += new System.EventHandler(this.btnSPMoi_Click);
             // 
             // btnThem
             // 
@@ -705,7 +706,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Century Schoolbook", 9F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(13, 16);
             this.label1.Name = "label1";

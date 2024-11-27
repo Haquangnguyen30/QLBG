@@ -11,12 +11,15 @@ namespace DTO
         public int maLoai { get; set; }
         public string tenLoai { get; set; }
         public bool tinhTrang { get; set; }
-        public LoaiSanPhamDTO() { }
-        public LoaiSanPhamDTO(int maLoai, string tenLoai, bool tinhTrang)
+        public LoaiSanPhamDTO() 
+        {
+            this.tinhTrang = true;
+        }
+        public LoaiSanPhamDTO(int maLoai, string tenLoai)
         {
             this.maLoai = maLoai;
             this.tenLoai = tenLoai;
-            this.tinhTrang = tinhTrang;
+            this.tinhTrang = true;
         }
     }
 }

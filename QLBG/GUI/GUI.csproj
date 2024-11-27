@@ -293,6 +293,30 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SanPham\SuaLoaiSanPhamGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SanPham\SuaLoaiSanPhamGUI.Designer.cs">
+      <DependentUpon>SuaLoaiSanPhamGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SanPham\SuaSanPhamGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SanPham\SuaSanPhamGUI.Designer.cs">
+      <DependentUpon>SuaSanPhamGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SanPham\ThemLoaiSanPhamGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SanPham\ThemLoaiSanPhamGUI.Designer.cs">
+      <DependentUpon>ThemLoaiSanPhamGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SanPham\ThemSanPhamGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SanPham\ThemSanPhamGUI.Designer.cs">
+      <DependentUpon>ThemSanPhamGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UC_BanHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -408,6 +432,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SanPham\SuaLoaiSanPhamGUI.resx">
+      <DependentUpon>SuaLoaiSanPhamGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SanPham\SuaSanPhamGUI.resx">
+      <DependentUpon>SuaSanPhamGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SanPham\ThemLoaiSanPhamGUI.resx">
+      <DependentUpon>ThemLoaiSanPhamGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SanPham\ThemSanPhamGUI.resx">
+      <DependentUpon>ThemSanPhamGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_BanHang.resx">
       <DependentUpon>UC_BanHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -442,6 +478,10 @@
       <DependentUpon>UC_ThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DTO.KichCoDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.LoaiSanPhamDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.MauSacDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.SanPhamDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -476,6 +516,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\White_Plus.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\ImgSanPham\G001.jpg" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -29,7 +29,8 @@ namespace DTO
             this.giaNhap = giaNhap;
             this.tinhTrang = tinhTrang;
             this.maLoai = maLoai;
-            this.mau = mau;
+            this.mau= mau;
+       
         }
     }
 }
