@@ -138,7 +138,7 @@ namespace GUI.UserControls
             {
                 Button sizeButton = new Button
                 {
-                    Text = size.tenkichCo,
+                    Text = size.kichCo,
                     Size = new Size(48, 40),
                     Margin = new Padding(3),
                     Font = new Font("Arial", 12, FontStyle.Regular),
@@ -149,7 +149,7 @@ namespace GUI.UserControls
                 };
 
                 // Thêm sự kiện nhấn vào từng button size
-                sizeButton.Click += (sender, e) => SizeButton_Click(sender, e, idSP, size.makhichCo, size.tenkichCo);
+                sizeButton.Click += (sender, e) => SizeButton_Click(sender, e, idSP, size.maKichCo, size.kichCo);
 
                 pnlSizes.Controls.Add(sizeButton); // Thêm button vào panel
             }

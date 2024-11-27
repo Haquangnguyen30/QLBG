@@ -104,8 +104,8 @@ namespace DAL
                     while (reader.Read())
                     {
                         KichCoDTO kcDto = new KichCoDTO();
-                        kcDto.makhichCo= (int)reader["maKichCo"];
-                        kcDto.tenkichCo= reader["kichCo"].ToString();
+                        kcDto.maKichCo= (int)reader["maKichCo"];
+                        kcDto.kichCo = reader["kichCo"].ToString();
                         kcDto.tinhTrang = true;
                         sizes.Add(kcDto);
                     }
