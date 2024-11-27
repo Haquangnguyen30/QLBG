@@ -1,4 +1,6 @@
-﻿using GUI.UserControls;
+﻿using DTO;
+using GUI.DangNhap;
+using GUI.UserControls;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -15,10 +17,27 @@ namespace GUI.Home
 {
     public partial class HomeGUI : Form
     {
-        public HomeGUI()
+        PhanQuyenDTO pq = new PhanQuyenDTO();
+        NhanVienDTO nv = new NhanVienDTO();
+        public HomeGUI(NhanVienDTO nv, PhanQuyenDTO pq)
         {
             InitializeComponent();
             ShowUserControl(uC_BanHang1);
+            this.nv = nv;
+            this.pq = pq;
+        }
+        private void HomeGUI_Load(object sender, EventArgs e)
+        {
+            btnBanHang.Visible = pq.qlyBH;
+            btnNhapHang.Visible = pq.qlyNH;
+            btnSanPham.Visible = pq.qlySP;
+            btnKhachHang.Visible = pq.qlyKH;
+            btnNhanVien.Visible = pq.qlyNV;
+            btnKhuyenMai.Visible = pq.qlyKM;
+            btnThongKe.Visible = pq.xemThongKe;
+            btnPhanQuyen.Visible = pq.qlyTK;
+
+            
         }
         private void moveImgSlide(object sender)
         {
@@ -123,6 +142,11 @@ namespace GUI.Home
 
         }
 
-        
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            DangNhapGUI dangNhap = new DangNhapGUI();
+            dangNhap.Show();
+            this.Hide();
+        }
     }
 }

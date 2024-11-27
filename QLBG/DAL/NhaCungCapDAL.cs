@@ -13,45 +13,53 @@ namespace DAL
 {
     public class NhaCungCapDAL:DatabaseConnect
     {
+        SqlConnection _conn = DatabaseConnect._conn;
         public DataTable getDSNCC(String searchString, bool radioTenNCC, bool radioSDT, bool radioDiaChi)
         {
             try
             {
-                String sSql = "SELECT n.maNCC, n.tenNCC, n.sdt, n.diaChi FROM ncc n WHERE n.tinhTrang LIKE 1";
+                if(_conn.State != ConnectionState.Open) _conn.Open();
+
+                String sql = "SELECT n.maNCC, n.tenNCC, n.sdt, n.diaChi FROM ncc n WHERE n.tinhTrang LIKE 1";
 
                 if (searchString.Length > 0)
                 {
-                    sSql += searchSql(searchString, radioTenNCC, radioSDT, radioDiaChi);
+                    sql += searchSql(searchString, radioTenNCC, radioSDT, radioDiaChi);
                 }
 
-                SqlDataReader reader = DatabaseConnect.queryData(sSql);
-
-
                 DataTable dataTable = new DataTable();
-
                 dataTable.Columns.Add("Mã NCC", typeof(int));
                 dataTable.Columns.Add("Tên NCC", typeof(string));
                 dataTable.Columns.Add("SDT", typeof(string));
                 dataTable.Columns.Add("Địa chỉ", typeof(string));
 
-                while (reader.Read())
+                using (SqlCommand sqlCommand = new SqlCommand(sql, _conn))
                 {
-                    DataRow row = dataTable.NewRow();
-                    row["Mã NCC"] = reader.GetInt32(0);
-                    row["Tên NCC"] = reader.GetString(1);
-                    row["SDT"] = reader.GetString(2);
-                    row["Địa chỉ"] = reader.GetString(3);
+                    using(SqlDataReader reader = sqlCommand.ExecuteReader())
+                    {
+                        while(reader.Read())
+                        {
+                            DataRow row = dataTable.NewRow();
+                            row["Mã NCC"] = reader.GetInt32(0);
+                            row["Tên NCC"] = reader.GetString(1);
+                            row["SDT"] = reader.GetString(2);
+                            row["Địa chỉ"] = reader.GetString(3);
 
-                    dataTable.Rows.Add(row);
+                            dataTable.Rows.Add(row);
+                        }
+                    }
                 }
 
-                reader.Close();
                 return dataTable;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi lấy danh sách nhà cung cấp: " + ex.ToString());
+                Console.WriteLine("Lỗi khi lấy danh sách nhà cung cấp: " + ex.Message);
                 return null;
+            }
+            finally
+            {
+                if(_conn.State == ConnectionState.Open) _conn.Close();
             }
         }
 
@@ -59,30 +67,39 @@ namespace DAL
         {
             try
             {
-                String sSql = "SELECT n.maNCC, n.tenNCC FROM ncc n WHERE n.tinhTrang = 1";
-                SqlDataReader reader = DatabaseConnect.queryData(sSql);
+                if(_conn.State != ConnectionState.Open) _conn.Open();
+
+                String sql = "SELECT n.maNCC, n.tenNCC FROM ncc n WHERE n.tinhTrang = 1";
 
                 DataTable dataTable = new DataTable();
-
                 dataTable.Columns.Add("Mã NCC", typeof(int));
                 dataTable.Columns.Add("Tên NCC", typeof(string));
 
-                while (reader.Read())
+                using(SqlCommand sqlCommand = new SqlCommand(sql, _conn))
                 {
-                    DataRow row = dataTable.NewRow();
-                    row["Mã NCC"] = reader.GetInt32(0);
-                    row["Tên NCC"] = reader.GetString(1);
+                    using(SqlDataReader reader = sqlCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            DataRow row = dataTable.NewRow();
+                            row["Mã NCC"] = reader.GetInt32(0);
+                            row["Tên NCC"] = reader.GetString(1);
 
-                    dataTable.Rows.Add(row);
+                            dataTable.Rows.Add(row);
+                        }
+                    }
                 }
 
-                reader.Close();
                 return dataTable;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Lỗi lấy danh sách tên nhà cung cấp: " + ex.ToString());
+                Console.WriteLine("Lỗi lấy danh sách tên nhà cung cấp: " + ex.Message);
                 return null;
+            }
+            finally
+            {
+                if(_conn.State == ConnectionState.Open) _conn.Close();
             }
         }
 
@@ -90,54 +107,63 @@ namespace DAL
         {
             try
             {
-                String updateString = "INSERT INTO ncc (maNCC, tenNCC, sdt, diaChi, tinhTrang) " +
-                                        "VALUES (@maNCC, @tenNCC, @sdt, @diaChi, @tinhTrang)";
+                if (_conn.State != ConnectionState.Open)
+                    _conn.Open();
 
-                List<SqlParameter> parameters = new List<SqlParameter>();
+                string sql = "INSERT INTO ncc (maNCC, tenNCC, sdt, diaChi, tinhTrang) " +
+                             "VALUES (@maNCC, @tenNCC, @sdt, @diaChi, @tinhTrang)";
 
-                foreach (var prop in ncc.GetType().GetProperties())
+                using (SqlCommand sqlCommand = new SqlCommand(sql, _conn))
                 {
-                    string paramName = "@" + prop.Name;
-                    object paramValue = prop.GetValue(ncc) ?? DBNull.Value;
+                    sqlCommand.Parameters.AddWithValue("@maNCC", ncc.maNCC);
+                    sqlCommand.Parameters.AddWithValue("@tenNCC", ncc.tenNCC);
+                    sqlCommand.Parameters.AddWithValue("@sdt", ncc.sdt);
+                    sqlCommand.Parameters.AddWithValue("@diaChi", ncc.diaChi);
+                    sqlCommand.Parameters.AddWithValue("@tinhTrang", ncc.tinhTrang);
 
-                    parameters.Add(new SqlParameter(paramName, paramValue));
+                    return sqlCommand.ExecuteNonQuery();
                 }
-
-                return DatabaseConnect.updateData(updateString, parameters);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Lỗi thêm nhà cung cấp: " + ex.ToString());
+                Console.WriteLine("Lỗi thêm nhà cung cấp: " + ex.Message);
                 return 0;
             }
+            finally
+            {
+                if (_conn.State == ConnectionState.Open)
+                    _conn.Close();
+            }
         }
+
 
         public int suaNCC(NhaCungCapDTO ncc)
         {
             try
             {
-                String updateString = "UPDATE ncc SET " +
-                                        "tenNCC = @tenNCC, " +
-                                        "sdt = @sdt, " +
-                                        "diaChi = @diaChi " +
+                if(_conn.State != ConnectionState.Open) _conn.Open();
+
+                String sql = "UPDATE ncc SET tenNCC = @tenNCC, sdt = @sdt, diaChi = @diaChi " +
                                         "WHERE maNCC = @maNCC";
 
-                List<SqlParameter> parameters = new List<SqlParameter>();
-
-                foreach(var prop in ncc.GetType().GetProperties())
+                using(SqlCommand sqlCommand = new SqlCommand(sql, _conn))
                 {
-                    string paramName = "@" + prop.Name;
-                    object paramValue = prop.GetValue(ncc) ?? DBNull.Value;
+                    sqlCommand.Parameters.AddWithValue("@tenNCC", ncc.tenNCC);
+                    sqlCommand.Parameters.AddWithValue("@sdt", ncc.sdt);
+                    sqlCommand.Parameters.AddWithValue("@diaChi", ncc.diaChi);
+                    sqlCommand.Parameters.AddWithValue("@maNCC", ncc.maNCC);
 
-                    parameters.Add(new SqlParameter(paramName, paramValue));
+                    return sqlCommand.ExecuteNonQuery();
                 }
-
-                return DatabaseConnect.updateData(updateString, parameters);
             }
             catch(Exception ex)
             {
-                Console.WriteLine("Lỗi sửa nhà cung cấp: " + ex.ToString());
+                Console.WriteLine("Lỗi sửa nhà cung cấp: " + ex.Message);
                 return 0;
+            }
+            finally
+            {
+                if(_conn.State == ConnectionState.Open) _conn.Close() ;
             }
         }
 
@@ -145,31 +171,25 @@ namespace DAL
         {
             try
             {
-                String updateString = "UPDATE ncc SET tinhTrang = 0 WHERE maNCC = @maNCC";
-                List<SqlParameter> parameters = new List<SqlParameter>();
-                parameters.Add(new SqlParameter("@maNCC", maNCC));
+                if(_conn.State != ConnectionState.Open) _conn.Open() ;
 
-                return DatabaseConnect.updateData(updateString, parameters);
+                String sql = "UPDATE ncc SET tinhTrang = 0 WHERE maNCC = @maNCC";
+
+                using (SqlCommand sqlCommand = new SqlCommand(sql, _conn))
+                {
+                    sqlCommand.Parameters.AddWithValue("@maNCC", maNCC);
+
+                    return sqlCommand.ExecuteNonQuery();
+                }
             }
             catch(Exception ex)
             {
-                Console.WriteLine("Lỗi xóa nhà cung cấp: " + ex.ToString());
+                Console.WriteLine("Lỗi xóa nhà cung cấp: " + ex.Message);
                 return 0;
             }
-        }
-
-        public int countRowsNCC()
-        {
-            try
+            finally
             {
-                String queryString = "SELECT COUNT(*) FROM ncc";
-
-                return DatabaseConnect.queryScalar(queryString, new List<SqlParameter>());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Lỗi khi đếm số dòng: " + ex.Message);
-                return -1;
+                if(_conn.State == ConnectionState.Open) _conn.Close();
             }
         }
 
@@ -177,14 +197,23 @@ namespace DAL
         {
             try
             {
-                String queryString = "SELECT MAX(maNCC) FROM ncc";
+                if(_conn.State != ConnectionState.Open) _conn.Open();
 
-                return DatabaseConnect.queryScalar(queryString, new List<SqlParameter>());
+                String sql = "SELECT MAX(maNCC) FROM ncc";
+
+                using(SqlCommand sqlCommand = new SqlCommand(sql, _conn))
+                {
+                    return (int)sqlCommand.ExecuteScalar();
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Lỗi khi lấy ID lớn nhất: " + ex.Message);
                 return -1;
+            }
+            finally
+            {
+                if (_conn.State == ConnectionState.Open) _conn.Close();
             }
         }
 
