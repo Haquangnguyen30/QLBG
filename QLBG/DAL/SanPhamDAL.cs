@@ -12,6 +12,7 @@ namespace DAL
 {
     public class SanPhamDAL:DatabaseConnect
     {
+        SqlConnection _conn = DatabaseConnect._conn;
         public DataTable getDSSP(String searchStr)
         {
             try
@@ -129,6 +130,32 @@ namespace DAL
             {
                 Console.WriteLine("Lỗi thêm số lượng của kích cỡ: " + ex.ToString());
                 return 0;
+            }
+        }
+
+        public bool isMaSPExist(String maSP)
+        {
+            try
+            {
+                if (_conn.State != ConnectionState.Open) _conn.Open();
+
+                String sql = $"SELECT COUNT(*) FROM sanPham s WHERE s.tinhTrang = 1 AND s.maSP = '{maSP}'";
+
+                using (SqlCommand sqlCommand = new SqlCommand(sql, _conn))
+                {
+                    int result = (int)sqlCommand.ExecuteScalar();
+
+                    return result > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi kiểm tra sản phẩm tồn tại: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                if(_conn.State == ConnectionState.Open) _conn.Close();
             }
         }
         

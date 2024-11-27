@@ -75,6 +75,7 @@
             this.dgvNCC.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvNCC.Location = new System.Drawing.Point(21, 261);
             this.dgvNCC.Name = "dgvNCC";
+            this.dgvNCC.ReadOnly = true;
             this.dgvNCC.RowHeadersVisible = false;
             this.dgvNCC.RowHeadersWidth = 51;
             this.dgvNCC.RowTemplate.Height = 24;
@@ -93,7 +94,7 @@
             this.dgvNCC.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvNCC.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvNCC.ThemeStyle.HeaderStyle.Height = 4;
-            this.dgvNCC.ThemeStyle.ReadOnly = false;
+            this.dgvNCC.ThemeStyle.ReadOnly = true;
             this.dgvNCC.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvNCC.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvNCC.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

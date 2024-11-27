@@ -243,6 +243,12 @@
     <Compile Include="Home\MainGUI.Designer.cs">
       <DependentUpon>MainGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login_Signin\DangNhapGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login_Signin\DangNhapGUI.Designer.cs">
+      <DependentUpon>DangNhapGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="NhaCungCap\NhaCungCapGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -397,6 +403,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home\MainGUI.resx">
       <DependentUpon>MainGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login_Signin\DangNhapGUI.resx">
+      <DependentUpon>DangNhapGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhaCungCap\NhaCungCapGUI.resx">
       <DependentUpon>NhaCungCapGUI.cs</DependentUpon>
