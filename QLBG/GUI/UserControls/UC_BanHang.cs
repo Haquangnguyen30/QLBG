@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using BLL;
 using BUS;
@@ -18,15 +19,18 @@ namespace GUI.UserControls
         private HoaDonBUS HDbll = new HoaDonBUS();
         private ChiTietHoaDonBUS CTHDbll = new ChiTietHoaDonBUS();
         private BanHangBLL BHbll = new BanHangBLL();
+        private KhachHangBUS khachHangBUS = new KhachHangBUS();
         private SanPhamDTO currentProduct; // Sản phẩm hiện tại để hiển thị thông tin chi tiết
         private NhanVienBUS nvBUS = new NhanVienBUS();
+        private List<KhachHangDTO> danhSachKhachHang;
         public UC_BanHang()
         {
             InitializeComponent();
             LoadProducts(); // Gọi hàm tải danh sách sản phẩm
             ConfigureCartGridBH(); //Cấu hình giỏ hàng
-            //ConfigureCartGridHD();
             LoadHoaDonData();
+            danhSachKhachHang = khachHangBUS.getList();
+            CapNhatComboBox(danhSachKhachHang);
         }
 
         // Hàm tải danh sách sản phẩm
@@ -281,10 +285,11 @@ namespace GUI.UserControls
         }
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            
             String tenKH = cbKhachHang.Text;
-            //String maKH = cbKhachHang.SelectedValue.ToString();
+            int maKH = (int)cbKhachHang.SelectedValue;
             float tongTien = TinhTongTien();
-            HoaDonBanHangGUI formHoaDon = new HoaDonBanHangGUI(tenKH, GioHangDataGridView, tongTien);
+            HoaDonBanHangGUI formHoaDon = new HoaDonBanHangGUI(maKH,tenKH, GioHangDataGridView, tongTien);
             DialogResult result = formHoaDon.ShowDialog();
 
             if (result == DialogResult.OK)
@@ -402,7 +407,61 @@ namespace GUI.UserControls
                 MessageBox.Show("Lỗi khi hiển thị sản phẩm: " + ex.Message);
             }
         }
+        private void CapNhatComboBox(List<KhachHangDTO> danhSach)
+        {
+            cbKhachHang.DataSource = null;
+            cbKhachHang.DataSource = danhSach;
+            cbKhachHang.DisplayMember = "tenKH"; // Hiển thị tên khách hàng
+            cbKhachHang.ValueMember = "maKH";   // Lấy mã khách hàng
+            cbKhachHang.DropDownStyle = ComboBoxStyle.DropDown;
+            cbKhachHang.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbKhachHang.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
+        private void cbKhachHang_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) // Kiểm tra nếu nhấn phím Enter
+            {
+                string searchText = cbKhachHang.Text.Trim(); // Lấy nội dung trong ComboBox
 
+                if (!string.IsNullOrWhiteSpace(searchText))
+                {
+                    // Tìm kiếm danh sách khách hàng theo từ khóa
+                    var filteredList = khachHangBUS.TimKiemKhachHangTheoKey(searchText);
+                    CapNhatComboBox(filteredList);
+
+                    if (filteredList.Count > 0)
+                    {
+                        cbKhachHang.DroppedDown = true; // Mở danh sách nếu có kết quả
+                    }
+                    else
+                    {
+                        cbKhachHang.DroppedDown = false; // Đóng danh sách nếu không có kết quả
+                        MessageBox.Show("Không tìm thấy khách hàng nào!", "Thông báo");
+                    }
+                }
+                else
+                {
+                    // Nếu không nhập gì, hiển thị danh sách đầy đủ
+                    CapNhatComboBox(danhSachKhachHang);
+                }
+
+                e.Handled = true; // Ngăn chặn sự kiện mặc định
+            }
+        }
+        private void cbKhachHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Đảm bảo rằng ComboBox đã được gán DataSource và không có lỗi khi chọn
+            if (cbKhachHang.SelectedValue != null && cbKhachHang.SelectedValue is int)
+            {
+                int maKH = (int)cbKhachHang.SelectedValue;
+                Console.WriteLine("Mã khách hàng được chọn: " + maKH);
+                // Thực hiện các xử lý khác với mã khách hàng
+            }
+            else
+            {
+                Console.WriteLine("Không có khách hàng nào được chọn.");
+            }
+        }
         private float TinhTongTien()
         {
             float tongTien = 0;

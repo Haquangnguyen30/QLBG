@@ -41,5 +41,23 @@ namespace BLL
         {
             return dalKhachHang.themKhachHang(tv);
         }
+        public List<KhachHangDTO> TimKiemKhachHangTheoKey(string key)
+        {
+            DataTable dt = dalKhachHang.getFindKhachHang(key);
+            List<KhachHangDTO> result = new List<KhachHangDTO>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                KhachHangDTO kh = new KhachHangDTO
+                {
+                    maKH = Convert.ToInt32(row["maKH"]),
+                    tenKH = row["tenKH"].ToString(),
+                    sdt = row["sdt"].ToString()
+                };
+                result.Add(kh);
+            }
+
+            return result;
+        }
     }
 }

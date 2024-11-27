@@ -20,19 +20,6 @@ namespace BLL
         {
             return dAL.getDSHD();
         }
-        //public bool TaoHoaDon(HoaDonDTO hoaDon)
-        //{
-        //    bool taoHoaDonThanhCong = dAL.TaoHoaDon(hoaDon);
-        //    if (taoHoaDonThanhCong)
-        //    {
-        //        int maHoaDonMoiNhat = dAL.GetMaHoaDonMoiNhat();
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
         // get hóa đơn mới nhất
         public int GetMaHoaDonMoiNhat()
         {
@@ -49,22 +36,36 @@ namespace BLL
         }
         public int themHD(HoaDonDTO hd, List<ChiTietHoaDonDTO> cthds)
         {
+            // Thêm hóa đơn vào bảng hoaDon và lấy mã hóa đơn mới
             int maHD = dAL.TaoHoaDon(hd);
+
+            // Thêm chi tiết hóa đơn vào bảng CT_HoaDon
             cthdDal.ThemChiTietHoaDon(cthds, maHD);
+
+            // Cập nhật tồn kho sau khi bán hàng
             foreach (var chiTiet in cthds)
             {
                 int slTonKho = spDAL.getSoLuongKichCo(chiTiet.maSP, chiTiet.maKC);
                 int newSL = slTonKho - chiTiet.soLuong;
+
+                // Nếu có đủ hàng, cập nhật số lượng tồn kho
                 if (slTonKho > 0)
                 {
                     spDAL.suaSoLuongKichCo(chiTiet.maSP, chiTiet.maKC, newSL);
                 }
+                // Nếu không còn hàng, cần xử lý thêm logic phù hợp như thông báo hết hàng
                 else if (slTonKho == 0)
                 {
                     spDAL.themSoLuongKichCo(chiTiet.maSP, chiTiet.maKC, newSL);
                 }
+                // Trường hợp tồn kho âm (nếu có), cần cảnh báo hoặc xử lý lỗi
+                else
+                {
+                    throw new Exception("Số lượng tồn kho không đủ để bán!");
+                }
             }
-            return maHD;
+
+            return maHD; // Trả về mã hóa đơn vừa thêm
         }
     }
 }

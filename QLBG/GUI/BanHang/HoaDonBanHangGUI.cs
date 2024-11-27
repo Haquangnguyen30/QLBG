@@ -8,33 +8,39 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
-using DocumentFormat.OpenXml.Drawing.Charts;
+//using DocumentFormat.OpenXml.Drawing.Charts;
 using DTO;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
+using GUI.UserControls;
 
 namespace GUI.BanHang
 {
     public partial class HoaDonBanHangGUI : Form
     {
         private HoaDonBUS hdBus = new HoaDonBUS();
+        private KhuyenMaiBUS kmBus = new KhuyenMaiBUS();
         private DataGridView dgvGioHang;
+        private int maKH;
         private String tenKH;
         private String tenNV = "NV001";
-        private float tongTien;
+        private float TongTien;
+        private float tienGiam = 0;
         private DateTime ngayLap = DateTime.Now.Date;
-        public HoaDonBanHangGUI(String tenKH, DataGridView dgvGioHang, float tongTien)
+        public HoaDonBanHangGUI(int maKH,String tenKH, DataGridView dgvGioHang, float tongTien)
         {
             InitializeComponent();
             this.dgvGioHang = dgvGioHang;
+            this.maKH = maKH;
             this.tenKH = tenKH;
-            this.tongTien = tongTien;
+            this.TongTien = tongTien;
 
             lblTenKH.Text = tenKH;
             lblNhanVien.Text = tenNV;
             lblNgayBan.Text = ngayLap.ToString("yyyy-MM-dd");
             contentDGV(dgvGioHang);
-            txtTongTien.Text = tongTien+"";
+            txtTongTien.Text = tongTien.ToString();
+            TongTien = tongTien;
         }
         private void contentDGV(DataGridView dgvSource)
         {
@@ -70,11 +76,11 @@ namespace GUI.BanHang
                 HoaDonDTO hd = new HoaDonDTO();
                 //hd.maHD = hdBus.GetMaHoaDonMoiNhat() + 1;
                 hd.maNV = "NV001";
-                hd.maKH = 1;
-                hd.maKM = 1;
-                hd.tienGiam = 0;
+                hd.maKH = maKH;
+                hd.maKM = Convert.ToInt32(cbKhuyenMai.SelectedValue);
+                hd.tienGiam = tienGiam;
                 hd.ngayLap = ngayLap;
-                hd.tongTien = tongTien;
+                hd.tongTien = TongTien;
                 hd.tienKhachDua = float.Parse(txtTienKhachDua.Text);
                 hd.tienThua = float.Parse(txtTienThua.Text);
                 hd.tinhTrang = true;
@@ -203,13 +209,19 @@ namespace GUI.BanHang
 
             doc.Add(productTable);
 
-            Paragraph totalAmount = new Paragraph("Tổng tiền: " + txtTongTien.Text, largeFont);
+            Paragraph totalAmount = new Paragraph("Tổng tiền: " + TongTien, largeFont);
             totalAmount.Alignment = Element.ALIGN_RIGHT;
+            Paragraph decreaseAmount = new Paragraph("Tiền giảm giá: " + "- "+tienGiam, largeFont);
+            decreaseAmount.Alignment = Element.ALIGN_RIGHT;
+            Paragraph thenAmount = new Paragraph("Tiền phải trả: " + txtTongTien.Text, largeFont);
+            thenAmount.Alignment = Element.ALIGN_RIGHT;
             Paragraph customerAmount = new Paragraph("Tiền mặt: " + txtTienKhachDua.Text, largeFont);
             customerAmount.Alignment = Element.ALIGN_RIGHT;
             Paragraph restAmount = new Paragraph("Tiền thừa: " + txtTienThua.Text, largeFont);
             restAmount.Alignment = Element.ALIGN_RIGHT;
             doc.Add(totalAmount);
+            doc.Add(decreaseAmount);
+            doc.Add(thenAmount);
             doc.Add(customerAmount);
             doc.Add(restAmount);
             doc.Add(new Paragraph("\n\n\n"));
@@ -281,10 +293,87 @@ namespace GUI.BanHang
                 txtTienThua.Text = "";
             }
         }
+        // Phương thức để cập nhật ComboBox
+        private void CapNhatComboBox(DataTable danhSach)
+        {
+            // Xóa nguồn dữ liệu hiện tại của ComboBox
+            cbKhuyenMai.DataSource = null;
+
+            // Tạo một cột "Display" kết hợp tenKM và giaTriGiam
+            DataColumn displayColumn = new DataColumn("Display", typeof(string));
+            danhSach.Columns.Add(displayColumn);
+
+            // Thêm lựa chọn "Không" vào đầu danh sách
+            DataRow row = danhSach.NewRow();
+            row["Display"] = "Không";
+            row["maKM"] = 0;  // Mã khuyến mãi của "Không" là 0
+            row["giaTriGiam"] = 0;
+            danhSach.Rows.InsertAt(row, 0);
+
+            // Điền thông tin cho cột "Display"
+            foreach (DataRow dataRow in danhSach.Rows)
+            {
+                dataRow["Display"] = dataRow["tenKM"] + " - " + dataRow["giaTriGiam"].ToString() + "%";
+            }
+
+            // Cập nhật DataSource của ComboBox với DataTable đã được thêm cột "Display"
+            cbKhuyenMai.DataSource = danhSach;
+            cbKhuyenMai.DisplayMember = "Display"; // Hiển thị tên khuyến mãi và giá trị giảm
+            cbKhuyenMai.ValueMember = "maKM";      // Lấy mã khuyến mãi
+
+            // Thiết lập các thuộc tính của ComboBox
+            cbKhuyenMai.DropDownStyle = ComboBoxStyle.DropDown;
+            cbKhuyenMai.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbKhuyenMai.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbKhuyenMai.SelectedIndex = 0; // Mặc định chọn "Không"
+        }
+
+        // Phương thức để cập nhật tổng tiền
+        private void CapNhatTongTien()
+        {
+            // Kiểm tra giá trị mã khuyến mãi từ ComboBox
+            object selectedValue = cbKhuyenMai.SelectedValue;
+
+            if (selectedValue != null && selectedValue.ToString() == "0") // Nếu là "Không" (mã khuyến mãi = 0)
+            {
+                // Nếu không có khuyến mãi, giữ nguyên giá trị txtTongTien
+                txtTongTien.Text = txtTongTien.Text; // Giữ nguyên giá trị
+                tienGiam = 0; // Không giảm giá
+            }
+            else
+            {
+                // Nếu có khuyến mãi, lấy giá trị giảm từ ComboBox
+                DataRowView selectedRow = (DataRowView)cbKhuyenMai.SelectedItem;
+                if (selectedRow != null)
+                {
+                    // Lấy giá trị giảm giá từ giaTriGiam trong ComboBox
+                    decimal giaTriGiam = Convert.ToDecimal(selectedRow["giaTriGiam"]);
+
+                    // Tính giá trị giảm giá và lưu vào biến toàn cục
+                    decimal currentTotal = Convert.ToDecimal(txtTongTien.Text);  // Lấy giá trị tổng tiền hiện tại
+                    tienGiam = (float)(currentTotal * giaTriGiam / 100);  // Lưu giá trị giảm giá vào biến toàn cục
+                                                                          // Chuyển tienGiam từ float sang decimal để tính newTotal
+                    decimal tienGiamDecimal = Convert.ToDecimal(tienGiam);
+
+                    // Cập nhật txtTongTien theo công thức giảm giá
+                    decimal newTotal = currentTotal - tienGiamDecimal;  // Áp dụng giảm giá từ tienGiamDecimal (kiểu decimal)
+                    txtTongTien.Text = newTotal.ToString(); // Cập nhật lại txtTongTien
+                }
+            }
+        }
+
+        private void cbKhuyenMai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CapNhatTongTien();
+        }
 
         private void HoaDonBanHangGUI_Load(object sender, EventArgs e)
         {
+            // Gọi phương thức để lấy danh sách khuyến mãi còn hiệu lực
+            DataTable danhSachKhuyenMai = kmBus.getKhuyenMaiHieuLuc();
 
+            // Cập nhật ComboBox với dữ liệu từ lớp DAO
+            CapNhatComboBox(danhSachKhuyenMai);
         }
     }
 }

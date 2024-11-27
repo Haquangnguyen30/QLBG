@@ -22,7 +22,7 @@ namespace DAL
         }
         public DataTable GetChiTietHoaDon(int maHD)
         {
-            var cmd = new SqlCommand("SELECT HD.maHD, CTHD.maSP, SP.tenSP,SP.mau, CTHD.giaBan, CTHD.soLuong, CTHD.thanhTien FROM hoaDon HD JOIN CT_HoaDon CTHD ON HD.maHD = CTHD.maHD JOIN sanPham SP ON CTHD.maSP = SP.maSP WHERE HD.maHD = @maHD", _conn);
+            var cmd = new SqlCommand("SELECT HD.maHD, CTHD.maSP, SP.tenSP, SP.mau, KC.kichCo, CTHD.giaBan, CTHD.soLuong, CTHD.thanhTien FROM hoaDon HD JOIN CT_HoaDon CTHD ON HD.maHD = CTHD.maHD JOIN sanPham SP ON CTHD.maSP = SP.maSP JOIN kichCo KC ON CTHD.maKichCo = KC.maKichCo WHERE HD.maHD = @maHD", _conn);
 
             cmd.Parameters.AddWithValue("@maHD", maHD);
             var da = new SqlDataAdapter(cmd);
@@ -62,6 +62,5 @@ namespace DAL
                 Console.WriteLine("Lỗi thêm chi tiết hóa đơn: " + ex.Message);
             }
         }
-
     }
 }

@@ -219,6 +219,12 @@
     <Compile Include="BanHang\HoaDonBanHangGUI.Designer.cs">
       <DependentUpon>HoaDonBanHangGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="BanHang\ThemKhachHangGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BanHang\ThemKhachHangGUI.Designer.cs">
+      <DependentUpon>ThemKhachHangGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="BanHang\XoaSuaTTBHGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -355,6 +361,9 @@
     </Compile>
     <EmbeddedResource Include="BanHang\HoaDonBanHangGUI.resx">
       <DependentUpon>HoaDonBanHangGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BanHang\ThemKhachHangGUI.resx">
+      <DependentUpon>ThemKhachHangGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BanHang\XoaSuaTTBHGUI.resx">
       <DependentUpon>XoaSuaTTBHGUI.cs</DependentUpon>

@@ -83,13 +83,6 @@ namespace GUI.UserControls
             this.guna2Panel12 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.dgvCTHD = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.dgvHD = new Guna.UI2.WinForms.Guna2DataGridView();
             this.maHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,6 +94,14 @@ namespace GUI.UserControls
             this.tienKhachDua = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tienThua = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchHD = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenkichCo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -135,7 +136,7 @@ namespace GUI.UserControls
             this.tabControl1.Location = new System.Drawing.Point(0, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1199, 748);
+            this.tabControl1.Size = new System.Drawing.Size(1199, 751);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -146,7 +147,7 @@ namespace GUI.UserControls
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1191, 719);
+            this.tabPage1.Size = new System.Drawing.Size(1191, 722);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Bán Hàng";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -158,7 +159,7 @@ namespace GUI.UserControls
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(3, 3);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(679, 713);
+            this.guna2Panel1.Size = new System.Drawing.Size(679, 716);
             this.guna2Panel1.TabIndex = 5;
             // 
             // guna2Panel5
@@ -172,7 +173,7 @@ namespace GUI.UserControls
             this.guna2Panel5.FillColor = System.Drawing.Color.White;
             this.guna2Panel5.Location = new System.Drawing.Point(0, 75);
             this.guna2Panel5.Name = "guna2Panel5";
-            this.guna2Panel5.Size = new System.Drawing.Size(679, 638);
+            this.guna2Panel5.Size = new System.Drawing.Size(679, 641);
             this.guna2Panel5.TabIndex = 1;
             this.guna2Panel5.UseTransparentBackground = true;
             // 
@@ -183,7 +184,7 @@ namespace GUI.UserControls
             this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
             this.guna2CustomGradientPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(679, 598);
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(679, 601);
             this.guna2CustomGradientPanel1.TabIndex = 21;
             // 
             // tableLayoutPanel1
@@ -202,7 +203,7 @@ namespace GUI.UserControls
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(679, 588);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(679, 591);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // guna2Panel10
@@ -210,7 +211,7 @@ namespace GUI.UserControls
             this.guna2Panel10.Controls.Add(this.guna2Panel11);
             this.guna2Panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2Panel10.FillColor = System.Drawing.Color.White;
-            this.guna2Panel10.Location = new System.Drawing.Point(0, 598);
+            this.guna2Panel10.Location = new System.Drawing.Point(0, 601);
             this.guna2Panel10.Name = "guna2Panel10";
             this.guna2Panel10.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.guna2Panel10.Size = new System.Drawing.Size(679, 40);
@@ -355,7 +356,7 @@ namespace GUI.UserControls
             this.guna2Panel2.Location = new System.Drawing.Point(682, 3);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.guna2Panel2.Size = new System.Drawing.Size(506, 713);
+            this.guna2Panel2.Size = new System.Drawing.Size(506, 716);
             this.guna2Panel2.TabIndex = 4;
             // 
             // guna2Panel9
@@ -370,7 +371,7 @@ namespace GUI.UserControls
             this.guna2Panel9.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.guna2Panel9.Name = "guna2Panel9";
             this.guna2Panel9.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.guna2Panel9.Size = new System.Drawing.Size(496, 481);
+            this.guna2Panel9.Size = new System.Drawing.Size(496, 484);
             this.guna2Panel9.TabIndex = 7;
             // 
             // guna2Panel4
@@ -386,7 +387,7 @@ namespace GUI.UserControls
             this.guna2Panel4.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Padding = new System.Windows.Forms.Padding(10);
-            this.guna2Panel4.Size = new System.Drawing.Size(496, 471);
+            this.guna2Panel4.Size = new System.Drawing.Size(496, 474);
             this.guna2Panel4.TabIndex = 6;
             // 
             // tableLayoutPanel2
@@ -408,7 +409,7 @@ namespace GUI.UserControls
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(476, 451);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(476, 454);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // guna2Panel8
@@ -431,7 +432,8 @@ namespace GUI.UserControls
             this.cbKhachHang.Name = "cbKhachHang";
             this.cbKhachHang.Size = new System.Drawing.Size(254, 33);
             this.cbKhachHang.TabIndex = 19;
-            this.cbKhachHang.Text = "Phan Duy Cuu";
+            this.cbKhachHang.SelectedIndexChanged += new System.EventHandler(this.cbKhachHang_SelectedIndexChanged);
+            this.cbKhachHang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbKhachHang_KeyDown);
             // 
             // guna2Button9
             // 
@@ -549,7 +551,7 @@ namespace GUI.UserControls
             this.btnThanhToan.FillColor = System.Drawing.Color.White;
             this.btnThanhToan.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThanhToan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
-            this.btnThanhToan.Location = new System.Drawing.Point(352, 404);
+            this.btnThanhToan.Location = new System.Drawing.Point(352, 407);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(121, 44);
             this.btnThanhToan.TabIndex = 6;
@@ -562,7 +564,7 @@ namespace GUI.UserControls
             this.lblTongTien.BackColor = System.Drawing.Color.Transparent;
             this.lblTongTien.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTongTien.ForeColor = System.Drawing.Color.Black;
-            this.lblTongTien.Location = new System.Drawing.Point(10, 371);
+            this.lblTongTien.Location = new System.Drawing.Point(10, 374);
             this.lblTongTien.Margin = new System.Windows.Forms.Padding(10, 10, 0, 0);
             this.lblTongTien.Name = "lblTongTien";
             this.lblTongTien.Size = new System.Drawing.Size(231, 25);
@@ -717,7 +719,7 @@ namespace GUI.UserControls
             this.tabHoaDon.Location = new System.Drawing.Point(4, 25);
             this.tabHoaDon.Name = "tabHoaDon";
             this.tabHoaDon.Padding = new System.Windows.Forms.Padding(3);
-            this.tabHoaDon.Size = new System.Drawing.Size(1191, 719);
+            this.tabHoaDon.Size = new System.Drawing.Size(1191, 722);
             this.tabHoaDon.TabIndex = 1;
             this.tabHoaDon.Text = "Hoá Đơn";
             this.tabHoaDon.UseVisualStyleBackColor = true;
@@ -763,6 +765,7 @@ namespace GUI.UserControls
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
+            this.tenkichCo,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7});
@@ -803,64 +806,6 @@ namespace GUI.UserControls
             this.dgvCTHD.ThemeStyle.RowsStyle.Height = 24;
             this.dgvCTHD.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvCTHD.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "maHD";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Mã HD";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 84;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "maSP";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Mã SP";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "tenSP";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Tên SP";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "mau";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Màu";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "giaBan";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Giá bán";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "soLuong";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Số lượng";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "thanhTien";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Thành tiền";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // guna2GroupBox1
             // 
@@ -1029,6 +974,72 @@ namespace GUI.UserControls
             this.searchHD.TextOffset = new System.Drawing.Point(5, 0);
             this.searchHD.TextChanged += new System.EventHandler(this.searchHD_TextChanged);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "maHD";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Mã HD";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 84;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "maSP";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Mã SP";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "tenSP";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Tên SP";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "mau";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Màu";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // tenkichCo
+            // 
+            this.tenkichCo.DataPropertyName = "kichCo";
+            this.tenkichCo.HeaderText = "Kích cỡ";
+            this.tenkichCo.MinimumWidth = 6;
+            this.tenkichCo.Name = "tenkichCo";
+            this.tenkichCo.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "giaBan";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Giá bán";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "soLuong";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Số lượng";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "thanhTien";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Thành tiền";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
             // UC_BanHang
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1125,6 +1136,7 @@ namespace GUI.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenkichCo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;

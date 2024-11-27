@@ -57,7 +57,7 @@ namespace DAL
             using (SqlConnection connection = new SqlConnection(_conn.ConnectionString))
             {
                 connection.Open();
-                string sqlQuery = "SELECT   maKH, tenKH, sdt FROM khachHang Where maKH LIKE @key OR tenKH LIKE @key OR sdt LIKE @key ";
+                string sqlQuery = "SELECT maKH, tenKH, sdt FROM khachHang Where maKH LIKE @key OR tenKH LIKE @key OR sdt LIKE @key ";
                 SqlDataAdapter da;
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                 {

@@ -1,5 +1,4 @@
 ﻿using DTO;
-using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -186,6 +185,14 @@ namespace DAL
             }
 
             return false;
+        }
+        public DataTable getKhuyenMaiHieuLuc()
+        {
+            string query = @"SELECT maKM, tenKM, giaTriGiam FROM khuyenMai WHERE ngayBD <= GETDATE() AND ngayKT >= GETDATE() AND tinhTrang = 1";
+            SqlDataAdapter adapter = new SqlDataAdapter(query, _conn);
+            DataTable dtKhuyenMai = new DataTable();
+            adapter.Fill(dtKhuyenMai);
+            return dtKhuyenMai;
         }
     }
 }

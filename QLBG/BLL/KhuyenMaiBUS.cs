@@ -34,7 +34,10 @@ namespace BLL
         {
             return khuyenMaiDal.XoaKhuyenMai(maKM);
         }
-
+        public DataTable getKhuyenMaiHieuLuc()
+        {
+            return khuyenMaiDal.getKhuyenMaiHieuLuc();
+        }
     }
 }
 

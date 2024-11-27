@@ -38,7 +38,7 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtTienKhachDua = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblTienKhachDua = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbKhuyenMai = new System.Windows.Forms.ComboBox();
             this.lblNgayBan = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblTenKH = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,7 +65,7 @@
             this.guna2Panel3.Controls.Add(this.guna2HtmlLabel1);
             this.guna2Panel3.Controls.Add(this.txtTienKhachDua);
             this.guna2Panel3.Controls.Add(this.lblTienKhachDua);
-            this.guna2Panel3.Controls.Add(this.comboBox1);
+            this.guna2Panel3.Controls.Add(this.cbKhuyenMai);
             this.guna2Panel3.Controls.Add(this.lblNgayBan);
             this.guna2Panel3.Controls.Add(this.lblTenKH);
             this.guna2Panel3.Controls.Add(this.label2);
@@ -186,16 +186,17 @@
             this.lblTienKhachDua.TabIndex = 64;
             this.lblTienKhachDua.Text = "Tiền khách đưa: ";
             // 
-            // comboBox1
+            // cbKhuyenMai
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.ItemHeight = 25;
-            this.comboBox1.Location = new System.Drawing.Point(443, 440);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(235, 33);
-            this.comboBox1.TabIndex = 62;
-            this.comboBox1.Text = "Mã khuyến mãi";
+            this.cbKhuyenMai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbKhuyenMai.FormattingEnabled = true;
+            this.cbKhuyenMai.ItemHeight = 25;
+            this.cbKhuyenMai.Location = new System.Drawing.Point(443, 440);
+            this.cbKhuyenMai.Name = "cbKhuyenMai";
+            this.cbKhuyenMai.Size = new System.Drawing.Size(235, 33);
+            this.cbKhuyenMai.TabIndex = 62;
+            this.cbKhuyenMai.Text = "Mã khuyến mãi";
+            this.cbKhuyenMai.SelectedIndexChanged += new System.EventHandler(this.cbKhuyenMai_SelectedIndexChanged);
             // 
             // lblNgayBan
             // 
@@ -396,7 +397,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel10;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel9;
         private System.Windows.Forms.Label tenSp;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbKhuyenMai;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblTienKhachDua;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2TextBox txtTienKhachDua;
