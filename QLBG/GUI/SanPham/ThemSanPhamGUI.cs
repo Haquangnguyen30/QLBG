@@ -101,8 +101,8 @@ namespace GUI.SanPham
                 sanPham.mau = txtMau.Text;
                 sanPham.maLoai = int.Parse(cbMaLoai.SelectedItem.ToString());
                 sanPham.tinhTrang = true;
-                sanPham.img = txtMaSanPham.Text; 
-
+                sanPham.img = txtMaSanPham.Text;
+                sanPham.soLuong = 0;
                 if (spBUS.addSanPham(sanPham))
                 {
                     if (tempImagePath != null)

@@ -28,14 +28,13 @@ namespace DAL
                     SPdto.maSP = reader["maSP"].ToString();
                     SPdto.tenSP = reader["tenSP"].ToString();
                     SPdto.giaBan = (float)reader.GetDouble(reader.GetOrdinal("giaBan"));
-                    SPdto.soLuong = reader.GetInt32(reader.GetOrdinal("soLuong"));
-                    SPdto.img = reader["img"].ToString();
+                    SPdto.soLuong = reader.GetInt32(reader.GetOrdinal("soLuong"));               
                     SPdto.giaNhap = Convert.ToSingle(reader["giaBan"]);
                     SPdto.mau = reader["mau"].ToString();
                     SPdto.tinhTrang = Convert.ToBoolean(reader["tinhTrang"]);
                     SPdto.maLoai = Convert.ToInt32(reader["maLoai"]);
+                    SPdto.img = reader["img"].ToString();
 
-                    
                     productList.Add(SPdto);
                 }
                 return productList;

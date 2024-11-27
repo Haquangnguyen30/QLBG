@@ -156,11 +156,12 @@ namespace DAL
             try
             {
                 _conn.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO sanPham (maSP, tenSP, giaBan, img, giaNhap, mau, tinhTrang, maLoai) " +
-                                                "VALUES (@maSP, @tenSP, @giaBan, @img, @giaNhap, @mau, @tinhTrang, @maLoai)", _conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO sanPham (maSP, tenSP, giaBan, soLuong, img, giaNhap, mau, tinhTrang, maLoai) " +
+                                                "VALUES (@maSP, @tenSP, @giaBan, @soLuong, @img, @giaNhap, @mau, @tinhTrang, @maLoai)", _conn);
                 cmd.Parameters.AddWithValue("@maSP", sanPham.maSP);
                 cmd.Parameters.AddWithValue("@tenSP", sanPham.tenSP);
                 cmd.Parameters.AddWithValue("@giaBan", sanPham.giaBan);
+                cmd.Parameters.AddWithValue("@soLuong", sanPham.soLuong);
                 cmd.Parameters.AddWithValue("@img", sanPham.img);
                 cmd.Parameters.AddWithValue("@giaNhap", sanPham.giaNhap);
                 cmd.Parameters.AddWithValue("@mau", sanPham.mau);
@@ -187,7 +188,7 @@ namespace DAL
             {
                 _conn.Open();
                 SqlCommand cmd = new SqlCommand("UPDATE sanPham " +
-                                                "SET tenSP = @tenSP, giaBan = @giaBan, giaNhap = @giaNhap, mau = @mau, maLoai = @maLoai " +
+                                                "SET tenSP = @tenSP, giaBan = @giaBan, giaNhap = @giaNhap, mau = @mau, maLoai = @maLoai, img = @img " +
                                                 "WHERE  maSP = @maSP; "
                                                 , _conn);
                 cmd.Parameters.AddWithValue("@tenSP", sanPham.tenSP);
@@ -195,7 +196,8 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@giaNhap", sanPham.giaNhap);
                 cmd.Parameters.AddWithValue("@mau", sanPham.mau);
                 cmd.Parameters.AddWithValue("@maLoai", sanPham.maLoai);
-                cmd.Parameters.AddWithValue("@maSP", sanPham.maSP);
+                cmd.Parameters.AddWithValue("@img", sanPham.img);
+                cmd.Parameters.AddWithValue("@maSP", sanPham.maSP);       
                 if (cmd.ExecuteNonQuery () > 0)
                 {
                     return true;
