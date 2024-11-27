@@ -14,7 +14,7 @@ using NPOI.XSSF.UserModel;
 
 namespace DAL
 {
-    public class NhanVienDAL:DatabaseConnect
+    public class NhanVienDAL : DatabaseConnect
     {
 
         public List<String> getDSNV()
@@ -112,7 +112,7 @@ namespace DAL
                 // Ket noi
                 _conn.Open();
 
-              
+
                 string SQL =
                 string.Format("INSERT INTO nhanVien( maNV, tenNV, gioiTinh, sdt, diaChi, chucVu, ngaySinh, tinhTrang) VALUES ('{0}', N'{1}', '{2}', '{3}', N'{4}', N'{5}', '{6}', '{7}')"
                 , tv.maNV, tv.tenNV, tv.gioiTinh, tv.sdt, tv.diaChi, tv.chucVu, tv.ngaySinh, tv.tinhTrang);
@@ -159,7 +159,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@diaChi", nv.diaChi);
                     cmd.Parameters.AddWithValue("@chucVu", nv.chucVu);
                     cmd.Parameters.AddWithValue("@ngaySinh", nv.ngaySinh);
-                   
+
                     // Execute the SQL UPDATE statement
                     int rowsAffected = cmd.ExecuteNonQuery();
 
@@ -216,7 +216,7 @@ namespace DAL
             return false;
         }
 
-        public bool capNhapChucVu(string maNV,string chucVu)
+        public bool capNhapChucVu(string maNV, string chucVu)
         {
             try
             {
@@ -230,7 +230,7 @@ namespace DAL
                 using (SqlCommand cmd = new SqlCommand(SQL, _conn))
                 {
                     // Use parameters to safely pass values into the SQL statement
-                    cmd.Parameters.AddWithValue("@maNV", maNV);                   
+                    cmd.Parameters.AddWithValue("@maNV", maNV);
                     cmd.Parameters.AddWithValue("@chucVu", chucVu);
 
 
@@ -263,60 +263,60 @@ namespace DAL
             {
                 //try
                 //{
-                    string fileName = openFileDialog.FileName;
-                    FileStream file = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                string fileName = openFileDialog.FileName;
+                FileStream file = new FileStream(fileName, FileMode.Open, FileAccess.Read);
 
-                    XSSFWorkbook workbook = new XSSFWorkbook(file);
-                    XSSFSheet sheet = (XSSFSheet)workbook.GetSheetAt(0);
-                    _conn.Open();
+                XSSFWorkbook workbook = new XSSFWorkbook(file);
+                XSSFSheet sheet = (XSSFSheet)workbook.GetSheetAt(0);
+                _conn.Open();
 
 
-                    string sql = "MERGE INTO nhanVien AS target "
-                               + "USING (VALUES (@maNV, @tenNV, @gioiTinh ,@sdt, @diaChi, @chucVu, @ngaySinh, @tinhTrang)) AS source (maNV, tenNV, gioiTinh, sdt, diaChi, chucVu,  ngaySinh, tinhTrang) "
-                               + "ON (target.maNV = source.maNV) "
-                               + "WHEN MATCHED THEN "
-                               + "    UPDATE SET target.tenNV = source.tenNV, "
-                               + "               target.gioiTinh = source.gioiTinh, "
-                               + "               target.sdt = source.sdt, "
-                               + "               target.diaChi = source.diaChi, "
-                               + "               target.chucVu = source.chucVu, "
-                               + "               target.ngaySinh = source.ngaySinh, "
-                               + "               target.tinhTrang = source.tinhTrang "
-                               + "WHEN NOT MATCHED THEN "
-                               + "    INSERT (maNV, tenNV, gioiTinh, sdt, diaChi, chucVu, ngaySinh, tinhTrang) "
-                               + "    VALUES (source.maNV, source.tenNV, source.gioiTinh, source.sdt, source.diaChi, source.chucVu, source.ngaySinh, source.tinhTrang);";
+                string sql = "MERGE INTO nhanVien AS target "
+                           + "USING (VALUES (@maNV, @tenNV, @gioiTinh ,@sdt, @diaChi, @chucVu, @ngaySinh, @tinhTrang)) AS source (maNV, tenNV, gioiTinh, sdt, diaChi, chucVu,  ngaySinh, tinhTrang) "
+                           + "ON (target.maNV = source.maNV) "
+                           + "WHEN MATCHED THEN "
+                           + "    UPDATE SET target.tenNV = source.tenNV, "
+                           + "               target.gioiTinh = source.gioiTinh, "
+                           + "               target.sdt = source.sdt, "
+                           + "               target.diaChi = source.diaChi, "
+                           + "               target.chucVu = source.chucVu, "
+                           + "               target.ngaySinh = source.ngaySinh, "
+                           + "               target.tinhTrang = source.tinhTrang "
+                           + "WHEN NOT MATCHED THEN "
+                           + "    INSERT (maNV, tenNV, gioiTinh, sdt, diaChi, chucVu, ngaySinh, tinhTrang) "
+                           + "    VALUES (source.maNV, source.tenNV, source.gioiTinh, source.sdt, source.diaChi, source.chucVu, source.ngaySinh, source.tinhTrang);";
 
-                    SqlCommand command = new SqlCommand(sql, _conn);
+                SqlCommand command = new SqlCommand(sql, _conn);
 
-                    for (int i = sheet.FirstRowNum + 1; i <= sheet.LastRowNum; i++)
+                for (int i = sheet.FirstRowNum + 1; i <= sheet.LastRowNum; i++)
+                {
+                    IRow row = sheet.GetRow(i);
+                    if (row == null)
                     {
-                        IRow row = sheet.GetRow(i);
-                        if (row == null)
-                        {
-                            continue;
-                        }
-
-                        command.Parameters.AddWithValue("@maNV", row.GetCell(1).StringCellValue);
-                        command.Parameters.AddWithValue("@tenNV", row.GetCell(2).StringCellValue);
-                        command.Parameters.AddWithValue("@gioiTinh", row.GetCell(3).StringCellValue);
-                        command.Parameters.AddWithValue("@sdt", row.GetCell(4).StringCellValue);
-                        command.Parameters.AddWithValue("@diaChi", row.GetCell(5).StringCellValue);
-                        command.Parameters.AddWithValue("@chucVu", row.GetCell(6).StringCellValue);
-                        DateTime ngaySinh = DateTime.Parse(row.GetCell(7).StringCellValue);
-                        command.Parameters.AddWithValue("@ngaySinh", ngaySinh);
-                        command.Parameters.AddWithValue("@tinhTrang", true);
-
-                        command.ExecuteNonQuery();
-                        command.Parameters.Clear();
+                        continue;
                     }
 
-                    // Đóng tất cả tài nguyên
-                    command.Dispose();
-                    _conn.Close();
-                    workbook.Close();
-                    file.Close();
+                    command.Parameters.AddWithValue("@maNV", row.GetCell(1).StringCellValue);
+                    command.Parameters.AddWithValue("@tenNV", row.GetCell(2).StringCellValue);
+                    command.Parameters.AddWithValue("@gioiTinh", row.GetCell(3).StringCellValue);
+                    command.Parameters.AddWithValue("@sdt", row.GetCell(4).StringCellValue);
+                    command.Parameters.AddWithValue("@diaChi", row.GetCell(5).StringCellValue);
+                    command.Parameters.AddWithValue("@chucVu", row.GetCell(6).StringCellValue);
+                    DateTime ngaySinh = DateTime.Parse(row.GetCell(7).StringCellValue);
+                    command.Parameters.AddWithValue("@ngaySinh", ngaySinh);
+                    command.Parameters.AddWithValue("@tinhTrang", true);
 
-                    MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    command.ExecuteNonQuery();
+                    command.Parameters.Clear();
+                }
+
+                // Đóng tất cả tài nguyên
+                command.Dispose();
+                _conn.Close();
+                workbook.Close();
+                file.Close();
+
+                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //}
                 //catch (Exception ex)
                 //{
@@ -343,6 +343,44 @@ namespace DAL
             }
         }
 
+        //DangNhap
+        public NhanVienDTO getNhanVien(string maNV)
+        {
+            try
+            {
+                _conn.Open();
+                string query = $"SELECT * FROM nhanVien WHERE tinhTrang = 1 AND maNV ='{maNV}'";
+                NhanVienDTO nv = new NhanVienDTO();
+                SqlCommand cmd = new SqlCommand(query, _conn);
+                SqlDataReader rd = cmd.ExecuteReader();
+                if (rd.Read())
+                {
+                    nv.maNV = rd.GetString(0);
+                    nv.tenNV = rd.GetString(1);
+                    nv.gioiTinh = rd.GetString(2);
+                    nv.sdt = rd.GetString(3);
+                    nv.diaChi = rd.GetString(4);
+                    nv.chucVu = rd.GetString(5);
+                    nv.ngaySinh = rd.GetDateTime(6).ToString();
+                    nv.ngaySinh = rd.GetDateTime(6).ToString();
+                    nv.tinhTrang = true;
+                    return nv;
+                }
+                else
+                {
+                    return null;
+                }
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace DTO
     {
         public string maNV { get; set; }
         public string tenNV { get; set; }
-        public String gioiTinh { get; set; }    
+        public string gioiTinh { get; set; }    
         public string sdt { get; set; }
         public string diaChi { get; set; }
         public string chucVu { get; set; }       

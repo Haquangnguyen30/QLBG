@@ -1,4 +1,5 @@
 ﻿using DAL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -21,5 +22,10 @@ namespace BLL
         {
             return pqDAL.suaQuyen(maQuyen, columnName, check); 
         }
+        public PhanQuyenDTO getPhanQuyen(int id)
+        {
+            return pqDAL.getPhanQuyen(id);
+        }
     }
+    
 }

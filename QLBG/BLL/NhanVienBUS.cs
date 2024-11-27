@@ -77,7 +77,11 @@ namespace BUS
             reader.Close();
             return dataTable;
         }
-
+        // Đăng Nhập
+        public NhanVienDTO getNhanVien(string maNV) 
+        {
+            return dalNhanVien.getNhanVien(maNV);
+        }
 
     }
 }

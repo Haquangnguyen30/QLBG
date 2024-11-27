@@ -12,10 +12,10 @@ namespace DTO
         public int maQuyen { get; set; }
         public string tenDangNhap { get; set; }
         public string matKhau { get; set; }
-        public int tinhTrang { get; set; }
+        public bool tinhTrang { get; set; }
         public TaiKhoanDTO() { }
 
-        public TaiKhoanDTO(string maNV, int maQuyen, string tenDangNhap, string matKhau, int tinhTrang)
+        public TaiKhoanDTO(string maNV, int maQuyen, string tenDangNhap, string matKhau, bool tinhTrang)
         {
             this.maNV = maNV;
             this.maQuyen = maQuyen;

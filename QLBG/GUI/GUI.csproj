@@ -231,6 +231,12 @@
     <Compile Include="BanHang\XoaSuaTTBHGUI.Designer.cs">
       <DependentUpon>XoaSuaTTBHGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="DangNhap\DangNhapGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangNhap\DangNhapGUI.Designer.cs">
+      <DependentUpon>DangNhapGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home\HomeGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -391,6 +397,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BanHang\XoaSuaTTBHGUI.resx">
       <DependentUpon>XoaSuaTTBHGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DangNhap\DangNhapGUI.resx">
+      <DependentUpon>DangNhapGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home\HomeGUI.resx">
       <DependentUpon>HomeGUI.cs</DependentUpon>
