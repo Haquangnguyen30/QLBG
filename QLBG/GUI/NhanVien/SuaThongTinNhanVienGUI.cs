@@ -96,30 +96,24 @@ namespace GUI.NhanVien
             {
                 if (tbTenNv.Text == "")
                 {
-                    lbTenNv.Text = "Vui lòng nhập tên nhân viên!";
+                    MessageBox.Show("Vui lòng nhập tên nhân viên!");
                 }
                 else
-                    lbTenNv.Text = "";
                 if (rtbDiaChi.Text == "")
                 {
-                    lbDiaChi.Text = "Vui lòng nhập đia chỉ nhân viên!";
+                    MessageBox.Show("Vui lòng nhập đia chỉ nhân viên!");
                 }
                 else
-                    lbDiaChi.Text = "";
 
                 if (!rbNam.Checked && !rbNu.Checked)
                 {
-                    lbGioiTinh.Text = "Vui lòng chọn giới tính cho nhân viên!";
+                    MessageBox.Show("Vui lòng chọn giới tính cho nhân viên!");
                 }
                 else
-                    lbGioiTinh.Text = "";
-                if (tbSdt.Text != "" && CheckPhoneNumber(tbSdt.Text.Trim()) && checkDate(dateNgaySinh.Value, lbNgaySinh))
+                    
+                if (tbSdt.Text != "" && CheckPhoneNumber(tbSdt.Text.Trim()) && checkDate(dateNgaySinh.Value))
                 {
-                    lbTenNv.Text = "";
-                    lbSdt.Text = "";
-                    lbNgaySinh.Text = "";
-                    lbGioiTinh.Text = "";
-                    lbChucVu.Text = "";
+                    
                     string gt = "";
                     if (rbNu.Checked)
                     {
@@ -150,28 +144,17 @@ namespace GUI.NhanVien
 
             else if (tbSdt.Text == "")
             {
-                lbSdt.Text = "Vui lòng nhập thông tin vào!";
+                MessageBox.Show("Vui lòng nhập thông tin vào!");
             }
         }
 
         public bool checkNgaySinhVaSdt()
         {
-            if (CheckPhoneNumber(tbSdt.Text.Trim()) && !checkDate(dateNgaySinh.Value, lbNgaySinh))
+            if (CheckPhoneNumber(tbSdt.Text.Trim()) && checkDate(dateNgaySinh.Value))
             {
                 return true;
             }
-            if (checkDate(dateNgaySinh.Value, lbNgaySinh) && !CheckPhoneNumber(tbSdt.Text.Trim()))
-            {
-                return true;
-            }
-            if (CheckPhoneNumber(tbSdt.Text.Trim()) && checkDate(dateNgaySinh.Value, lbNgaySinh))
-            {
-                return true;
-            }
-            if (checkDate(dateNgaySinh.Value, lbNgaySinh) && CheckPhoneNumber(tbSdt.Text.Trim()))
-            {
-                return true;
-            }
+           
             return false;
         }
 
@@ -184,14 +167,14 @@ namespace GUI.NhanVien
             // Kiểm tra đầu vào là null hoặc rỗng
             if (string.IsNullOrEmpty(phoneNumber))
             {
-                lbSdt.Text = "Số điện thoại không được để trống";
+                MessageBox.Show("Số điện thoại không được để trống");
                 return false;
             }
 
             // Kiểm tra độ dài của số điện thoại
             if (phoneNumber.Length != 10 || !phoneNumber.StartsWith("0"))
             {
-                lbSdt.Text = "Số điện thoại không hợp lệ";
+                MessageBox.Show("Số điện thoại không hợp lệ");
                 return false;
             }
 
@@ -202,7 +185,7 @@ namespace GUI.NhanVien
                 {
                     if (!tbMaNv.Text.Equals(nv.maNV))
                     {
-                        lbSdt.Text = "Số điện thoại bị trùng";
+                        MessageBox.Show("Số điện thoại bị trùng");
                         return false;
                     }
                     else
@@ -213,16 +196,15 @@ namespace GUI.NhanVien
             // Kiểm tra sự trùng khớp của số điện thoại với biểu thức chính quy
             if (!Regex.IsMatch(phoneNumber, phonePattern))
             {
-                lbSdt.Text = "Số điện thoại không đúng định dạng";
+                MessageBox.Show("Số điện thoại không đúng định dạng");
                 return false;
             }
-            lbSdt.Text = "";
             return true;
         }
 
 
 
-        public bool checkDate(DateTime ngayTrongMaskedTextBox, Label lbngaySinh)
+        public bool checkDate(DateTime ngayTrongMaskedTextBox)
         {
 
 
@@ -234,12 +216,11 @@ namespace GUI.NhanVien
             {
                 if (ngayTrongMaskedTextBox <= ngay18Tuoi)
                 {
-                    lbngaySinh.Text = "";
                     return true;
                 }
                 else
                 {
-                    lbngaySinh.Text = "Ngày sinh nhỏ hơn 18 tuổi!";
+                    MessageBox.Show("Ngày sinh nhỏ hơn 18 tuổi!");
                     return false;
                 }
 
@@ -247,7 +228,7 @@ namespace GUI.NhanVien
             }
             else if (ngayHienTai <= ngayTrongMaskedTextBox)
             {
-                lbngaySinh.Text = "Không được lớn hơn ngày hiện tại!";
+                MessageBox.Show("Không được lớn hơn ngày hiện tại!");
                 //      MessageBox.Show("ngày sinh lớn hơn ngày hiện tại " + ngayTrongMaskedTextBox.ToString());
                 return false;
             }

@@ -1,4 +1,5 @@
-﻿using BUS;
+﻿using BLL;
+using BUS;
 using ClosedXML.Excel;
 using DTO;
 using GUI.NhanVien;
@@ -17,7 +18,7 @@ namespace GUI.UserControls
     public partial class UC_NhanVien : UserControl
     {
         NhanVienBUS nvBus = new NhanVienBUS();
-        //TaiKhoanBUS tkBus = new TaiKhoanBUS();
+        private QLTaiKhoanBUS tkBus = new QLTaiKhoanBUS();
         NhanVienDTO nvDto = new NhanVienDTO();
         TaiKhoanDTO tkDto = new TaiKhoanDTO();
         public UC_NhanVien()
@@ -39,7 +40,7 @@ namespace GUI.UserControls
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 string ID = row.Cells["cotMaNv"].Value.ToString();
                 // Xóa
-                if (nvBus.xoaNhanVien(ID))
+                if (nvBus.xoaNhanVien(ID)&& tkBus.xoaNhanVien(ID))
                 {
                     MessageBox.Show("Xóa thành công");
                     dataGridView1.DataSource = nvBus.getNhanVien(); // get thanh vien
