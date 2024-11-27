@@ -13,24 +13,26 @@ namespace DTO
         public int maKH { get; set; }
         public DateTime ngayLap { get; set; }
         public float tongTien { get; set; }
+        public int maKM { get; set; }
+        public float tienGiam { get; set; }
         public float tienKhachDua { get; set; }
         public float tienThua { get; set; }
         public bool tinhTrang { get; set; }
-
-
 
         public HoaDonDTO()
         {
 
         }
 
-        public HoaDonDTO(int maHD, string maNV, int maKH, DateTime ngayLap, float tongTien, float tienKhachDua, float tienThua, bool tinhTrang)
+        public HoaDonDTO(int maHD, string maNV, int maKH, DateTime ngayLap, float tongTien, int maKM, float tienGiam, float tienKhachDua, float tienThua, bool tinhTrang)
         {
             this.maHD = maHD;
             this.maNV = maNV;
             this.maKH = maKH;
             this.ngayLap = ngayLap;
             this.tongTien = tongTien;
+            this.maKM = maKM;
+            this.tienGiam = tienGiam;
             this.tienKhachDua = tienKhachDua;
             this.tienThua = tienThua;
             this.tinhTrang = tinhTrang;

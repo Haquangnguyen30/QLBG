@@ -324,5 +324,10 @@ namespace GUI.UserControls
         {
             dgvDSSPCN.Rows.Clear();
         }
+
+        private void guna2Panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

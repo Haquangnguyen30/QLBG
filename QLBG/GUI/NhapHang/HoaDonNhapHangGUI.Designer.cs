@@ -273,6 +273,7 @@
             this.Name = "HoaDonNhapHangGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HoaDonNhapHang";
+            this.Load += new System.EventHandler(this.HoaDonNhapHangGUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSP)).EndInit();
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
