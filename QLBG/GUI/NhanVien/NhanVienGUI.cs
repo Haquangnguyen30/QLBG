@@ -25,9 +25,9 @@ namespace GUI.NhanVien
         }
         private void NhanVienGUI_Load_1(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = this.nvBus.getNhanVien();
-            cotXoa.Text = "Xóa";
-            cotXoa.UseColumnTextForButtonValue = true;
+            //dataGridView1.DataSource = this.nvBus.getNhanVien();
+            //cotXoa.Text = "Xóa";
+            //cotXoa.UseColumnTextForButtonValue = true;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -51,10 +51,10 @@ namespace GUI.NhanVien
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Form themSp = null;
-            themSp = new ThongTinNhanVienGUI(this, dataGridView1);
-            themSp.StartPosition = FormStartPosition.CenterScreen;
-            themSp.ShowDialog();
+            //Form themSp = null;
+            //themSp = new ThongTinNhanVienGUI(this, dataGridView1);
+            //themSp.StartPosition = FormStartPosition.CenterScreen;
+            //themSp.ShowDialog();
         }
 
         private void dataGridView1_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)

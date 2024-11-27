@@ -37,6 +37,10 @@ namespace GUI.NhanVien
             tbTenNv.Enabled = true;
             dateNgaySinh.Enabled = true;
             rtbDiaChi.Enabled = true;
+            rbNam.Enabled = true;
+            rbNu.Enabled = true;
+            
+
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -116,12 +120,22 @@ namespace GUI.NhanVien
                     lbNgaySinh.Text = "";
                     lbGioiTinh.Text = "";
                     lbChucVu.Text = "";
+                    string gt = "";
+                    if (rbNu.Checked)
+                    {
+                        gt = "Nữ";
+                    }
+                    else
+                    {
+                        gt = "Nam";
+                    }
                     this.nvDto.tenNV = tbTenNv.Text;
                     //this.nvDto.ngaySinhNv = xuLyNgaySinh();
                     this.nvDto.ngaySinh = dateNgaySinh.Value.ToShortDateString();
                     this.nvDto.sdt = tbSdt.Text.Trim();
                     this.nvDto.chucVu = this.nvDto.chucVu;
                     this.nvDto.diaChi = rtbDiaChi.Text;
+                    this.nvDto.gioiTinh=gt;
                     //updatePhanQuyen(nvDto.chucVu);
                     if (nvBus.suaNhanVien(nvDto)/* &&tkBus.suaTk(tkDto)*/)
                     {
@@ -241,6 +255,10 @@ namespace GUI.NhanVien
 
             return false;
         }
-        
+
+        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
