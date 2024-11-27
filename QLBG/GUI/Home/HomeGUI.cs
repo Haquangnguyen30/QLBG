@@ -35,7 +35,7 @@ namespace GUI.Home
             btnNhanVien.Visible = pq.qlyNV;
             btnKhuyenMai.Visible = pq.qlyKM;
             btnThongKe.Visible = pq.xemThongKe;
-            btnPhanQuyen.Visible =pq.qlyTK;
+            btnPhanQuyen.Visible = pq.qlyTK;
 
             
         }

@@ -52,7 +52,6 @@ namespace GUI.DangNhap
             {
                 NhanVienDTO nv = nvBUS.getNhanVien(tk.maNV);
                 PhanQuyenDTO pq = pqBUS.getPhanQuyen(tk.maQuyen);
-                MessageBox.Show(pq.maQuyen + " " + pq.tenQuyen);
                 HomeGUI home = new HomeGUI(nv, pq);
                 home.Show();
                 this.Hide();
