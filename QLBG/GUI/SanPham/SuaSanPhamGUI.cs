@@ -1,5 +1,6 @@
 ﻿using BLL;
 using DTO;
+using Org.BouncyCastle.Crypto.Fpe;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -106,23 +107,33 @@ namespace GUI.SanPham
             }
             else
             {
-                sanPham = new SanPhamDTO();
-                sanPham.maSP = txtMaSanPham.Text.Trim();
-                sanPham.tenSP = txtTenSanPham.Text.Trim();
-                sanPham.giaBan = float.Parse(txtGiaBan.Text);
-                sanPham.giaNhap = float.Parse(txtGiaNhap.Text);
-                sanPham.mau = txtMau.Text.Trim();
-                sanPham.maLoai = int.Parse(cbMaLoai.SelectedItem.ToString());
-                sanPham.img = txtMaSanPham.Text;
+                SanPhamDTO spUpdate = new SanPhamDTO();
+                spUpdate.maSP = txtMaSanPham.Text.Trim();
+                spUpdate.tenSP = txtTenSanPham.Text.Trim();
+                spUpdate.giaBan = float.Parse(txtGiaBan.Text);
+                spUpdate.giaNhap = float.Parse(txtGiaNhap.Text);
+                spUpdate.mau = txtMau.Text.Trim();
+                spUpdate.maLoai = int.Parse(cbMaLoai.SelectedItem.ToString());
 
-                if (spBUS.updateSanPham(sanPham))
+                string currentImg = sanPham.img;
+                string[] imParts = currentImg.Split('_');
+                if(imParts.Length == 2 && int.TryParse(imParts[1], out int version))
+                {
+                    spUpdate.img = imParts[0] + "_" + (version + 1).ToString();
+                }
+                else
+                {
+                    spUpdate.img = currentImg + "_1";
+                }
+
+                if (spBUS.updateSanPham(spUpdate))
                 {
                     if (tempImagePath != null)
                     {
                         try
                         {
                             string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                            string destPath = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\ImgSanPham", txtMaSanPham.Text);
+                            string destPath = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\ImgSanPham", spUpdate.img);
                             Directory.CreateDirectory(Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\ImgSanPham"));
                           
 

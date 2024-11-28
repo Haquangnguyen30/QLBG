@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DAL
 {
@@ -266,10 +267,6 @@ namespace DAL
             }
             return false;
         }
-        //"SELECT s.maSP, s.tenSP, s.giaBan, COALESCE(SUM(sk.soLuong), 0) AS soLuong, s.giaNhap, s.mau, s.maLoai " +
-        //                                           "FROM sanPham s LEFT JOIN sanPham_KichCo sk ON s.maSP = sk.maSP " +
-        //                                           "WHERE s.tinhTrang = 1 AND (maSP LIKE @search OR tenSP LIKE @search OR mau LIKE @search OR maLoai LIKE @search)" +
-        //                                           "GROUP BY s.maSP, s.tenSP, s.giaBan, s.giaNhap, s.mau, s.maLoai;"
         public DataTable searchSanPham(string strSearch)
         {
             DataTable dt = new DataTable();
@@ -285,6 +282,43 @@ namespace DAL
 
             }
             return dt;
+        }
+        public SanPhamDTO getSanPham(string maSP)
+        {
+            try
+            {
+                _conn.Open();
+                string query = $"SELECT * FROM sanPham WHERE maSP = '{maSP}' AND tinhTrang = 1";
+                SqlCommand cmd = new SqlCommand(query, _conn);
+                SqlDataReader rd = cmd.ExecuteReader();
+                SanPhamDTO sp = new SanPhamDTO();
+                if (rd.Read()) 
+                {
+                    sp.maSP = rd.GetString(0);
+                    sp.tenSP = rd.GetString(1);
+                    sp.giaBan = float.Parse(rd.GetDouble(2).ToString());
+                    sp.soLuong = rd.GetInt32(3);
+                    sp.img = rd.GetString(4);
+                    sp.giaNhap = float.Parse(rd.GetDouble(5).ToString());
+                    sp.mau = rd.GetString(6);
+                    sp.tinhTrang = rd.GetBoolean(7);
+                    sp.maLoai = rd.GetInt32(8);
+                    return sp ;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally 
+            {
+                _conn.Close();
+            }
         }
     }
 }
