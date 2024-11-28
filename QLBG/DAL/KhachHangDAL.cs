@@ -46,6 +46,11 @@ namespace DAL
             {
                 Console.WriteLine(ex.Message);
             }
+            finally
+            {
+                // Dong ket noi
+                _conn.Close();
+            }
 
             return null;
 
@@ -97,6 +102,11 @@ namespace DAL
             {
                 Console.WriteLine(ex.Message);
             }
+            finally
+            {
+                // Dong ket noi
+                _conn.Close();
+            }
 
             return null;
         }
@@ -131,6 +141,11 @@ namespace DAL
             catch (SqlException ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                // Dong ket noi
+                _conn.Close();
             }
 
             return null;

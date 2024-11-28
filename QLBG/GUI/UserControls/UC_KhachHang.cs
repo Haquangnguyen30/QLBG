@@ -39,11 +39,6 @@ namespace GUI.UserControls
         {
             
         }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            
-        }
         public bool CheckPhoneNumber(string phoneNumber)
         {
             // Biểu thức chính quy kiểm tra số điện thoại với định dạng cụ thể (10 số và bắt đầu bằng số 0)
@@ -87,10 +82,6 @@ namespace GUI.UserControls
             }
             lbSdt.Text = "";
             return true;
-        }
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void tblKh_CellClick(object sender, DataGridViewCellEventArgs e)

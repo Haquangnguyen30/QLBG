@@ -71,6 +71,11 @@ namespace DAL
             {
                 Console.WriteLine(ex.Message);
             }
+            finally
+            {
+                // Dong ket noi
+                _conn.Close();
+            }
 
             return null;
 
@@ -122,7 +127,10 @@ namespace DAL
 
                 // Query và kiểm tra
                 if (cmd.ExecuteNonQuery() > 0)
-                    return true;
+                {
+                    _conn.Close();
+                    return true; 
+                }
 
             }
             catch (Exception e)
@@ -164,7 +172,11 @@ namespace DAL
                     int rowsAffected = cmd.ExecuteNonQuery();
 
                     if (rowsAffected > 0)
+                    {
+                        _conn.Close();
                         return true;
+                    }
+                        
                 }
             }
             catch (Exception e)

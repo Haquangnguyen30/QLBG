@@ -16,7 +16,10 @@ namespace DAL
         {
             try
             {
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
                 string sql = "select * from khuyenMai";
                 List<KhuyenMaiDTO> list = new List<KhuyenMaiDTO>();
                 SqlCommand cmd = new SqlCommand(sql, _conn);
