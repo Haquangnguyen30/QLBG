@@ -402,7 +402,7 @@ namespace DAL
                     nv.diaChi = rd.GetString(4);
                     nv.chucVu = rd.GetString(5);
                     nv.ngaySinh = rd.GetDateTime(6).ToString();
-                    nv.email= rd.GetString(7);
+                    nv.email= rd.GetString(8);
                     nv.tinhTrang = true;
                     return nv;
                 }
