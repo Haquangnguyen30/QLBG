@@ -157,10 +157,11 @@ namespace GUI.UserControls
         }
         string kichco = "";
         int maKichCo = 0;
+        int stock = 0;
         private void SizeButton_Click(object sender, EventArgs e, string maSP, int selectedSize,string tenkichco)
         {
             // Lấy số lượng tồn kho từ cơ sở dữ liệu
-            int stock = BHbll.GetSoLuongTheoSize(maSP, selectedSize);
+            stock = BHbll.GetSoLuongTheoSize(maSP, selectedSize);
 
             if (stock > 0)
             {
@@ -171,57 +172,72 @@ namespace GUI.UserControls
             else
             {
                 lblStock.Text = "Không có sản phẩm cho size này";
+                stock = 0;
             }
         }
         // Thêm sản phẩm hiện tại vào giỏ hàng
         private void btnAddToCart_Click(object sender, EventArgs e)
         {
-            if (currentProduct != null)
+            if (currentProduct == null)
             {
-                // Thêm sản phẩm hiện tại vào ListView giỏ hàng
-                int soLuong = (int)txtSoLuong.Value;
-                float giaBan = currentProduct.giaBan;
-                string mau = currentProduct.mau;
-                int maKC = maKichCo;
-                AddToCart(currentProduct, mau,soLuong, kichco, maKC); // Mặc định số lượng là 1
+                MessageBox.Show("Vui lòng chọn sản phẩm!");
+            }
+            // Thêm sản phẩm hiện tại vào ListView giỏ hàng
+            else if (currentProduct != null && kichco == "")
+            {               
+                MessageBox.Show("Vui lòng chọn kích cỡ");
+            }
+            else if (currentProduct != null && kichco != "" && stock == 0)
+            {
+                MessageBox.Show("Sản phẩm đã hết hàng vui lòng chọn sản phẩm khác!");
+            }
+            else
+            {
+                if((int)txtSoLuong.Value > stock){
+                    MessageBox.Show("Số lượng sản phẩm vượt mức!");
+                    txtSoLuong.Value = stock;
+                }
+                else
+                {
+                    int soLuong = (int)txtSoLuong.Value;
+                    float giaBan = currentProduct.giaBan;
+                    string mau = currentProduct.mau;
+                    int maKC = maKichCo;
+                    AddToCart(currentProduct, mau, soLuong, kichco, maKC); // Mặc định số lượng là 1
+                }
             }
         }
 
         // Thêm sản phẩm vào ListView giỏ hàng
         private void AddToCart(SanPhamDTO product, string mau,int quantity,string kichco, int makichco)
         {
-            if(kichco == "")
+            
+            // Kiểm tra xem sản phẩm đã có trong giỏ hàng hay chưa
+            foreach (DataGridViewRow row in GioHangDataGridView.Rows)
             {
-                MessageBox.Show("Vui lòng chọn kích cỡ");
-            }
-            else
-            {
-                // Kiểm tra xem sản phẩm đã có trong giỏ hàng hay chưa
-                foreach (DataGridViewRow row in GioHangDataGridView.Rows)
+                if (row.Cells["tenSP"].Value.ToString() == product.tenSP && row.Cells["kichCo"].Value.ToString() == kichco)
                 {
-                    if (row.Cells["tenSP"].Value.ToString() == product.tenSP && row.Cells["kichCo"].Value.ToString() == kichco)
-                    {
-                        // Cập nhật số lượng nếu sản phẩm đã tồn tại
-                        int currentQuantity = int.Parse(row.Cells["soLuong"].Value.ToString());
-                        currentQuantity += quantity;
-                        row.Cells["soLuong"].Value = currentQuantity;
-                        row.Cells["ThanhTien"].Value = product.giaBan * currentQuantity;
-                        TinhTongTien();
-                        return;
-                    }
+                    // Cập nhật số lượng nếu sản phẩm đã tồn tại
+                    int currentQuantity = int.Parse(row.Cells["soLuong"].Value.ToString());
+                    currentQuantity += quantity;
+                    row.Cells["soLuong"].Value = currentQuantity;
+                    row.Cells["ThanhTien"].Value = product.giaBan * currentQuantity;
+                    TinhTongTien();
+                    return;
                 }
-                float thanhTien = product.giaBan * quantity;
-                // Thêm sản phẩm mới vào giỏ hàng
-                GioHangDataGridView.Rows.Add(product.maSP,product.tenSP,product.mau, kichco, product.giaBan.ToString("N0"), quantity, thanhTien.ToString("N0"),makichco);
-                TinhTongTien();
             }
+            float thanhTien = product.giaBan * quantity;
+            // Thêm sản phẩm mới vào giỏ hàng
+            GioHangDataGridView.Rows.Add(product.maSP,product.tenSP,product.mau, kichco, product.giaBan.ToString("N0"), quantity, thanhTien.ToString("N0"),makichco);
+            TinhTongTien();
+            
         }
         //Load danh sách hoá đơn
         private void ConfigureCartGridBH()
         {
             GioHangDataGridView.Columns.Clear();
-            GioHangDataGridView.Columns.Add("maSP", "Mã Sản Phẩm");
-            GioHangDataGridView.Columns.Add("tenSP", "Tên Sản Phẩm");
+            GioHangDataGridView.Columns.Add("maSP", "Mã SP");
+            GioHangDataGridView.Columns.Add("tenSP", "Tên SP");
             GioHangDataGridView.Columns.Add("mau", "Màu");
             GioHangDataGridView.Columns.Add("kichCo", "Kích Cỡ");
             GioHangDataGridView.Columns.Add("giaBan", "Giá Bán");
@@ -548,6 +564,12 @@ namespace GUI.UserControls
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnThemKH_Click(object sender, EventArgs e)
+        {
+            ThemKhachHangGUI formKhachHang = new ThemKhachHangGUI(cbKhachHang);
+            DialogResult result = formKhachHang.ShowDialog();
         }
     }
 }

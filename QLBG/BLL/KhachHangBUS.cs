@@ -59,5 +59,9 @@ namespace BLL
 
             return result;
         }
+        public int getMaxMaKH()
+        {
+            return dalKhachHang.getMaxMaKH();
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace DAL
 {
@@ -204,6 +205,20 @@ namespace DAL
             }
 
             return false;
+        }
+        public int getMaxMaKH()
+        {
+            try
+            {
+                String queryString = "SELECT MAX(maKH) FROM khachHang";
+
+                return DatabaseConnect.queryScalar(queryString, null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy mã khách hàng lớn nhất: " + ex.Message);
+                return -1;
+            }
         }
 
     }
