@@ -33,28 +33,28 @@ namespace GUI.NhanVien
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (checkNgaySinhVaSdt())
+            if (checkNgaySinhVaSdt() && CheckEmai(guna2TextBox1.Text))
             {
                 if (tbTenNv.Text == "")
                 {
                     MessageBox.Show("Vui lòng nhập tên nhân viên!");
                 }
-
+                else
                 if (rtbDiaChi.Text == "")
                 {
                     MessageBox.Show("Vui lòng nhập đia chỉ nhân viên!");
                 }
-
+                else
 
                 if (!rbNam.Checked && !rbNu.Checked)
                 {
                     MessageBox.Show("Vui lòng chọn giới tính cho nhân viên!");
                 }
-
-                if (tbTenNv.Text != "" && tbSdt.Text != "" && (rbNam.Checked || rbNu.Checked) && dateNgaySinh.Value.ToShortDateString() != "" && rtbDiaChi.Text != "")
+                else
+                //if (tbTenNv.Text != "" && tbSdt.Text != "" && (rbNam.Checked || rbNu.Checked) && dateNgaySinh.Value.ToShortDateString() != "" && rtbDiaChi.Text != "")
                 {
 
-                    nvDto = new NhanVienDTO(capNhatId2(), tbTenNv.Text, XuLyGioiTinh(), tbSdt.Text.Trim(), rtbDiaChi.Text, "Tạm chưa có", dateNgaySinh.Value.ToShortDateString(), true);
+                    nvDto = new NhanVienDTO(capNhatId2(), tbTenNv.Text, XuLyGioiTinh(), tbSdt.Text.Trim(), rtbDiaChi.Text, "Tạm chưa có", dateNgaySinh.Value.ToShortDateString(), true, guna2TextBox1.Text);
                     int maSo = nvBus.getList().Count + 1;
                     string tenDn = "nhanvien" + maSo;
                     string mk = "nhanvien" + maSo;
@@ -118,6 +118,35 @@ namespace GUI.NhanVien
             }
             return gioiTinh;
 
+        }
+
+        public bool CheckEmai(string emai)
+        {
+            // Kiểm tra nếu email trống
+            if (string.IsNullOrWhiteSpace(emai))
+            {
+                MessageBox.Show("Email không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            // Định nghĩa regex kiểm tra email hợp lệ
+            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (!Regex.IsMatch(emai, emailPattern))
+            {
+                MessageBox.Show("Email không hợp lệ! Vui lòng nhập đúng định dạng email.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            foreach (NhanVienDTO nv in nvBus.getList())
+            {
+                if (emai.Equals(nv.email.Trim()) )
+                {
+                    MessageBox.Show("Email bị trùng!");
+                    return false;
+                }
+            }
+
+            // Email hợp lệ
+            return true;
         }
         public bool CheckPhoneNumber(string phoneNumber)
         {

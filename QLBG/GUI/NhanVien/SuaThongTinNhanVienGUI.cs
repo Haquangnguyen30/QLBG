@@ -1,5 +1,6 @@
 ﻿using BUS;
 using DTO;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +40,9 @@ namespace GUI.NhanVien
             rtbDiaChi.Enabled = true;
             rbNam.Enabled = true;
             rbNu.Enabled = true;
-            
+            guna2TextBox1.Enabled = true;
+
+
 
         }
 
@@ -68,6 +71,7 @@ namespace GUI.NhanVien
             rbNam.Enabled = false;
             rbNu.Enabled = false;
             rtbDiaChi.Enabled = false;
+            guna2TextBox1.Enabled = false;
 
 
             tbMaNv.Text = nvDto.maNV;
@@ -85,14 +89,14 @@ namespace GUI.NhanVien
                 rbNu.Checked = true;
             }
             dateNgaySinh.Text = nvDto.ngaySinh;
-
+            guna2TextBox1.Text= nvDto.email;
 
         }
 
 
         public void suaThongTinNhanVien()
         {
-            if (checkNgaySinhVaSdt())
+            if (checkNgaySinhVaSdt() && CheckEmai(guna2TextBox1.Text))
             {
                 if (tbTenNv.Text == "")
                 {
@@ -111,7 +115,7 @@ namespace GUI.NhanVien
                 }
                 else
                     
-                if (tbSdt.Text != "" && CheckPhoneNumber(tbSdt.Text.Trim()) && checkDate(dateNgaySinh.Value))
+                //if (tbSdt.Text != "" && CheckPhoneNumber(tbSdt.Text.Trim()) && checkDate(dateNgaySinh.Value))
                 {
                     
                     string gt = "";
@@ -130,6 +134,7 @@ namespace GUI.NhanVien
                     this.nvDto.chucVu = this.nvDto.chucVu;
                     this.nvDto.diaChi = rtbDiaChi.Text;
                     this.nvDto.gioiTinh=gt;
+                    this.nvDto.email= guna2TextBox1.Text;
                     //updatePhanQuyen(nvDto.chucVu);
                     if (nvBus.suaNhanVien(nvDto)/* &&tkBus.suaTk(tkDto)*/)
                     {
@@ -158,7 +163,39 @@ namespace GUI.NhanVien
             return false;
         }
 
+        public bool CheckEmai(string emai)
+        {
+            // Kiểm tra nếu email trống
+            if (string.IsNullOrWhiteSpace(emai))
+            {
+                MessageBox.Show("Email không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
+            // Định nghĩa regex kiểm tra email hợp lệ
+            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (!Regex.IsMatch(emai, emailPattern))
+            {
+                MessageBox.Show("Email không hợp lệ! Vui lòng nhập đúng định dạng email.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            foreach (NhanVienDTO nv in nvBus.getList())
+            {
+                if (emai.Equals(nv.email.Trim()) )
+                {
+                    if (!tbMaNv.Text.Equals(nv.maNV))
+                    {
+                        MessageBox.Show("email thoại bị trùng");
+                        return false;
+                    }
+                    else
+                        return true;
+                }
+            }
+
+            // Email hợp lệ
+            return true;
+        }
         public bool CheckPhoneNumber(string phoneNumber)
         {
             // Biểu thức chính quy kiểm tra số điện thoại với định dạng cụ thể (10 số và bắt đầu bằng số 0)

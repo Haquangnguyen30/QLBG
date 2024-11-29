@@ -15,11 +15,12 @@ namespace DTO
         public string diaChi { get; set; }
         public string chucVu { get; set; }       
         public string ngaySinh { get; set; }
+        public string email { get; set; }
         public bool tinhTrang { get; set; }
 
         public NhanVienDTO() { }
 
-        public NhanVienDTO(string maNV, string tenNV, string gioiTinh, string sdt, string diaChi, string chucVu, string ngaySinh, bool tinhTrang)
+        public NhanVienDTO(string maNV, string tenNV, string gioiTinh, string sdt, string diaChi, string chucVu, string ngaySinh, bool tinhTrang,string email)
         {
             this.maNV = maNV;
             this.tenNV = tenNV;
@@ -29,6 +30,7 @@ namespace DTO
             this.chucVu = chucVu;
             this.ngaySinh = ngaySinh;
             this.tinhTrang = tinhTrang;
+            this.email = email;
         }
     }
 }

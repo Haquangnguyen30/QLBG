@@ -130,6 +130,7 @@ namespace GUI.UserControls
                     nvDto.diaChi = row.Cells["cotDiaChi"].Value.ToString();
                     nvDto.chucVu = row.Cells["cotChucVu"].Value.ToString();
                     nvDto.ngaySinh = row.Cells["cotNgaySinh"].Value.ToString();
+                    nvDto.email= row.Cells["Column1"].Value.ToString();
                     //nvDto.tinhTrang = true;
                     //tkDto = tkBus.getTk(nvDto.maNV);
                     thongTinNv = new SuaThongTinNhanVienGUI(nvDto, dataGridView1);

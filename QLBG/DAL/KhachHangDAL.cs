@@ -22,7 +22,10 @@ namespace DAL
         {
             try
             {
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
                 string sql = "select * from khachHang";
                 List<KhachHangDTO> list = new List<KhachHangDTO>();
                 SqlCommand cmd = new SqlCommand(sql, _conn);
@@ -80,7 +83,10 @@ namespace DAL
         {
             try
             {
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
                 string sql = string.Format("select * from khachHang where sdt = '{0}'", sdt);
                 KhachHangDTO kh = new KhachHangDTO();
                 SqlCommand cmd = new SqlCommand(sql, _conn);
@@ -156,7 +162,10 @@ namespace DAL
             try
             {
                 // Ket noi
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
 
                 // Query string to update the "tinhTrang" column to 'False' for the specified "maNV"
                 string SQL = string.Format("UPDATE khachHang SET tenKH = @tenKH, sdt = @sdt WHERE maKH = @maKH");
@@ -193,7 +202,10 @@ namespace DAL
             try
             {
                 // Ket noi
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
 
 
                 string SQL =

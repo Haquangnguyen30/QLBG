@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnSua = new Guna.UI2.WinForms.Guna2Button();
             this.dateNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -45,7 +46,8 @@
             this.btnLuu = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.btnSua = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel3.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +57,8 @@
             this.guna2Panel3.BackColor = System.Drawing.Color.White;
             this.guna2Panel3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.guna2Panel3.BorderRadius = 20;
+            this.guna2Panel3.Controls.Add(this.guna2TextBox1);
+            this.guna2Panel3.Controls.Add(this.guna2HtmlLabel7);
             this.guna2Panel3.Controls.Add(this.btnSua);
             this.guna2Panel3.Controls.Add(this.dateNgaySinh);
             this.guna2Panel3.Controls.Add(this.guna2HtmlLabel4);
@@ -78,6 +82,26 @@
             this.guna2Panel3.Size = new System.Drawing.Size(404, 563);
             this.guna2Panel3.TabIndex = 10;
             // 
+            // btnSua
+            // 
+            this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSua.BackColor = System.Drawing.Color.Transparent;
+            this.btnSua.BorderRadius = 20;
+            this.btnSua.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSua.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSua.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSua.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSua.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
+            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.btnSua.ForeColor = System.Drawing.Color.White;
+            this.btnSua.Location = new System.Drawing.Point(2, 503);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(121, 39);
+            this.btnSua.TabIndex = 98;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
             // dateNgaySinh
             // 
             this.dateNgaySinh.CustomFormat = "dd/MM/yyyy";
@@ -93,7 +117,7 @@
             this.guna2HtmlLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(49, 348);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(69, 385);
             this.guna2HtmlLabel4.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             this.guna2HtmlLabel4.Size = new System.Drawing.Size(54, 19);
@@ -105,7 +129,7 @@
             this.guna2HtmlLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(49, 253);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(60, 295);
             this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(63, 19);
@@ -134,7 +158,7 @@
             // 
             // rtbDiaChi
             // 
-            this.rtbDiaChi.Location = new System.Drawing.Point(158, 348);
+            this.rtbDiaChi.Location = new System.Drawing.Point(158, 385);
             this.rtbDiaChi.Name = "rtbDiaChi";
             this.rtbDiaChi.Size = new System.Drawing.Size(202, 96);
             this.rtbDiaChi.TabIndex = 93;
@@ -146,7 +170,7 @@
             this.guna2GroupBox1.Controls.Add(this.rbNam);
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2GroupBox1.Location = new System.Drawing.Point(158, 253);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(158, 295);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(202, 84);
             this.guna2GroupBox1.TabIndex = 92;
@@ -326,25 +350,40 @@
             this.guna2HtmlLabel6.TabIndex = 84;
             this.guna2HtmlLabel6.Text = "Tên nhân viên :";
             // 
-            // btnSua
+            // guna2HtmlLabel7
             // 
-            this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSua.BackColor = System.Drawing.Color.Transparent;
-            this.btnSua.BorderRadius = 20;
-            this.btnSua.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSua.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSua.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSua.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSua.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
-            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.btnSua.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Location = new System.Drawing.Point(2, 503);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(121, 39);
-            this.btnSua.TabIndex = 98;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            this.guna2HtmlLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel7.Location = new System.Drawing.Point(78, 241);
+            this.guna2HtmlLabel7.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
+            this.guna2HtmlLabel7.Size = new System.Drawing.Size(45, 19);
+            this.guna2HtmlLabel7.TabIndex = 99;
+            this.guna2HtmlLabel7.Text = "Email :";
+            // 
+            // guna2TextBox1
+            // 
+            this.guna2TextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox1.DefaultText = "";
+            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.IconRightCursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2TextBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.guna2TextBox1.Location = new System.Drawing.Point(158, 241);
+            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.guna2TextBox1.Name = "guna2TextBox1";
+            this.guna2TextBox1.PasswordChar = '\0';
+            this.guna2TextBox1.PlaceholderText = "";
+            this.guna2TextBox1.SelectedText = "";
+            this.guna2TextBox1.Size = new System.Drawing.Size(202, 34);
+            this.guna2TextBox1.TabIndex = 100;
             // 
             // SuaThongTinNhanVienGUI
             // 
@@ -383,5 +422,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
         private Guna.UI2.WinForms.Guna2Button btnSua;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
     }
 }

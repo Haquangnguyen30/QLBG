@@ -141,5 +141,17 @@ namespace GUI.UserControls
                 MessageBox.Show("Tên khách hàng không được để trống!");
             }
         }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            tblKh.DataSource = this.khBus.getKhachHang();
+            
+            tbMaKh.Text = "";
+            tbTenKh.Text = "";
+            tbSdt.Text = "";
+            tbTenKh.Enabled = false;
+            tbSdt.Enabled = false;
+        }
     }
 }

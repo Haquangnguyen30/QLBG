@@ -28,9 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnThem = new Guna.UI2.WinForms.Guna2Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnNhap = new Guna.UI2.WinForms.Guna2Button();
+            this.btnXuat = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cotMaNv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cotTenNv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,150 +45,12 @@
             this.cotDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cotChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cotNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cotXoa = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnThem = new Guna.UI2.WinForms.Guna2Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnNhap = new Guna.UI2.WinForms.Guna2Button();
-            this.btnXuat = new Guna.UI2.WinForms.Guna2Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.guna2GroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cotMaNv,
-            this.cotTenNv,
-            this.cotGioiTinh,
-            this.cotSdt,
-            this.cotDiaChi,
-            this.cotChucVu,
-            this.cotNgaySinh,
-            this.cotXoa});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 25);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView1.Size = new System.Drawing.Size(926, 450);
-            this.dataGridView1.TabIndex = 4;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
-            // 
-            // cotMaNv
-            // 
-            this.cotMaNv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cotMaNv.DataPropertyName = "maNV";
-            this.cotMaNv.HeaderText = "Mã Nhân viên";
-            this.cotMaNv.MinimumWidth = 6;
-            this.cotMaNv.Name = "cotMaNv";
-            this.cotMaNv.ReadOnly = true;
-            // 
-            // cotTenNv
-            // 
-            this.cotTenNv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cotTenNv.DataPropertyName = "tenNV";
-            this.cotTenNv.HeaderText = "Họ Tên Nhân Viên";
-            this.cotTenNv.MinimumWidth = 6;
-            this.cotTenNv.Name = "cotTenNv";
-            this.cotTenNv.ReadOnly = true;
-            // 
-            // cotGioiTinh
-            // 
-            this.cotGioiTinh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cotGioiTinh.DataPropertyName = "gioiTinh";
-            this.cotGioiTinh.HeaderText = "Giới Tính";
-            this.cotGioiTinh.MinimumWidth = 6;
-            this.cotGioiTinh.Name = "cotGioiTinh";
-            this.cotGioiTinh.ReadOnly = true;
-            // 
-            // cotSdt
-            // 
-            this.cotSdt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cotSdt.DataPropertyName = "sdt";
-            this.cotSdt.HeaderText = "Số Điện Thoại";
-            this.cotSdt.MinimumWidth = 6;
-            this.cotSdt.Name = "cotSdt";
-            this.cotSdt.ReadOnly = true;
-            // 
-            // cotDiaChi
-            // 
-            this.cotDiaChi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cotDiaChi.DataPropertyName = "diaChi";
-            this.cotDiaChi.HeaderText = "Địa chỉ";
-            this.cotDiaChi.MinimumWidth = 6;
-            this.cotDiaChi.Name = "cotDiaChi";
-            this.cotDiaChi.ReadOnly = true;
-            // 
-            // cotChucVu
-            // 
-            this.cotChucVu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cotChucVu.DataPropertyName = "chucVu";
-            this.cotChucVu.HeaderText = "Chức Vụ";
-            this.cotChucVu.MinimumWidth = 6;
-            this.cotChucVu.Name = "cotChucVu";
-            this.cotChucVu.ReadOnly = true;
-            // 
-            // cotNgaySinh
-            // 
-            this.cotNgaySinh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cotNgaySinh.DataPropertyName = "ngaySinh";
-            this.cotNgaySinh.HeaderText = "Ngày Sinh";
-            this.cotNgaySinh.MinimumWidth = 6;
-            this.cotNgaySinh.Name = "cotNgaySinh";
-            this.cotNgaySinh.ReadOnly = true;
-            // 
-            // cotXoa
-            // 
-            this.cotXoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cotXoa.HeaderText = "Xóa";
-            this.cotXoa.MinimumWidth = 6;
-            this.cotXoa.Name = "cotXoa";
-            this.cotXoa.ReadOnly = true;
-            this.cotXoa.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cotXoa.Width = 35;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(51, 81);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(938, 481);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Danh sách nhân viên";
             // 
             // btnThem
             // 
@@ -263,27 +131,175 @@
             this.btnXuat.Text = "Xuất file excel";
             this.btnXuat.Click += new System.EventHandler(this.btnXuat_Click);
             // 
+            // guna2GroupBox1
+            // 
+            this.guna2GroupBox1.Controls.Add(this.dataGridView1);
+            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
+            this.guna2GroupBox1.Location = new System.Drawing.Point(55, 85);
+            this.guna2GroupBox1.Name = "guna2GroupBox1";
+            this.guna2GroupBox1.Size = new System.Drawing.Size(945, 547);
+            this.guna2GroupBox1.TabIndex = 66;
+            this.guna2GroupBox1.Text = "Danh sách nhân viên";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cotMaNv,
+            this.cotTenNv,
+            this.cotGioiTinh,
+            this.cotSdt,
+            this.cotDiaChi,
+            this.cotChucVu,
+            this.cotNgaySinh,
+            this.Column1,
+            this.cotXoa});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Location = new System.Drawing.Point(9, 48);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.Size = new System.Drawing.Size(926, 450);
+            this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
+            // 
+            // cotMaNv
+            // 
+            this.cotMaNv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cotMaNv.DataPropertyName = "maNV";
+            this.cotMaNv.HeaderText = "Mã Nhân viên";
+            this.cotMaNv.MinimumWidth = 6;
+            this.cotMaNv.Name = "cotMaNv";
+            this.cotMaNv.ReadOnly = true;
+            // 
+            // cotTenNv
+            // 
+            this.cotTenNv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cotTenNv.DataPropertyName = "tenNV";
+            this.cotTenNv.HeaderText = "Họ Tên Nhân Viên";
+            this.cotTenNv.MinimumWidth = 6;
+            this.cotTenNv.Name = "cotTenNv";
+            this.cotTenNv.ReadOnly = true;
+            // 
+            // cotGioiTinh
+            // 
+            this.cotGioiTinh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cotGioiTinh.DataPropertyName = "gioiTinh";
+            this.cotGioiTinh.HeaderText = "Giới Tính";
+            this.cotGioiTinh.MinimumWidth = 6;
+            this.cotGioiTinh.Name = "cotGioiTinh";
+            this.cotGioiTinh.ReadOnly = true;
+            // 
+            // cotSdt
+            // 
+            this.cotSdt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cotSdt.DataPropertyName = "sdt";
+            this.cotSdt.HeaderText = "Số Điện Thoại";
+            this.cotSdt.MinimumWidth = 6;
+            this.cotSdt.Name = "cotSdt";
+            this.cotSdt.ReadOnly = true;
+            // 
+            // cotDiaChi
+            // 
+            this.cotDiaChi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cotDiaChi.DataPropertyName = "diaChi";
+            this.cotDiaChi.HeaderText = "Địa chỉ";
+            this.cotDiaChi.MinimumWidth = 6;
+            this.cotDiaChi.Name = "cotDiaChi";
+            this.cotDiaChi.ReadOnly = true;
+            // 
+            // cotChucVu
+            // 
+            this.cotChucVu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cotChucVu.DataPropertyName = "chucVu";
+            this.cotChucVu.HeaderText = "Chức Vụ";
+            this.cotChucVu.MinimumWidth = 6;
+            this.cotChucVu.Name = "cotChucVu";
+            this.cotChucVu.ReadOnly = true;
+            // 
+            // cotNgaySinh
+            // 
+            this.cotNgaySinh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cotNgaySinh.DataPropertyName = "ngaySinh";
+            this.cotNgaySinh.HeaderText = "Ngày Sinh";
+            this.cotNgaySinh.MinimumWidth = 6;
+            this.cotNgaySinh.Name = "cotNgaySinh";
+            this.cotNgaySinh.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "email";
+            this.Column1.HeaderText = "Email";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // cotXoa
+            // 
+            this.cotXoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cotXoa.HeaderText = "Xóa";
+            this.cotXoa.MinimumWidth = 6;
+            this.cotXoa.Name = "cotXoa";
+            this.cotXoa.ReadOnly = true;
+            this.cotXoa.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cotXoa.Width = 33;
+            // 
             // UC_NhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.guna2GroupBox1);
             this.Controls.Add(this.btnXuat);
             this.Controls.Add(this.btnNhap);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnThem);
-            this.Controls.Add(this.groupBox1);
             this.Name = "UC_NhanVien";
             this.Size = new System.Drawing.Size(1200, 753);
             this.Load += new System.EventHandler(this.UC_NhanVien_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.guna2GroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+        private Guna.UI2.WinForms.Guna2Button btnThem;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private Guna.UI2.WinForms.Guna2Button btnNhap;
+        private Guna.UI2.WinForms.Guna2Button btnXuat;
+        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn cotMaNv;
         private System.Windows.Forms.DataGridViewTextBoxColumn cotTenNv;
@@ -292,12 +308,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cotDiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn cotChucVu;
         private System.Windows.Forms.DataGridViewTextBoxColumn cotNgaySinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewButtonColumn cotXoa;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private Guna.UI2.WinForms.Guna2Button btnThem;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private Guna.UI2.WinForms.Guna2Button btnNhap;
-        private Guna.UI2.WinForms.Guna2Button btnXuat;
     }
 }
