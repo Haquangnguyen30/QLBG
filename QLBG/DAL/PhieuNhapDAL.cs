@@ -12,22 +12,23 @@ namespace DAL
 {
     public class PhieuNhapDAL : DatabaseConnect
     {
+        SqlConnection _conn = DatabaseConnect._conn;
         public DataTable getDSPN(String fromDate, String toDate, String nv, String ncc, String tongTien, bool checkDown)
         {
             try
             {   
+                if(_conn.State != ConnectionState.Open) _conn.Open();
+
                 String compare = checkDown ? "<=" : ">=";
 
-                String sSql = "SELECT pn.maPN, nv.tenNV, n.tenNCC, pn.ngayLap, pn.tongTien FROM phieuNhap pn " +
-                                "INNER JOIN nhanVien nv ON pn.maNV = nv.maNV " +
-                                "INNER JOIN ncc n ON pn.maNCC = n.maNCC " +
-                                "WHERE pn.tinhTrang = 1 " +
-                                $"AND nv.tenNV LIKE '%{nv}%' " +
-                                $"AND n.tenNCC LIKE '%{ncc}%' " +
-                                $"AND pn.tongTien {compare} '{tongTien}' " +
-                                $"AND pn.ngayLap BETWEEN '{fromDate}' AND '{toDate}'";
-
-                SqlDataReader reader = DatabaseConnect.queryData(sSql);
+                String sql = @"SELECT pn.maPN, nv.tenNV, n.tenNCC, pn.ngayLap, pn.tongTien FROM phieuNhap pn 
+                                INNER JOIN nhanVien nv ON pn.maNV = nv.maNV 
+                                INNER JOIN ncc n ON pn.maNCC = n.maNCC 
+                                WHERE pn.tinhTrang = 1 
+                                AND nv.tenNV LIKE @nv 
+                                AND n.tenNCC LIKE @ncc
+                                AND pn.tongTien " + compare + @" @tongTien
+                                AND pn.ngayLap BETWEEN @fromDate AND @toDate";
 
                 DataTable dataTable = new DataTable();
 
@@ -37,25 +38,39 @@ namespace DAL
                 dataTable.Columns.Add("Ngày lập");
                 dataTable.Columns.Add("Tổng tiền");
 
-                while (reader.Read())
+                using (SqlCommand sqlCommand = new SqlCommand(sql, _conn))
                 {
-                    DataRow row = dataTable.NewRow();
-                    row["Mã PN"] = reader.GetInt32(0);
-                    row["Nhân viên"] = reader.GetString(1);
-                    row["Nhà cung cấp"] = reader.GetString(2);
-                    row["Ngày lập"] = reader.GetDateTime(3).ToString("yyyy-MM-dd");
-                    row["Tổng tiền"] = reader.GetDouble(4).ToString("N0");
+                    sqlCommand.Parameters.AddWithValue("@nv", "%" + nv + "%");
+                    sqlCommand.Parameters.AddWithValue("@ncc", "%" + ncc + "%");
+                    sqlCommand.Parameters.AddWithValue("@tongTien", tongTien.Replace(",", ""));
+                    sqlCommand.Parameters.AddWithValue("@fromDate", fromDate);
+                    sqlCommand.Parameters.AddWithValue("@toDate", toDate);
 
-                    dataTable.Rows.Add(row);
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            DataRow row = dataTable.NewRow();
+                            row["Mã PN"] = reader.GetInt32(0);
+                            row["Nhân viên"] = reader.GetString(1);
+                            row["Nhà cung cấp"] = reader.GetString(2);
+                            row["Ngày lập"] = reader.GetDateTime(3).ToString("yyyy-MM-dd");
+                            row["Tổng tiền"] = reader.GetDouble(4).ToString("N0");
+
+                            dataTable.Rows.Add(row);
+                        }
+                    }
                 }
-
-                reader.Close();
                 return dataTable;
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Lỗi lấy danh sách phiếu nhập: " + ex.Message);
                 return null;
+            }
+            finally
+            {
+                if(_conn.State == ConnectionState.Open) _conn.Close();
             }
         }
 
@@ -64,19 +79,22 @@ namespace DAL
         {
             try
             {
-                String insertString = "INSERT INTO phieuNhap (maPN, maNV, maNCC, ngayLap, tongTien, tinhTrang) " +
+                if(_conn.State == ConnectionState.Closed) _conn.Open();
+
+                String sql = "INSERT INTO phieuNhap (maPN, maNV, maNCC, ngayLap, tongTien, tinhTrang) " +
                     "OUTPUT INSERTED.maPN VALUES (@maPN, @maNV, @maNCC, @ngayLap, @tongTien, @tinhTrang)";
 
-                List<SqlParameter> parameters = new List<SqlParameter>();
+                using(SqlCommand sqlCommand = new SqlCommand(sql, _conn))
+                {
+                    sqlCommand.Parameters.AddWithValue("@maPN", phieuNhap.maPN);
+                    sqlCommand.Parameters.AddWithValue("@maNV", phieuNhap.maNV);
+                    sqlCommand.Parameters.AddWithValue("@maNCC", phieuNhap.maNCC);
+                    sqlCommand.Parameters.AddWithValue("@ngayLap", phieuNhap.ngayLap);
+                    sqlCommand.Parameters.AddWithValue("@tongTien", phieuNhap.tongTien);
+                    sqlCommand.Parameters.AddWithValue("@tinhTrang", phieuNhap.tinhTrang);
 
-                parameters.Add(new SqlParameter("@maPN", phieuNhap.maPN));
-                parameters.Add(new SqlParameter("@maNV", phieuNhap.maNV));
-                parameters.Add(new SqlParameter("@maNCC", phieuNhap.maNCC));
-                parameters.Add(new SqlParameter("@ngayLap", phieuNhap.ngayLap));
-                parameters.Add(new SqlParameter("@tongTien", phieuNhap.tongTien));
-                parameters.Add(new SqlParameter("@tinhTrang", phieuNhap.tinhTrang));
-
-                return DatabaseConnect.queryScalar(insertString, parameters); //Trả về maPN vừa tạo
+                    return (int)sqlCommand.ExecuteScalar();
+                }
 
             }
             catch (Exception ex)
@@ -84,20 +102,33 @@ namespace DAL
                 Console.WriteLine("Lỗi thêm phiếu nhập: " + ex.ToString());
                 return 0;
             }
+            finally
+            {
+                if(_conn.State == ConnectionState.Open) _conn.Close();
+            }
         }
 
         public int getMaxMaPN()
         {
             try
             {
-                String queryString = "SELECT MAX(maPN) FROM phieuNhap";
+                if (_conn.State != ConnectionState.Open) _conn.Open ();
 
-                return DatabaseConnect.queryScalar(queryString, null);
+                String sql = "SELECT MAX(maPN) FROM phieuNhap";
+
+                using(SqlCommand sqlCommand = new SqlCommand(sql, _conn))
+                {
+                    return (int) sqlCommand.ExecuteScalar();
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Lỗi khi lấy mã phiếu nhập lớn nhất: " + ex.Message);
                 return -1;
+            }
+            finally
+            {
+                if(_conn.State == ConnectionState.Open) _conn.Close ();
             }
         }
     }

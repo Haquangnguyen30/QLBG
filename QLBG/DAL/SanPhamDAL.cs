@@ -71,6 +71,8 @@ namespace DAL
         {
             try
             {
+                if (_conn.State != ConnectionState.Open) _conn.Open();
+
                 int soLuong = 0;
                 String queryString = $"SELECT sk.soLuong FROM sanPham_KichCo sk WHERE sk.maSP = '{maSP}' AND sk.makichCo = {makichCo}";
 
@@ -90,24 +92,39 @@ namespace DAL
                 Console.WriteLine("Lỗi lấy số lượng của kích cỡ: " + ex.ToString());
                 return -1;
             }
+            finally
+            {
+                if (_conn.State == ConnectionState.Open) _conn.Close();
+            }
         }
 
         public int suaSoLuongKichCo(String maSP, int maKichCo, int soLuong)
         {
             try
             {
-                String updateString = "UPDATE sanPham_KichCo SET " +
-                                        $"soLuong = {soLuong} " +
-                                        $"WHERE maSP = '{maSP}' AND makichCo = {maKichCo}";
-                List<SqlParameter> list = new List<SqlParameter>();
-                list = null;
+                if (_conn.State != ConnectionState.Open) _conn.Open();
 
-                return DatabaseConnect.updateData(updateString, null);
+                String sql = "UPDATE sanPham_KichCo SET " +
+                                        $"soLuong = @soLuong " +
+                                        $"WHERE maSP = @maSP AND makichCo = @maKichCo";
+
+                using (SqlCommand sqlCommand = new SqlCommand(sql, _conn))
+                {
+                    sqlCommand.Parameters.AddWithValue("@soLuong", soLuong);
+                    sqlCommand.Parameters.AddWithValue("@maSP", maSP);
+                    sqlCommand.Parameters.AddWithValue("@maKichCo", maKichCo);
+
+                    return sqlCommand.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Lỗi cập nhật số lượng của kích cỡ: " + ex.ToString());
                 return 0;
+            }
+            finally
+            {
+                if (_conn.State == ConnectionState.Open) _conn.Close();
             }
         }
 
@@ -115,21 +132,29 @@ namespace DAL
         {
             try
             {
-                String insertString = "INSERT INTO sanPham_KichCo (maSP, makichCo, soLuong, tinhTrang) " +
+                if(_conn.State != ConnectionState.Open) _conn.Open();
+
+                String sql = "INSERT INTO sanPham_KichCo (maSP, makichCo, soLuong, tinhTrang) " +
                                 "VALUES (@maSP, @makichCo, @soLuong, @tinhTrang)";
 
-                List<SqlParameter> parameters = new List<SqlParameter>();
-                parameters.Add(new SqlParameter("@maSP", maSP));
-                parameters.Add(new SqlParameter("@makichCo", maKichCo));
-                parameters.Add(new SqlParameter("@soLuong", soLuong));
-                parameters.Add(new SqlParameter("@tinhTrang", true));
+                using(SqlCommand sqlCommand = new SqlCommand(sql, _conn))
+                {
+                    sqlCommand.Parameters.AddWithValue("@maSP", maSP);
+                    sqlCommand.Parameters.AddWithValue("@makichCo", maKichCo);
+                    sqlCommand.Parameters.AddWithValue("@soLuong", soLuong);
+                    sqlCommand.Parameters.AddWithValue("@tinhTrang", true);
 
-                return DatabaseConnect.updateData(insertString, parameters);
+                    return sqlCommand.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Lỗi thêm số lượng của kích cỡ: " + ex.ToString());
                 return 0;
+            }
+            finally
+            {
+                if(_conn.State == ConnectionState.Open) _conn.Close();
             }
         }
 

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeGUI));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnDangXuat = new Guna.UI2.WinForms.Guna2Button();
             this.btnPhanQuyen = new Guna.UI2.WinForms.Guna2Button();
             this.btnThongKe = new Guna.UI2.WinForms.Guna2Button();
             this.btnKhuyenMai = new Guna.UI2.WinForms.Guna2Button();
@@ -50,7 +51,6 @@
             this.uC_NhapHang1 = new GUI.UserControls.UC_NhapHang();
             this.uC_KhachHang1 = new GUI.UserControls.UC_KhachHang();
             this.uC_BanHang1 = new GUI.UserControls.UC_BanHang();
-            this.btnDangXuat = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgSlide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
@@ -80,6 +80,34 @@
             this.guna2Panel1.Size = new System.Drawing.Size(160, 753);
             this.guna2Panel1.TabIndex = 0;
             this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
+            // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.BackColor = System.Drawing.Color.Transparent;
+            this.btnDangXuat.BorderRadius = 20;
+            this.btnDangXuat.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnDangXuat.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnDangXuat.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
+            this.btnDangXuat.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.btnDangXuat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDangXuat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDangXuat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDangXuat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDangXuat.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
+            this.btnDangXuat.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnDangXuat.ForeColor = System.Drawing.Color.White;
+            this.btnDangXuat.Image = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.Image")));
+            this.btnDangXuat.ImageOffset = new System.Drawing.Point(-45, 0);
+            this.btnDangXuat.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnDangXuat.Location = new System.Drawing.Point(-7, 678);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(178, 50);
+            this.btnDangXuat.TabIndex = 12;
+            this.btnDangXuat.Text = "Đăng Xuất";
+            this.btnDangXuat.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDangXuat.TextOffset = new System.Drawing.Point(50, 0);
+            this.btnDangXuat.UseTransparentBackground = true;
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // btnPhanQuyen
             // 
@@ -445,34 +473,6 @@
             this.uC_BanHang1.TabIndex = 0;
             this.uC_BanHang1.Load += new System.EventHandler(this.uC_BanHang1_Load);
             // 
-            // btnDangXuat
-            // 
-            this.btnDangXuat.BackColor = System.Drawing.Color.Transparent;
-            this.btnDangXuat.BorderRadius = 20;
-            this.btnDangXuat.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btnDangXuat.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btnDangXuat.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
-            this.btnDangXuat.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.btnDangXuat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnDangXuat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnDangXuat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnDangXuat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnDangXuat.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
-            this.btnDangXuat.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnDangXuat.ForeColor = System.Drawing.Color.White;
-            this.btnDangXuat.Image = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.Image")));
-            this.btnDangXuat.ImageOffset = new System.Drawing.Point(-45, 0);
-            this.btnDangXuat.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnDangXuat.Location = new System.Drawing.Point(-7, 678);
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(178, 50);
-            this.btnDangXuat.TabIndex = 12;
-            this.btnDangXuat.Text = "Đăng Xuất";
-            this.btnDangXuat.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnDangXuat.TextOffset = new System.Drawing.Point(50, 0);
-            this.btnDangXuat.UseTransparentBackground = true;
-            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
-            // 
             // HomeGUI
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -487,6 +487,7 @@
             this.Name = "HomeGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OUR STORE";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeGUI_FormClosing);
             this.Load += new System.EventHandler(this.HomeGUI_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();

@@ -189,14 +189,14 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.ColumnHeadersHeight = 30;
+            this.dataGridView1.ColumnHeadersHeight = 15;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -475,6 +475,8 @@
             this.dgvPhanQuyen.ThemeStyle.RowsStyle.Height = 24;
             this.dgvPhanQuyen.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvPhanQuyen.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvPhanQuyen.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhanQuyen_CellValueChanged_1);
+            this.dgvPhanQuyen.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvPhanQuyen_CurrentCellDirtyStateChanged_1);
             // 
             // lblDSSPCN
             // 
@@ -484,7 +486,7 @@
             this.lblDSSPCN.ForeColor = System.Drawing.Color.Black;
             this.lblDSSPCN.Location = new System.Drawing.Point(43, 15);
             this.lblDSSPCN.Name = "lblDSSPCN";
-            this.lblDSSPCN.Size = new System.Drawing.Size(217, 18);
+            this.lblDSSPCN.Size = new System.Drawing.Size(226, 19);
             this.lblDSSPCN.TabIndex = 23;
             this.lblDSSPCN.Text = "DANH SÁCH PHÂN QUYỀN";
             // 

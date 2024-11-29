@@ -109,10 +109,10 @@ namespace GUI.UserControls
                         }
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Không có sản phẩm nào để hiển thị.");
-                }
+                //else
+                //{
+                //    MessageBox.Show("Không có sản phẩm nào để hiển thị.");
+                //}
             }
             catch (Exception ex)
             {
