@@ -107,16 +107,27 @@ namespace GUI.UserControls
             string matKhau = textBox6.Text;
             if (ValidateInput(maNV, maQuyenStr, tenDangNhap, matKhau))
             {
+                int flag = 0;
                 if (int.TryParse(maQuyenStr, out int maQuyen))
                 {
                     // Lấy đối tượng tài khoản
                     var existingAccount = this.tkBus.getTk(maNV);
 
-                    if (existingAccount != null && existingAccount.maNV == maNV)
+                    if (existingAccount != null )
                     {
-                        MessageBox.Show("Tài khoản đã tồn tại. Vui lòng chọn tên đăng nhập khác.");
+                        MessageBox.Show("Nhân viên này đã có tài khoản");
+                        flag = 1;
                     }
                     else
+                    foreach (TaiKhoanDTO tk in tkBus.getlist())
+                    {
+                        if (tenDangNhap.Equals(tk.tenDangNhap.Trim()))
+                        {
+                            MessageBox.Show("Tài khoản đã tồn tại");
+                            flag = 1;
+                        }
+                    }
+                    if(flag == 0)
                     {
                         tkDto.maNV = maNV;
                         tkDto.maQuyen = maQuyen;
@@ -168,38 +179,48 @@ namespace GUI.UserControls
 
             if (ValidateInput(maNV, maQuyenStr, tenDangNhap, matKhau))
             {
+                int flag = 0;
+
                 if (int.TryParse(maQuyenStr, out int maQuyen))
                 {
                     tkDto.maNV = maNV;
                     tkDto.maQuyen = maQuyen;
                     tkDto.tenDangNhap = tenDangNhap;
                     tkDto.matKhau = matKhau;
-
-                    if (tkBus.suaTaiKhoan(tkDto))
+                    foreach (TaiKhoanDTO tk in tkBus.getlist())
                     {
-                        MessageBox.Show("Sửa thành công!");
-                        dataGridView1.DataSource = this.tkBus.getTaiKhoan();
-                        comboBox1.SelectedValue = -1;
-                        comboBox2.SelectedValue = -1;
-                        textBox1.Text = string.Empty;
-                        textBox6.Text = string.Empty;
-                        comboBox1.SelectedValue = -1;
-                        comboBox2.SelectedValue = -1;
-                        string chucvu = "";
-                        if (maQuyen == 1)
-                            chucvu = "Admin";
-                        if (maQuyen == 2)
-                            chucvu = "Quản lý";
-                        if (maQuyen == 3)
-                            chucvu = "Nhân Viên";
-                        if (maQuyen == 4)
-                            chucvu = "Thủ kho";
-                        nvBus.capNhapChucVu(maNV, chucvu);
+                        if (tenDangNhap.Equals(tk.tenDangNhap.Trim()) && !maNV.Equals(tk.maNV))
+                        {
+                            MessageBox.Show("Tài khoản đã tồn tại");
+                            flag = 1;
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Sửa không thành công. Kiểm tra lại thông tin.");
-                    }
+                    if(flag==0)
+                        if (tkBus.suaTaiKhoan(tkDto))
+                        {
+                            MessageBox.Show("Sửa thành công!");
+                            dataGridView1.DataSource = this.tkBus.getTaiKhoan();
+                            comboBox1.SelectedValue = -1;
+                            comboBox2.SelectedValue = -1;
+                            textBox1.Text = string.Empty;
+                            textBox6.Text = string.Empty;
+                            comboBox1.SelectedValue = -1;
+                            comboBox2.SelectedValue = -1;
+                            string chucvu = "";
+                            if (maQuyen == 1)
+                                chucvu = "Admin";
+                            if (maQuyen == 2)
+                                chucvu = "Quản lý";
+                            if (maQuyen == 3)
+                                chucvu = "Nhân Viên";
+                            if (maQuyen == 4)
+                                chucvu = "Thủ kho";
+                            nvBus.capNhapChucVu(maNV, chucvu);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sửa không thành công. Kiểm tra lại thông tin.");
+                        }
                 }
                 else
                 {
@@ -212,6 +233,15 @@ namespace GUI.UserControls
 
         private void button1_Click(object sender, EventArgs e)
         {
+            dgvPhanQuyen.DataSource = pqBUS.getDSQuyen();
+            dgvPhanQuyen.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.DataSource = this.tkBus.getTaiKhoan();
+            comboBox2.DataSource = tkBus.getAllMaNhanVien();
+            comboBox2.DisplayMember = "tenNV"; // Tên cột bạn muốn hiển thị
+            comboBox2.ValueMember = "maNV";
+            comboBox1.DataSource = tkBus.getAllMaQuyen();
+            comboBox1.DisplayMember = "tenQuyen"; // Tên cột bạn muốn hiển thị
+            comboBox1.ValueMember = "maQuyen";
             comboBox1.SelectedValue = -1;
             comboBox2.SelectedValue = -1;
             textBox1.Text = string.Empty;

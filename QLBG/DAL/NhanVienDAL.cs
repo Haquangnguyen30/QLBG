@@ -21,7 +21,10 @@ namespace DAL
         {
             List<String> list = new List<String>();
             String sSql = "select maNV from NhanVien where chucVu like '%Nhân viên%' order by maNV";
-            _conn.Open();
+            if (_conn.State != ConnectionState.Open)
+            {
+                _conn.Open();
+            }
             if (_conn.State == ConnectionState.Closed)
             {
                 //MessageBox.Show("Không thể kết nối DATABASE");
@@ -42,7 +45,10 @@ namespace DAL
         {
             try
             {
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
                 string sql = "select * from nhanVien";
                 List<NhanVienDTO> list = new List<NhanVienDTO>();
                 SqlCommand cmd = new SqlCommand(sql, _conn);
@@ -59,6 +65,7 @@ namespace DAL
                     nv.chucVu = reader["chucVu"].ToString();
                     nv.ngaySinh = reader["ngaySinh"].ToString();
                     nv.tinhTrang = reader.GetBoolean(reader.GetOrdinal("tinhTrang"));
+                    nv.email = reader["email"].ToString();
                     list.Add(nv);
                 }
 
@@ -71,6 +78,11 @@ namespace DAL
             {
                 Console.WriteLine(ex.Message);
             }
+            finally
+            {
+                // Dong ket noi
+                _conn.Close();
+            }
 
             return null;
 
@@ -78,7 +90,7 @@ namespace DAL
 
         public DataTable getNhanVien()
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT maNV, tenNV, gioiTinh, sdt, diaChi, chucVu, ngaySinh FROM nhanVien WHERE tinhTrang = 1", _conn);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT maNV, tenNV, gioiTinh, sdt, diaChi, chucVu, ngaySinh,email FROM nhanVien WHERE tinhTrang = 1", _conn);
             DataTable dtThanhvien = new DataTable();
 
             da.Fill(dtThanhvien);
@@ -91,7 +103,7 @@ namespace DAL
             using (SqlConnection connection = new SqlConnection(_conn.ConnectionString))
             {
                 connection.Open();
-                string sqlQuery = "SELECT  maNV, tenNV, gioiTinh, sdt, diaChi, chucVu, ngaySinh FROM nhanVien WHERE tinhTrang = 1 AND (maNV LIKE @key OR tenNV LIKE @key OR sdt LIKE @key OR chucVu LIKE @key OR ngaySinh LIKE @key )";
+                string sqlQuery = "SELECT  maNV, tenNV, gioiTinh, sdt, diaChi, chucVu, ngaySinh,email FROM nhanVien WHERE tinhTrang = 1 AND (maNV LIKE @key OR tenNV LIKE @key OR sdt LIKE @key OR chucVu LIKE @key OR ngaySinh LIKE @key )";
                 SqlDataAdapter da;
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                 {
@@ -110,19 +122,25 @@ namespace DAL
             try
             {
                 // Ket noi
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
 
 
                 string SQL =
-                string.Format("INSERT INTO nhanVien( maNV, tenNV, gioiTinh, sdt, diaChi, chucVu, ngaySinh, tinhTrang) VALUES ('{0}', N'{1}', '{2}', '{3}', N'{4}', N'{5}', '{6}', '{7}')"
-                , tv.maNV, tv.tenNV, tv.gioiTinh, tv.sdt, tv.diaChi, tv.chucVu, tv.ngaySinh, tv.tinhTrang);
+                string.Format("INSERT INTO nhanVien( maNV, tenNV, gioiTinh, sdt, diaChi, chucVu, ngaySinh, tinhTrang,email) VALUES ('{0}', N'{1}', '{2}', '{3}', N'{4}', N'{5}', '{6}', '{7}', '{8}')"
+                , tv.maNV, tv.tenNV, tv.gioiTinh, tv.sdt, tv.diaChi, tv.chucVu, tv.ngaySinh, tv.tinhTrang,tv.email);
 
                 // Command (mặc định command type = text nên chúng ta khỏi fải làm gì nhiều).
                 SqlCommand cmd = new SqlCommand(SQL, _conn);
 
                 // Query và kiểm tra
                 if (cmd.ExecuteNonQuery() > 0)
-                    return true;
+                {
+                    _conn.Close();
+                    return true; 
+                }
 
             }
             catch (Exception e)
@@ -143,10 +161,13 @@ namespace DAL
             try
             {
                 // Ket noi
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
 
                 // Query string to update the "tinhTrang" column to 'False' for the specified "maNV"
-                string SQL = string.Format("UPDATE nhanVien SET tenNV = @tenNV, gioiTinh = @gioiTinh, sdt = @sdt, diaChi = @diaChi, chucVu =@chucVu, ngaySinh = @ngaySinh  WHERE maNV = @maNV");
+                string SQL = string.Format("UPDATE nhanVien SET tenNV = @tenNV, gioiTinh = @gioiTinh, sdt = @sdt, diaChi = @diaChi, chucVu =@chucVu, ngaySinh = @ngaySinh, email= @email  WHERE maNV = @maNV");
 
                 // Create a SqlCommand object
                 using (SqlCommand cmd = new SqlCommand(SQL, _conn))
@@ -159,12 +180,17 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@diaChi", nv.diaChi);
                     cmd.Parameters.AddWithValue("@chucVu", nv.chucVu);
                     cmd.Parameters.AddWithValue("@ngaySinh", nv.ngaySinh);
+                    cmd.Parameters.AddWithValue("@email", nv.email);
 
                     // Execute the SQL UPDATE statement
                     int rowsAffected = cmd.ExecuteNonQuery();
 
                     if (rowsAffected > 0)
+                    {
+                        _conn.Close();
                         return true;
+                    }
+                        
                 }
             }
             catch (Exception e)
@@ -185,7 +211,10 @@ namespace DAL
             try
             {
                 // Ket noi
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
 
                 // Query string to update the "tinhTrang" column to 'False' for the specified "maNV"
                 string SQL = string.Format("UPDATE nhanVien SET tinhTrang = 'False' WHERE maNV = @maNV");
@@ -221,7 +250,10 @@ namespace DAL
             try
             {
                 // Ket noi
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
 
                 // Query string to update the "tinhTrang" column to 'False' for the specified "maNV"
                 string SQL = string.Format("UPDATE nhanVien SET chucVu =@chucVu WHERE maNV = @maNV");
@@ -268,11 +300,14 @@ namespace DAL
 
                 XSSFWorkbook workbook = new XSSFWorkbook(file);
                 XSSFSheet sheet = (XSSFSheet)workbook.GetSheetAt(0);
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
 
 
                 string sql = "MERGE INTO nhanVien AS target "
-                           + "USING (VALUES (@maNV, @tenNV, @gioiTinh ,@sdt, @diaChi, @chucVu, @ngaySinh, @tinhTrang)) AS source (maNV, tenNV, gioiTinh, sdt, diaChi, chucVu,  ngaySinh, tinhTrang) "
+                           + "USING (VALUES (@maNV, @tenNV, @gioiTinh ,@sdt, @diaChi, @chucVu, @ngaySinh, @tinhTrang,@email)) AS source (maNV, tenNV, gioiTinh, sdt, diaChi, chucVu,  ngaySinh, tinhTrang,email) "
                            + "ON (target.maNV = source.maNV) "
                            + "WHEN MATCHED THEN "
                            + "    UPDATE SET target.tenNV = source.tenNV, "
@@ -281,10 +316,11 @@ namespace DAL
                            + "               target.diaChi = source.diaChi, "
                            + "               target.chucVu = source.chucVu, "
                            + "               target.ngaySinh = source.ngaySinh, "
-                           + "               target.tinhTrang = source.tinhTrang "
+                           + "               target.tinhTrang = source.tinhTrang, "
+                           + "               target.email = source.email "
                            + "WHEN NOT MATCHED THEN "
-                           + "    INSERT (maNV, tenNV, gioiTinh, sdt, diaChi, chucVu, ngaySinh, tinhTrang) "
-                           + "    VALUES (source.maNV, source.tenNV, source.gioiTinh, source.sdt, source.diaChi, source.chucVu, source.ngaySinh, source.tinhTrang);";
+                           + "    INSERT (maNV, tenNV, gioiTinh, sdt, diaChi, chucVu, ngaySinh, tinhTrang,email) "
+                           + "    VALUES (source.maNV, source.tenNV, source.gioiTinh, source.sdt, source.diaChi, source.chucVu, source.ngaySinh, source.tinhTrang,source.email);";
 
                 SqlCommand command = new SqlCommand(sql, _conn);
 
@@ -305,6 +341,7 @@ namespace DAL
                     DateTime ngaySinh = DateTime.Parse(row.GetCell(7).StringCellValue);
                     command.Parameters.AddWithValue("@ngaySinh", ngaySinh);
                     command.Parameters.AddWithValue("@tinhTrang", true);
+                    command.Parameters.AddWithValue("@email", row.GetCell(8).StringCellValue);
 
                     command.ExecuteNonQuery();
                     command.Parameters.Clear();
@@ -348,7 +385,10 @@ namespace DAL
         {
             try
             {
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
                 string query = $"SELECT * FROM nhanVien WHERE tinhTrang = 1 AND maNV ='{maNV}'";
                 NhanVienDTO nv = new NhanVienDTO();
                 SqlCommand cmd = new SqlCommand(query, _conn);
@@ -362,7 +402,7 @@ namespace DAL
                     nv.diaChi = rd.GetString(4);
                     nv.chucVu = rd.GetString(5);
                     nv.ngaySinh = rd.GetDateTime(6).ToString();
-                    nv.ngaySinh = rd.GetDateTime(6).ToString();
+                    nv.email= rd.GetString(7);
                     nv.tinhTrang = true;
                     return nv;
                 }

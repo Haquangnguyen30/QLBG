@@ -17,7 +17,7 @@ namespace DAL
     public class DatabaseConnect
     {
         //ông nào muốn chạy thì mở phần comment của mình, không xóa các comment connect chung
-        //protected SqlConnection _conn = new SqlConnection("Data Source=DESKTOP-GH32RKT\\SQLEXPRESS;Initial Catalog=DoAnCSharp;Integrated Security=True");
+        //protected static SqlConnection _conn = new SqlConnection("Data Source=DESKTOP-GH32RKT\\SQLEXPRESS;Initial Catalog=QLBG;Integrated Security=True");
         //protected static SqlConnection _conn = new SqlConnection("Data Source=localhost;Initial Catalog=QLBG;User ID=sa;Password=Password1@");
         //protected static SqlConnection _conn = new SqlConnection("Data Source=DESKTOP-EVA6OFD\\SQLEXPRESS;Initial Catalog=QLBG;Integrated Security=True");
         protected static SqlConnection _conn = new SqlConnection("Data Source=WINDOWS-10\\SQLEXPRESS;Initial Catalog=QLBG;Integrated Security=True");
@@ -43,6 +43,7 @@ namespace DAL
                 MessageBox.Show(ex.Message);
                 return null;
             }
+
         }
 
         public static int updateData(String sql, List<SqlParameter> parameters)

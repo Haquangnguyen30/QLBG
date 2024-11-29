@@ -16,7 +16,10 @@ namespace DAL
         {
             try
             {
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
                 string sql = "select * from khuyenMai";
                 List<KhuyenMaiDTO> list = new List<KhuyenMaiDTO>();
                 SqlCommand cmd = new SqlCommand(sql, _conn);
@@ -77,7 +80,10 @@ namespace DAL
             try
             {
                 // Mở kết nối đến CSDL
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
 
                 // Tạo câu SQL để thêm dữ liệu vào bảng "khuyenMai"
                 string SQL = "INSERT INTO khuyenMai (maKM, tenKM,giaTriGiam, ngayBD, ngayKT,tinhTrang) VALUES (@maKM, @tenKM,@giaTriGiam, @ngayBD, @ngayKT,@tinhTrang)";
@@ -115,7 +121,10 @@ namespace DAL
             try
             {
                 // Mở kết nối đến CSDL
-                _conn.Open();
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
 
                 // Câu SQL để cập nhật thông tin khuyến mãi
                 string SQL = "UPDATE khuyenMai SET tenKM = @tenKM,giaTriGiam=@giaTriGiam, ngayBD = @ngayBD, ngayKT = @ngayKT,tinhTrang=@tinhTrang WHERE maKM = @maKM";

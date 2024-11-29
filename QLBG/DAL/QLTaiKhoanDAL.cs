@@ -234,6 +234,49 @@ namespace DAL
             return list;
         }
 
+        public List<TaiKhoanDTO> getList()
+        {
+            try
+            {
+                if (_conn.State != ConnectionState.Open)
+                {
+                    _conn.Open();
+                }
+                string sql = "select * from taiKhoan";
+                List<TaiKhoanDTO> list = new List<TaiKhoanDTO>();
+                SqlCommand cmd = new SqlCommand(sql, _conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    TaiKhoanDTO tk = new TaiKhoanDTO();
+                    tk.maNV = reader["maNV"].ToString();
+                    tk.maQuyen = reader.GetInt32(reader.GetOrdinal("maQuyen"));
+                    tk.tenDangNhap = reader["tenDangNhap"].ToString();
+                    tk.matKhau = reader["matKhau"].ToString();
+                    tk.tinhTrang = reader.GetBoolean(reader.GetOrdinal("tinhTrang"));
+                    list.Add(tk);
+                }
+
+                reader.Close();
+                _conn.Close();
+                return list;
+
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                // Dong ket noi
+                _conn.Close();
+            }
+
+            return null;
+
+        }
+
         public DataTable getTaiKhoan()
         {
             SqlDataAdapter adapter = new SqlDataAdapter("SELECT maNV, maQuyen, tenDangNhap, matKhau FROM taiKhoan WHERE tinhTrang = 1", _conn);
