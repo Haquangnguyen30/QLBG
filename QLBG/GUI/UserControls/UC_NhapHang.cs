@@ -19,17 +19,18 @@ using System.Windows.Forms;
 
 namespace GUI.UserControls
 {
-    public partial class UC_NhapHang : UserControl
+    public partial class UC_NhapHang : UserControl 
     {
         private PhieuNhapBUS pnBUS = new PhieuNhapBUS();
         private ChiTietPhieuNhapBUS ctpnBUS = new ChiTietPhieuNhapBUS();
         private SanPhamBUS spBUS = new SanPhamBUS();
         private NhaCungCapBUS nccBUS = new NhaCungCapBUS();
         private NhanVienBUS nvBUS = new NhanVienBUS();
+        private NhanVienDTO currentNV;
         public UC_NhapHang()
         {
             InitializeComponent();
-
+            this.currentNV = UserSession.Instance.currentNV;
         }
         private void UC_NhapHang_Load(object sender, EventArgs e)
         {
@@ -38,9 +39,11 @@ namespace GUI.UserControls
             cbxNCC.DisplayMember = "Tên NCC";
             cbxNCC.ValueMember = "Mã NCC";
 
-            cbxNhanVien.DataSource = nvBUS.getDSTenNV();
-            cbxNhanVien.DisplayMember = "Tên NV";
-            cbxNhanVien.ValueMember = "Mã NV";
+            //cbxNhanVien.DataSource = nvBUS.getDSTenNV();
+            //cbxNhanVien.DisplayMember = "Tên NV";
+            //cbxNhanVien.ValueMember = "Mã NV";
+
+            txtNhanVien.Text = currentNV.tenNV;
 
             addSPCNColumns();
         }
@@ -235,12 +238,12 @@ namespace GUI.UserControls
             cbxNCC.ValueMember = "Mã NCC";
         }
 
-        private void cbxNhanVien_DropDown(object sender, EventArgs e)
-        {
-            cbxNhanVien.DataSource = nvBUS.getDSTenNV();
-            cbxNhanVien.DisplayMember = "Tên NV";
-            cbxNhanVien.ValueMember = "Mã NV";
-        }
+        //private void cbxNhanVien_DropDown(object sender, EventArgs e)
+        //{
+        //    cbxNhanVien.DataSource = nvBUS.getDSTenNV();
+        //    cbxNhanVien.DisplayMember = "Tên NV";
+        //    cbxNhanVien.ValueMember = "Mã NV";
+        //}
 
         private void btnReaload_Click(object sender, EventArgs e)
         {
@@ -258,8 +261,8 @@ namespace GUI.UserControls
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            String tenNV = cbxNhanVien.Text;
-            String maNV = cbxNhanVien.SelectedValue.ToString();
+            String tenNV = currentNV.tenNV;
+            String maNV = currentNV.maNV;
             String tenNCC = cbxNCC.Text;
             String maNCC = cbxNCC.SelectedValue.ToString();
             String tongTien = txtTongTien.Text;

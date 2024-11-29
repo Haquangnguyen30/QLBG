@@ -89,7 +89,6 @@ namespace DAL
                 
                 using (SqlCommand sqlCommand = new SqlCommand(sql, _conn))
                 {
-                    MessageBox.Show(sql);
                     return sqlCommand.ExecuteNonQuery();
                 }
             }

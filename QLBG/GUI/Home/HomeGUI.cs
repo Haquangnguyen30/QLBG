@@ -18,13 +18,12 @@ namespace GUI.Home
     public partial class HomeGUI : Form
     {
         PhanQuyenDTO pq = new PhanQuyenDTO();
-        NhanVienDTO nv = new NhanVienDTO();
-        public HomeGUI(NhanVienDTO nv, PhanQuyenDTO pq)
+        NhanVienDTO currentNV = new NhanVienDTO();
+        public HomeGUI()
         {
             InitializeComponent();
-            ShowUserControl(uC_BanHang1);
-            this.nv = nv;
-            this.pq = pq;
+            this.currentNV = UserSession.Instance.currentNV;
+            this.pq = UserSession.Instance.currentPQ;
         }
         private void HomeGUI_Load(object sender, EventArgs e)
         {
@@ -37,13 +36,59 @@ namespace GUI.Home
             btnThongKe.Visible = pq.xemThongKe;
             btnPhanQuyen.Visible = pq.qlyTK;
 
-            
+            RearrangeButtons();
+        }
+
+        private void RearrangeButtons()
+        {
+            int spacing = 15;
+            int currentY = 167;
+
+            var buttons = new List<Guna2Button> 
+            {
+                btnBanHang,
+                btnNhapHang,
+                btnSanPham,
+                btnKhachHang,
+                btnNhanVien,
+                btnKhuyenMai,
+                btnThongKe,
+                btnPhanQuyen,
+                btnDangXuat
+            };
+            var activeButtons = new List<Guna2Button>();
+            foreach(var button in buttons)
+            {
+                
+                if (button.Visible)
+                {
+                    activeButtons.Add(button);
+                    button.Location = new Point(button.Location.X, currentY);
+                    currentY +=  button.Height + spacing;
+                    
+                }
+            }
+            showUserControlByButton(activeButtons.First());
+            activeButtons.First().Checked = true;
+            logoutButtonLocation();
+        }
+
+        private void logoutButtonLocation()
+        {
+            int bottomSpacing = 20;
+            btnDangXuat.Location = new Point(0, this.ClientSize.Height - btnDangXuat.Height - bottomSpacing);
         }
         private void moveImgSlide(object sender)
         {
             Guna2Button btn = (Guna2Button) sender;
             imgSlide.Location = new Point(btn.Location.X + 123, btn.Location.Y - 48);
             
+            showUserControlByButton(btn);
+            imgSlide.SendToBack();
+        }
+
+        private void showUserControlByButton(Guna2Button btn)
+        {
             switch (btn.Name)
             {
                 case "btnBanHang":
@@ -73,8 +118,8 @@ namespace GUI.Home
                 default:
                     break;
             }
-            imgSlide.SendToBack();
         }
+
         private void guna2CustomRadioButton1_CheckedChanged(object sender, EventArgs e)
         {
         }
@@ -143,6 +188,13 @@ namespace GUI.Home
         }
 
         private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            DangNhapGUI dangNhap = new DangNhapGUI();
+            dangNhap.Show();
+            this.Hide();
+        }
+
+        private void HomeGUI_FormClosing(object sender, FormClosingEventArgs e)
         {
             DangNhapGUI dangNhap = new DangNhapGUI();
             dangNhap.Show();

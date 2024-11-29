@@ -2,6 +2,7 @@
 using BUS;
 using DTO;
 using GUI.Home;
+using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,9 +53,24 @@ namespace GUI.DangNhap
             {
                 NhanVienDTO nv = nvBUS.getNhanVien(tk.maNV);
                 PhanQuyenDTO pq = pqBUS.getPhanQuyen(tk.maQuyen);
-                HomeGUI home = new HomeGUI(nv, pq);
-                home.Show();
-                this.Hide();
+
+                if (checkAccess(pq))
+                {
+                    UserSession.Instance.Login(nv, pq);
+
+                    HomeGUI home = new HomeGUI();
+                    home.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản không có quyền truy cập vào hệ thống!", "Lỗi truy cập",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtTenDangNhap.Text = "";
+                    txtMatKhau.Text = "";
+                }
+
+                
             }
             else 
             {
@@ -62,10 +78,15 @@ namespace GUI.DangNhap
                 txtTenDangNhap.Text = "";
                 txtMatKhau.Text = "";
             }
-            
-           
+        }
 
-
+        private bool checkAccess(PhanQuyenDTO pq)
+        {
+            if(pq.qlyTK || pq.qlyBH || pq.qlySP || pq.qlyNV || pq.qlyKH ||  pq.qlyKM || pq.qlyNH || pq.xemThongKe)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

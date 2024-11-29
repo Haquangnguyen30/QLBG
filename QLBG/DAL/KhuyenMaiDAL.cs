@@ -53,15 +53,19 @@ namespace DAL
                 }
 
                 reader.Close();
-                _conn.Close();
                 return list;
 
             }
             catch (SqlException ex)
             {
                 Console.WriteLine(ex.Message);
+                return null;
             }
-            return null;
+            finally
+            {
+                if(_conn.State == ConnectionState.Open) _conn.Close();
+            }
+            
 
         }
         public System.Data.DataTable getKhuyenMai()

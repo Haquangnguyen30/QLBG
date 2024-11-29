@@ -37,15 +37,15 @@ namespace GUI.UserControls
             comboBox1.ValueMember = "maQuyen";
         }
 
-        private void dgvPhanQuyen_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        private void dgvPhanQuyen_CurrentCellDirtyStateChanged_1(object sender, EventArgs e)
         {
             if(dgvPhanQuyen.IsCurrentCellDirty && dgvPhanQuyen.CurrentCell is DataGridViewCheckBoxCell)
             {
                 dgvPhanQuyen.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
-
-        private void dgvPhanQuyen_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        
+        private void dgvPhanQuyen_CellValueChanged_1(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvPhanQuyen.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
             {
@@ -248,5 +248,7 @@ namespace GUI.UserControls
             comboBox1.DisplayMember = "tenQuyen"; // Tên cột bạn muốn hiển thị
             comboBox1.ValueMember = "maQuyen";
         }
+
+        
     }
 }
