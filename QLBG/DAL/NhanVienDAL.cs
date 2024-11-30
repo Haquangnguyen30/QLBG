@@ -382,5 +382,30 @@ namespace DAL
                 _conn.Close();
             }
         }
+        public string checkEmail(string email)
+        {
+            try
+            {
+                _conn.Open();
+                string query = $"SELECT maNV FROM nhanVien WHERE email = '{email}' AND tinhTrang = 1";
+                SqlCommand cmd = new SqlCommand(query, _conn);
+                SqlDataReader rd = cmd.ExecuteReader();
+                if (rd.Read()) 
+                {
+                    string maNV = rd.GetString(0);
+                    return maNV;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }   
     }
 }

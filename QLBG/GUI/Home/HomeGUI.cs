@@ -146,7 +146,7 @@ namespace GUI.Home
         {
             DangNhapGUI dangNhap = new DangNhapGUI();
             dangNhap.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }

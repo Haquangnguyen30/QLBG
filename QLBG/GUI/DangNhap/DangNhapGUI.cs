@@ -52,6 +52,7 @@ namespace GUI.DangNhap
             {
                 NhanVienDTO nv = nvBUS.getNhanVien(tk.maNV);
                 PhanQuyenDTO pq = pqBUS.getPhanQuyen(tk.maQuyen);
+                MessageBox.Show("Đăng nhập thành công");
                 HomeGUI home = new HomeGUI(nv, pq);
                 home.Show();
                 this.Hide();
@@ -66,6 +67,13 @@ namespace GUI.DangNhap
            
 
 
+        }
+
+        private void lbQuenMatKhau_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ThayDoiMatKhauGUI newForm = new ThayDoiMatKhauGUI();
+            newForm.Show();
+            this.Hide();
         }
     }
 }

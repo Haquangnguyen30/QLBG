@@ -237,6 +237,18 @@
     <Compile Include="DangNhap\DangNhapGUI.Designer.cs">
       <DependentUpon>DangNhapGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="DangNhap\MatKhauMoiGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangNhap\MatKhauMoiGUI.Designer.cs">
+      <DependentUpon>MatKhauMoiGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DangNhap\ThayDoiMatKhauGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangNhap\ThayDoiMatKhauGUI.Designer.cs">
+      <DependentUpon>ThayDoiMatKhauGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home\HomeGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -401,6 +413,12 @@
     <EmbeddedResource Include="DangNhap\DangNhapGUI.resx">
       <DependentUpon>DangNhapGUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DangNhap\MatKhauMoiGUI.resx">
+      <DependentUpon>MatKhauMoiGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DangNhap\ThayDoiMatKhauGUI.resx">
+      <DependentUpon>ThayDoiMatKhauGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home\HomeGUI.resx">
       <DependentUpon>HomeGUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -528,6 +546,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\background.jpg" />
     <Content Include="Resources\ImgSanPham\G001.jpg" />
   </ItemGroup>
   <ItemGroup />

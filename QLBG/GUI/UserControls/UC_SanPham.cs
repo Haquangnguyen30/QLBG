@@ -198,6 +198,7 @@ namespace GUI.UserControls
             SuaSanPhamGUI newForm = new SuaSanPhamGUI(sp, grid_SanPham);
             newForm.ShowDialog();
             textSanPham(0);
+            textSanPham(0);
 
 
         }

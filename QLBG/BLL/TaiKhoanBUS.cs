@@ -15,6 +15,10 @@ namespace BLL
         {
             return tkDAL.getTaiKhoan(tenDangNhap, matKhau);
         }
+        public bool updateMatKhau(string maNV, string matKhau)
+        {
+            return tkDAL.updateMatKhau(maNV, matKhau);
+        }
     }
     
 }

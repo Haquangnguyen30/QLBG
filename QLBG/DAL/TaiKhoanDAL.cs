@@ -45,5 +45,28 @@ namespace DAL
                 _conn.Close();
             }
         }
+        public bool updateMatKhau(string maNV, string matKhau)
+        {
+            try
+            {
+                _conn.Open();
+                string query = $"UPDATE taiKhoan SET matKhau = '{matKhau}' WHERE maNV = '{maNV}' ";
+                SqlCommand cmd = new SqlCommand(query , _conn);
+                if (cmd.ExecuteNonQuery() > 0) 
+                { 
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
     }
 }
