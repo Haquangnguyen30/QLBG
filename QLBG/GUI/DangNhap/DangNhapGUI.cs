@@ -88,5 +88,12 @@ namespace GUI.DangNhap
             }
             return false;
         }
+
+        private void lbQuenMatKhau_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ThayDoiMatKhauGUI newForm = new ThayDoiMatKhauGUI();
+            newForm.Show();
+            this.Hide();
+        }
     }
 }

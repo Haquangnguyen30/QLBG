@@ -189,21 +189,15 @@ namespace GUI.UserControls
 
         private void btnSuaSanPham_Click(object sender, EventArgs e)
         {
-            SanPhamDTO sanPham = new SanPhamDTO();
-            sanPham.maSP = txtMaSanPham.Text;
-            sanPham.tenSP = txtTenSanPham.Text;
-            sanPham.giaBan = float.Parse(txtGiaBan.Text);
-            sanPham.giaNhap = float.Parse(txtGiaNhap.Text);
-            sanPham.soLuong = int.Parse(txtSoLuong.Text);
-            sanPham.maLoai = int.Parse(txtMaLoai.Text);
-            sanPham.mau = txtMau.Text;
-            sanPham.img = txtMaSanPham.Text;
+            string maSP = txtMaSanPham.Text;
+            SanPhamDTO sp = spBUS.getSanPham(maSP);
             if (ptbSanPham.Image != null)
             {
                 ptbSanPham.Image.Dispose();
             }
-            SuaSanPhamGUI newForm = new SuaSanPhamGUI(sanPham, grid_SanPham);
+            SuaSanPhamGUI newForm = new SuaSanPhamGUI(sp, grid_SanPham);
             newForm.ShowDialog();
+            textSanPham(0);
             textSanPham(0);
 
 
@@ -309,7 +303,6 @@ namespace GUI.UserControls
                     }
                     Dttable.Rows.Add(list.ToArray());
                 }
-                SanPhamBUS sanPhamBUS = new SanPhamBUS();
                 foreach (DataRow row in Dttable.Rows)
                 {
                     SanPhamDTO sanPham = new SanPhamDTO();
@@ -322,9 +315,9 @@ namespace GUI.UserControls
                     sanPham.maLoai = Convert.ToInt32(row["maLoai"].ToString());
                     sanPham.img = newMaSP();
                     sanPham.tinhTrang = true;
-                    if (sanPhamBUS.addSanPham(sanPham))
+                    if (spBUS.addSanPham(sanPham))
                     {
-                        grid_SanPham.DataSource = sanPhamBUS.getDSSanPham();
+                        grid_SanPham.DataSource = spBUS.getDSSanPham();
                     }
                     else
                     {

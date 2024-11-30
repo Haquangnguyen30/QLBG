@@ -44,7 +44,10 @@ namespace BLL
         {
             return spDAL.searchSanPham(strSearch);
         }
-
+        public SanPhamDTO getSanPham(string maSP)
+        {
+            return spDAL.getSanPham(maSP);
+        }
         public bool isMaSPExist(String maSP)
         {
             return spDAL.isMaSPExist(maSP);

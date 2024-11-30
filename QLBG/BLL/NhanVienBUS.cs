@@ -82,6 +82,10 @@ namespace BUS
         {
             return dalNhanVien.getNhanVien(maNV);
         }
+        public string checkEmail(string email) 
+        { 
+            return dalNhanVien.checkEmail(email);
+        }
 
     }
 }
