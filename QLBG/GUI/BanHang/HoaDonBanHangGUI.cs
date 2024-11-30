@@ -13,6 +13,7 @@ using DTO;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using GUI.UserControls;
+using Irony.Parsing;
 
 namespace GUI.BanHang
 {
@@ -22,8 +23,9 @@ namespace GUI.BanHang
         private KhuyenMaiBUS kmBus = new KhuyenMaiBUS();
         private DataGridView dgvGioHang;
         private int maKH;
+        private NhanVienDTO nvdto = UserSession.Instance.currentNV;
         private String tenKH;
-        private String tenNV = "NV001";
+        //private String tenNV = "NV001";
         private float TongTien;
         private float tienGiam = 0;
         private DateTime ngayLap = DateTime.Now.Date;
@@ -36,7 +38,7 @@ namespace GUI.BanHang
             this.TongTien = tongTien;
 
             lblTenKH.Text = tenKH;
-            lblNhanVien.Text = tenNV;
+            lblNhanVien.Text = nvdto.tenNV;
             lblNgayBan.Text = ngayLap.ToString("yyyy-MM-dd");
             contentDGV(dgvGioHang);
             txtTongTien.Text = tongTien.ToString();
@@ -70,12 +72,14 @@ namespace GUI.BanHang
         private void btnInHoaDon_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn in hóa đơn không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
+            if (!float.TryParse(txtTienThua.Text, out float tienthua))
+                MessageBox.Show("Tiền khách đưa không hợp lệ");
+            else
             if (result == DialogResult.Yes)
             {
                 HoaDonDTO hd = new HoaDonDTO();
                 //hd.maHD = hdBus.GetMaHoaDonMoiNhat() + 1;
-                hd.maNV = "NV001";
+                hd.maNV = nvdto.maNV;
                 hd.maKH = maKH;
                 hd.maKM = Convert.ToInt32(cbKhuyenMai.SelectedValue);
                 hd.tienGiam = tienGiam;
