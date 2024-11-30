@@ -197,6 +197,7 @@
     <Compile Include="SanPhamDAL.cs" />
     <Compile Include="TaiKhoanDAL.cs" />
     <Compile Include="SanPham_KichCoDAL.cs" />
+    <Compile Include="ThongKeDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">

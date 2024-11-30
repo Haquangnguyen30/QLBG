@@ -114,6 +114,9 @@
     <Compile Include="SanPhamDTO.cs" />
     <Compile Include="sanPham_kichCoDTO.cs" />
     <Compile Include="TaiKhoanDTO.cs" />
+    <Compile Include="ThongKeNgayDTO.cs" />
+    <Compile Include="ThongKeSanPhamDTO.cs" />
+    <Compile Include="ThongKeThangDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
