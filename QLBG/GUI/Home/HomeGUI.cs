@@ -191,7 +191,7 @@ namespace GUI.Home
         {
             DangNhapGUI dangNhap = new DangNhapGUI();
             dangNhap.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void HomeGUI_FormClosing(object sender, FormClosingEventArgs e)

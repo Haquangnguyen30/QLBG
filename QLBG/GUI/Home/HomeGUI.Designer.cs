@@ -99,7 +99,7 @@
             this.btnDangXuat.Image = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.Image")));
             this.btnDangXuat.ImageOffset = new System.Drawing.Point(-45, 0);
             this.btnDangXuat.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnDangXuat.Location = new System.Drawing.Point(-7, 678);
+            this.btnDangXuat.Location = new System.Drawing.Point(-1, 678);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Size = new System.Drawing.Size(178, 50);
             this.btnDangXuat.TabIndex = 12;

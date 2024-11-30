@@ -254,7 +254,7 @@ namespace DAL
                     {
                         tenSP = reader.GetString(0),
                         soLuongDaBan = reader.GetInt32(1),
-                        hinhAnh = ""
+                        hinhAnh = reader.GetString(2)
                     };
                     resultList.Add(dto);
                 }

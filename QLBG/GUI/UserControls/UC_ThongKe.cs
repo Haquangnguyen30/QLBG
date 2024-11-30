@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DocumentFormat.OpenXml.Spreadsheet;
 using DTO;
 using NPOI.SS.Formula.Functions;
 using System;
@@ -7,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +46,8 @@ namespace GUI.UserControls
                 List<ThongKeThangDTO> thongKepnthang = thongKeBUS.getThongKePhieuNhapTheoThang(fromDateString, toDateString);
                 List<ThongKeSanPhamDTO> thongKeSanPham = thongKeBUS.GetTop5SanPhamBanChay(fromDateString, toDateString);
                 
+
+
                 ConfigureChart12Thang(thongKehdthang, thongKepnthang);
                 Show5SanPham(thongKeSanPham);
 
@@ -73,8 +77,6 @@ namespace GUI.UserControls
                 if (thongKeSanPham != null && thongKeSanPham.Count > 0)
                 {
                     int maxProductsToShow = Math.Min(thongKeSanPham.Count, 5);
-                    
-
                         for (int i = 0; i < maxProductsToShow; i++)
                     {
                         ThongKeSanPhamDTO product = thongKeSanPham[i];
@@ -83,11 +85,24 @@ namespace GUI.UserControls
                         soLuongDaBan[i].Visible = true;
                         hinhAnh[i].Visible = true;
 
+                        //hinhAnh[i].ImageLocation = product.hinhAnh;
+                        hinhAnh[i].SizeMode = PictureBoxSizeMode.Zoom;
+
                         tenSanPham[i].Text = product.tenSP;
                         soLuongDaBan[i].Text = "Số lượng đã bán: " + product.soLuongDaBan.ToString();
-                        
-                        //hinhAnh[i].ImageLocation = product.hinhAnh;
-                        //hinhAnh[i].SizeMode = PictureBoxSizeMode.Zoom;
+
+                        string imageFileName = product.hinhAnh;
+                        string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                        string imagePath = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\ImgSanPham", imageFileName);
+                        try
+                        {
+                            hinhAnh[i].Image = new Bitmap(imagePath);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error loading image: {ex.Message}");
+                            hinhAnh[i].Image = null;
+                        }
                     }
                 }
             }
@@ -146,14 +161,14 @@ namespace GUI.UserControls
             {
                 ChartType = SeriesChartType.Column,
                 IsValueShownAsLabel = true,
-                Color = Color.FromArgb(80, 17, 132)
+                Color = System.Drawing.Color.FromArgb(80, 17, 132)
             };
 
             Series series2 = new Series("Tổng tiền nhập hàng")
             {
                 ChartType = SeriesChartType.Column,
                 IsValueShownAsLabel = true,
-                Color = Color.Cyan
+                Color = System.Drawing.Color.Cyan
             };
 
             chart1.Series.Add(series1);
@@ -177,14 +192,14 @@ namespace GUI.UserControls
             {
                 ChartType = SeriesChartType.Column,
                 IsValueShownAsLabel = true,
-                Color = Color.FromArgb(80, 17, 132)
+                Color = System.Drawing.Color.FromArgb(80, 17, 132)
             };
 
             Series series2 = new Series("Tổng tiền nhập hàng")
             {
                 ChartType = SeriesChartType.Column,
                 IsValueShownAsLabel = true,
-                Color = Color.Cyan
+                Color = System.Drawing.Color.Cyan
             };
 
             chart1.Series.Add(series1);

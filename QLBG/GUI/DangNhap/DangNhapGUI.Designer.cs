@@ -139,7 +139,7 @@
             this.lbQuenMatKhau.BackColor = System.Drawing.Color.Transparent;
             this.lbQuenMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbQuenMatKhau.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
-            this.lbQuenMatKhau.Location = new System.Drawing.Point(714, 243);
+            this.lbQuenMatKhau.Location = new System.Drawing.Point(709, 243);
             this.lbQuenMatKhau.Name = "lbQuenMatKhau";
             this.lbQuenMatKhau.Size = new System.Drawing.Size(131, 20);
             this.lbQuenMatKhau.TabIndex = 6;
