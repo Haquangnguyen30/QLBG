@@ -571,6 +571,13 @@ namespace GUI.UserControls
             ThemKhachHangGUI formKhachHang = new ThemKhachHangGUI(cbKhachHang);
             DialogResult result = formKhachHang.ShowDialog();
         }
+
+        private void reloadbtn_Click(object sender, EventArgs e)
+        {
+            LoadProducts();
+            txtSearch.Text = "";
+
+        }
     }
 }
 

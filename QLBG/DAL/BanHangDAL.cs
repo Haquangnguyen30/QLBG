@@ -29,7 +29,7 @@ namespace DAL
                     SPdto.tenSP = reader["tenSP"].ToString();
                     SPdto.giaBan = (float)reader.GetDouble(reader.GetOrdinal("giaBan"));
                     //SPdto.soLuong = reader.GetInt32(reader.GetOrdinal("soLuong"));               
-                    SPdto.giaNhap = Convert.ToSingle(reader["giaBan"]);
+                    SPdto.giaNhap = Convert.ToSingle(reader["giaNhap"]);
                     SPdto.mau = reader["mau"].ToString();
                     SPdto.tinhTrang = Convert.ToBoolean(reader["tinhTrang"]);
                     SPdto.maLoai = Convert.ToInt32(reader["maLoai"]);
@@ -127,7 +127,7 @@ namespace DAL
             try
             {
                 _conn.Open();
-                string SQL = "SELECT maSP, tenSP, giaBan, soLuong, mau FROM sanPham WHERE tenSP LIKE @Keyword";
+                string SQL = "SELECT maSP, tenSP, giaBan, img,  mau FROM sanPham WHERE tenSP LIKE @Keyword";
                 SqlCommand command = new SqlCommand(SQL, _conn);
                 command.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
 
@@ -139,7 +139,8 @@ namespace DAL
                         maSP = reader["maSP"].ToString(),
                         tenSP = reader["tenSP"].ToString(),
                         giaBan = (float)Convert.ToDecimal(reader["giaBan"]),
-                        soLuong = Convert.ToInt32(reader["soLuong"]),
+                        //soLuong = Convert.ToInt32(reader["soLuong"]),
+                        img = reader["img"].ToString(),
                         mau = reader["mau"].ToString()
                     };
                     dsSanPham.Add(sp);
