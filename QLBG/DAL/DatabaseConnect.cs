@@ -20,9 +20,9 @@ namespace DAL
         //protected static SqlConnection _conn = new SqlConnection("Data Source=DESKTOP-GH32RKT\\SQLEXPRESS;Initial Catalog=QLBG;Integrated Security=True");
         //protected static SqlConnection _conn = new SqlConnection("Data Source=localhost;Initial Catalog=QLBG;User ID=sa;Password=Password1@");
         //protected static SqlConnection _conn = new SqlConnection("Data Source=DESKTOP-EVA6OFD\\SQLEXPRESS;Initial Catalog=QLBG;Integrated Security=True");
-        protected static SqlConnection _conn = new SqlConnection("Data Source=WINDOWS-10\\SQLEXPRESS;Initial Catalog=QLBG;Integrated Security=True");
+        // protected static SqlConnection _conn = new SqlConnection("Data Source=WINDOWS-10\\SQLEXPRESS;Initial Catalog=QLBG;Integrated Security=True");
         //protected static SqlConnection _conn = new SqlConnection("Data Source=localhost;Initial Catalog=QLBG;User ID=sa;Password=Password1@");
-        //protected static SqlConnection _conn = new SqlConnection("Data Source=PHUOCDO\\SQLEXPRESS03;Initial Catalog=QLBG;Integrated Security=True");
+        protected static SqlConnection _conn = new SqlConnection("Data Source=PHUOCDO\\SQLEXPRESS03;Initial Catalog=QLBG;Integrated Security=True");
         //protected static SqlConnection _conn = new SqlConnection("Data Source=TRHIUSLAPTOP;Initial Catalog=QLBG;Integrated Security=True");
         public static SqlDataReader queryData(String sql)
         {
