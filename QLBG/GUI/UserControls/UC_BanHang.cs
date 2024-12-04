@@ -286,12 +286,16 @@ namespace GUI.UserControls
         private void HienThiSanPham(List<SanPhamDTO> products) // Hàm hiển thị sản phẩm sau khi nhập tên sản phẩm
         {
             try
-            {
+            {   
                 if (products != null && products.Count > 0)
                 {
+                    txtKhCoSP.Visible = false;
+                    pictureBoxKhCoSP.Visible = false;
+                    tabledulieusp.Visible = true;
+
                     int row = 0, col = 0;
-                    tableLayoutPanel1.Controls.Clear();
-                    tableLayoutPanel1.RowCount = 0;
+                    tabledulieusp.Controls.Clear();
+                    tabledulieusp.RowCount = 0;
 
                     // Lấy đường dẫn thư mục ảnh trong dự án
                     string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -347,21 +351,23 @@ namespace GUI.UserControls
                         };
 
                         // Thêm sản phẩm vào TableLayoutPanel
-                        tableLayoutPanel1.Controls.Add(productControl, col, row);
+                        tabledulieusp.Controls.Add(productControl, col, row);
                         col++;
-                        if (col >= tableLayoutPanel1.ColumnCount)
+                        if (col >= tabledulieusp.ColumnCount)
                         {
                             col = 0;
                             row++;
-                            tableLayoutPanel1.RowCount++;
+                            tabledulieusp.RowCount++;
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Không tìm thấy sản phẩm nào.");
-                    txtSearch.Text = "";
-                    showSPByCurrentPage(1);
+                    txtKhCoSP.Visible = true;
+                    pictureBoxKhCoSP.Visible = true;
+                    tabledulieusp.Visible = false;
+                    //txtSearch.Text = "";
+                    //showSPByCurrentPage(1);
                 }
             }
             catch (Exception ex)

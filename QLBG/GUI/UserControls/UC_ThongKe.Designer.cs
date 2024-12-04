@@ -48,6 +48,7 @@
             this.labelTongBanHang = new System.Windows.Forms.Label();
             this.tenSP = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chonNgay = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.btnLoc = new Guna.UI2.WinForms.Guna2Button();
             this.btn12Thang = new Guna.UI2.WinForms.Guna2Button();
@@ -56,6 +57,9 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel3 = new System.Windows.Forms.Panel();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.defaultPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.top5 = new Guna.UI2.WinForms.Guna2Panel();
             this.soLuongBanRa5 = new System.Windows.Forms.Label();
             this.tenSP5 = new System.Windows.Forms.Label();
@@ -77,10 +81,6 @@
             this.tenSP1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.defaultPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.chonNgay = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -92,6 +92,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.panel3.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
+            this.defaultPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.top5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.top4.SuspendLayout();
@@ -102,8 +104,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.top1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.defaultPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -293,6 +293,22 @@
             this.panel1.Size = new System.Drawing.Size(1188, 69);
             this.panel1.TabIndex = 1;
             // 
+            // chonNgay
+            // 
+            this.chonNgay.BorderRadius = 20;
+            this.chonNgay.Checked = true;
+            this.chonNgay.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
+            this.chonNgay.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.chonNgay.ForeColor = System.Drawing.Color.White;
+            this.chonNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.chonNgay.Location = new System.Drawing.Point(123, 5);
+            this.chonNgay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.chonNgay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.chonNgay.Name = "chonNgay";
+            this.chonNgay.Size = new System.Drawing.Size(172, 44);
+            this.chonNgay.TabIndex = 169;
+            this.chonNgay.Value = new System.DateTime(2024, 11, 28, 14, 11, 33, 184);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -431,6 +447,48 @@
             this.guna2Panel4.Padding = new System.Windows.Forms.Padding(15);
             this.guna2Panel4.Size = new System.Drawing.Size(374, 901);
             this.guna2Panel4.TabIndex = 2;
+            // 
+            // defaultPanel
+            // 
+            this.defaultPanel.BackColor = System.Drawing.Color.Transparent;
+            this.defaultPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
+            this.defaultPanel.BorderRadius = 20;
+            this.defaultPanel.Controls.Add(this.pictureBox6);
+            this.defaultPanel.Controls.Add(this.label4);
+            this.defaultPanel.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
+            this.defaultPanel.FillColor = System.Drawing.Color.White;
+            this.defaultPanel.Location = new System.Drawing.Point(14, 59);
+            this.defaultPanel.Name = "defaultPanel";
+            this.defaultPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.defaultPanel.Size = new System.Drawing.Size(344, 784);
+            this.defaultPanel.TabIndex = 8;
+            this.defaultPanel.Visible = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(29, 264);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(257, 240);
+            this.pictureBox6.TabIndex = 6;
+            this.pictureBox6.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Century", 12.2F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
+            this.label4.Location = new System.Drawing.Point(34, 188);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(275, 50);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Không có sản phẩm \r\ntrong thời gian thống kê";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // top5
             // 
@@ -700,64 +758,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Top 5 sản phẩm bán chạy";
             // 
-            // defaultPanel
-            // 
-            this.defaultPanel.BackColor = System.Drawing.Color.Transparent;
-            this.defaultPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
-            this.defaultPanel.BorderRadius = 20;
-            this.defaultPanel.Controls.Add(this.pictureBox6);
-            this.defaultPanel.Controls.Add(this.label4);
-            this.defaultPanel.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
-            this.defaultPanel.FillColor = System.Drawing.Color.White;
-            this.defaultPanel.Location = new System.Drawing.Point(14, 59);
-            this.defaultPanel.Name = "defaultPanel";
-            this.defaultPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.defaultPanel.Size = new System.Drawing.Size(344, 784);
-            this.defaultPanel.TabIndex = 8;
-            this.defaultPanel.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Century", 12.2F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
-            this.label4.Location = new System.Drawing.Point(34, 188);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(275, 50);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Không có sản phẩm \r\ntrong thời gian thống kê";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // chonNgay
-            // 
-            this.chonNgay.BorderRadius = 20;
-            this.chonNgay.Checked = true;
-            this.chonNgay.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
-            this.chonNgay.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.chonNgay.ForeColor = System.Drawing.Color.White;
-            this.chonNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.chonNgay.Location = new System.Drawing.Point(123, 5);
-            this.chonNgay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.chonNgay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.chonNgay.Name = "chonNgay";
-            this.chonNgay.Size = new System.Drawing.Size(172, 44);
-            this.chonNgay.TabIndex = 169;
-            this.chonNgay.Value = new System.DateTime(2024, 11, 28, 14, 11, 33, 184);
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(29, 264);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(257, 240);
-            this.pictureBox6.TabIndex = 6;
-            this.pictureBox6.TabStop = false;
-            // 
             // UC_ThongKe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -783,6 +783,9 @@
             this.panel3.ResumeLayout(false);
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
+            this.defaultPanel.ResumeLayout(false);
+            this.defaultPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.top5.ResumeLayout(false);
             this.top5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -798,9 +801,6 @@
             this.top1.ResumeLayout(false);
             this.top1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.defaultPanel.ResumeLayout(false);
-            this.defaultPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
