@@ -278,5 +278,10 @@ namespace GUI.NhanVien
         {
 
         }
+
+        private void SuaThongTinNhanVienGUI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

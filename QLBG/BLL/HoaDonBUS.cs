@@ -26,10 +26,7 @@ namespace BLL
             return dAL.GetMaHoaDonMoiNhat();
         }
         // tìm kiếm hóa đơn theo khoảng ngày
-        public DataTable TimKiemHoaDonTheoKhoangNgay(DateTime fromDate, DateTime toDate)
-        {
-            return dAL.TimKiemHoaDonTheoKhoangNgay(fromDate, toDate);
-        }
+
         public DataTable TimKiemHoaDon(string key)
         {
             return dAL.TimKiemHoaDon(key);

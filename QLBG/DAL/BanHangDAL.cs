@@ -12,14 +12,20 @@ namespace DAL
 {
     public class BanHangDAL: DatabaseConnect
     {
-        public List<SanPhamDTO> GetDSSP()
+        public List<SanPhamDTO> GetDSSP(int itemsPerPage, int startLine)
         {
             List<SanPhamDTO> productList = new List<SanPhamDTO>();
             try
             {
                 _conn.Open();
-                string SQL = "SELECT * FROM sanPham where tinhTrang = 'True'";
+                string SQL = @"SELECT * 
+                                FROM sanPham 
+                                WHERE tinhTrang = 'True' 
+                                ORDER BY maSP DESC
+                                OFFSET @startLine ROWS FETCH NEXT @itemsPerPage ROWS ONLY";
                 SqlCommand command = new SqlCommand(SQL, _conn);
+                command.Parameters.AddWithValue("@itemsPerPage", itemsPerPage);
+                command.Parameters.AddWithValue("@startLine", startLine);
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -121,15 +127,22 @@ namespace DAL
 
             return sizes;
         }
-        public List<SanPhamDTO> TimKiemSanPham(string keyword)
+        public List<SanPhamDTO> TimKiemSanPham(string keyword, int itemsPerPage, int startLine)
         {
             List<SanPhamDTO> dsSanPham = new List<SanPhamDTO>();
             try
             {
                 _conn.Open();
-                string SQL = "SELECT maSP, tenSP, giaBan, img,  mau FROM sanPham WHERE tenSP LIKE @Keyword";
+                string SQL = @"SELECT maSP, tenSP, giaBan, img,  mau 
+                                FROM sanPham 
+                                WHERE tenSP LIKE @Keyword
+                                AND tinhTrang = 'True' 
+                                ORDER BY maSP DESC
+                                OFFSET @startLine ROWS FETCH NEXT @itemsPerPage ROWS ONLY";
                 SqlCommand command = new SqlCommand(SQL, _conn);
                 command.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
+                command.Parameters.AddWithValue("@itemsPerPage", itemsPerPage);
+                command.Parameters.AddWithValue("@startLine", startLine);
 
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -157,7 +170,59 @@ namespace DAL
             }
             return dsSanPham;
         }
+        public int countFilteredSP(string keyword)
+        {
+            try
+            {
+                if (_conn.State != ConnectionState.Open) _conn.Open();
 
+                String sql = @"SELECT COUNT(*) 
+                                FROM sanPham 
+                                WHERE tenSP LIKE @Keyword
+                                AND tinhTrang = 'True'";
+
+                using (SqlCommand sqlCommand = new SqlCommand(sql, _conn))
+                {
+                    sqlCommand.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
+                    return (int)sqlCommand.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi đếm số lượng sản phẩm tìm được!!!" + ex.Message);
+                return 0;
+            }
+            finally
+            {
+                if (_conn.State == ConnectionState.Open) _conn.Close();
+            }
+
+        }
+
+        public int countAllSP()
+        {
+            try
+            {
+                if (_conn.State != ConnectionState.Open) _conn.Open();
+
+                String sql = "SELECT COUNT(*) FROM sanPham WHERE tinhTrang = 1";
+
+                using (SqlCommand sqlCommand = new SqlCommand(sql, _conn))
+                {
+                    return (int)sqlCommand.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi đếm số lượng sản phẩm!!!" + ex.Message);
+                return 0;
+            }
+            finally
+            {
+                if (_conn.State == ConnectionState.Open) _conn.Close();
+            }
+
+        }
 
     }
 }

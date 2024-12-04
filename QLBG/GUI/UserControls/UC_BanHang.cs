@@ -23,6 +23,8 @@ namespace GUI.UserControls
         private SanPhamDTO currentProduct; // Sản phẩm hiện tại để hiển thị thông tin chi tiết
         private NhanVienBUS nvBUS = new NhanVienBUS();
         private List<KhachHangDTO> danhSachKhachHang;
+        private int itemsPerPage = 12;
+        private int startPage = 1;
         public UC_BanHang()
         {
             InitializeComponent();
@@ -34,85 +36,15 @@ namespace GUI.UserControls
         }
 
         // Hàm tải danh sách sản phẩm
+        // Hàm tải danh sách sản phẩm
         private void LoadProducts()
         {
             try
             {
-                List<SanPhamDTO> products = BHbll.GetDSSP(); // Lấy danh sách sản phẩm từ BLL
-                if (products != null && products.Count > 0)
-                {
-                    int row = 0, col = 0;
-                    tableLayoutPanel1.Controls.Clear();
-                    tableLayoutPanel1.RowCount = 0;
-
-                    // Lấy đường dẫn thư mục ảnh trong dự án
-                    string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                    string imageDirectory = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\ImgSanPham");
-
-                    // Kiểm tra xem thư mục có tồn tại không
-                    if (!Directory.Exists(imageDirectory))
-                    {
-                        Console.WriteLine($"Thư mục ảnh không tồn tại: {imageDirectory}");
-                        return;
-                    }
-
-                    foreach (var product in products)
-                    {
-                        // Tạo đường dẫn ảnh cho sản phẩm
-                        string imagePath = Path.Combine(imageDirectory, product.img);
-                        Console.WriteLine($"Đường dẫn ảnh: {imagePath}"); // In ra đường dẫn ảnh để kiểm tra
-
-                        Image productImage = Properties.Resources.DefaultImage; // Ảnh mặc định nếu không tìm thấy ảnh sản phẩm
-
-                        // Kiểm tra và tải ảnh từ thư mục
-                        try
-                        {
-                            if (File.Exists(imagePath))
-                            {
-                                // Đọc ảnh từ file
-                                productImage = new Bitmap(imagePath);
-                            }
-                            else
-                            {
-                                Console.WriteLine($"File ảnh không tồn tại: {imagePath}");
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"Lỗi khi tải ảnh: {ex.Message}");
-                            productImage = Properties.Resources.DefaultImage; // Gán ảnh mặc định nếu có lỗi
-                        }
-
-                        // Tạo instance của UC_ComponentSP
-                        var productControl = new UC_ComponentSP
-                        {
-                            ProductName = product.tenSP,
-                            ProductPrice = product.giaBan.ToString("N0") + " VNĐ",
-                            ProductColor = "Màu: " + product.mau,
-                            ProductImage = productImage // Gán ảnh đã chọn hoặc ảnh mặc định
-                        };
-
-                        // Gắn sự kiện hiển thị thông tin chi tiết
-                        productControl.OnViewDetailsClicked += (sender, e) =>
-                        {
-                            DisplayProductDetails(product, productImage);
-                        };
-
-                        // Thêm sản phẩm vào TableLayoutPanel
-                        tableLayoutPanel1.Controls.Add(productControl, col, row);
-                        col++;
-                        if (col >= tableLayoutPanel1.ColumnCount)
-                        {
-                            col = 0;
-                            row++;
-                            tableLayoutPanel1.RowCount++;
-                        }
-                    }
-                }
-                //else
-                //{
-                //    MessageBox.Show("Không có sản phẩm nào để hiển thị.");
-                //}
+                List<SanPhamDTO> products = BHbll.GetDSSP(itemsPerPage, startLine(startPage)); // Lấy danh sách sản phẩm từ BLL
+                txtTotalPage.Text = totalPage(BHbll.countAllSP()).ToString();
+                txtCurrentPage.Text = startPage.ToString();
+                HienThiSanPham(products);
             }
             catch (Exception ex)
             {
@@ -258,10 +190,6 @@ namespace GUI.UserControls
         {
             // Lấy dữ liệu từ HoaDonDAL
             DataTable dt = HDbll.getDSHD();
-            foreach (DataColumn column in dt.Columns)
-            {
-                Console.WriteLine(column.ColumnName);
-            }
             // Kiểm tra và gán dữ liệu vào DataGridView
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -271,7 +199,7 @@ namespace GUI.UserControls
                 // Kiểm tra và ánh xạ dữ liệu đúng với các cột
                 dgvHD.Columns["maHD"].DataPropertyName = "maHD";
                 dgvHD.Columns["maNV"].DataPropertyName = "maNV";
-                dgvHD.Columns["maKH"].DataPropertyName = "maKH";
+                dgvHD.Columns["tenKH"].DataPropertyName = "tenKH";
                 dgvHD.Columns["ngayLap"].DataPropertyName = "ngayLap";
                 dgvHD.Columns["tongTien"].DataPropertyName = "tongTien";
                 dgvHD.Columns["tongTien"].DefaultCellStyle.Format = "N0"; // Định dạng tiền tệ
@@ -279,8 +207,8 @@ namespace GUI.UserControls
                 dgvHD.Columns["tienGiam"].DefaultCellStyle.Format = "N0"; // Định dạng tiền tệ
                 dgvHD.Columns["tienKhachDua"].DataPropertyName = "tienKhachDua";
                 dgvHD.Columns["tienKhachDua"].DefaultCellStyle.Format = "N0"; // Định dạng tiền tệ
-                dgvHD.Columns["tienThua"].DataPropertyName = "tienThua";
-                dgvHD.Columns["tienThua"].DefaultCellStyle.Format = "N0"; // Định dạng tiền tệ
+                //dgvHD.Columns["tienThua"].DataPropertyName = "tienThua";
+                //dgvHD.Columns["tienThua"].DefaultCellStyle.Format = "N0"; // Định dạng tiền tệ
                 dgvHD.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvHD.AllowUserToAddRows = false; // Không cho phép người dùng thêm hàng thủ công
                 dgvHD.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Chọn toàn hàng
@@ -324,20 +252,36 @@ namespace GUI.UserControls
         }
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
+            showSPByCurrentPage(1);
+        }
+        private void showSPByCurrentPage(int currentPage)
+        {
             string searchText = txtSearch.Text.Trim();
             List<SanPhamDTO> filteredProducts;
 
             if (string.IsNullOrWhiteSpace(searchText))
             {
-                filteredProducts = BHbll.GetDSSP(); // Lấy tất cả sản phẩm
+                filteredProducts = BHbll.GetDSSP(itemsPerPage, startLine(currentPage)); // Lấy tất cả sản phẩm
+                txtTotalPage.Text = totalPage(BHbll.countAllSP()).ToString();
             }
             else
             {
-                filteredProducts = BHbll.TimKiemSanPham(searchText); // Tìm kiếm sản phẩm
+                filteredProducts = BHbll.TimKiemSanPham(searchText, itemsPerPage, startLine(currentPage)); // Tìm kiếm sản phẩm
+                txtTotalPage.Text = totalPage(BHbll.countFilteredSP(searchText)).ToString();
             }
 
+
+            txtCurrentPage.Text = startPage.ToString();
             // Hiển thị danh sách sản phẩm trong TableLayoutPanel
             HienThiSanPham(filteredProducts);
+        }
+        private int totalPage(int items)
+        {
+            return (int)Math.Ceiling((double)items / itemsPerPage);
+        }
+        private int startLine(int curPage)
+        {
+            return (curPage - 1) * 12 + 1;
         }
         private void HienThiSanPham(List<SanPhamDTO> products) // Hàm hiển thị sản phẩm sau khi nhập tên sản phẩm
         {
@@ -416,6 +360,8 @@ namespace GUI.UserControls
                 else
                 {
                     MessageBox.Show("Không tìm thấy sản phẩm nào.");
+                    txtSearch.Text = "";
+                    showSPByCurrentPage(1);
                 }
             }
             catch (Exception ex)
@@ -577,6 +523,68 @@ namespace GUI.UserControls
             LoadProducts();
             txtSearch.Text = "";
 
+        }
+
+        private void txtCurrentPage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Chặn ký tự không hợp lệ
+            }
+        }
+
+        private void txtCurrentPage_Leave(object sender, EventArgs e)
+        {
+            int maxPage = int.Parse(txtTotalPage.Text);
+            if (string.IsNullOrWhiteSpace(txtCurrentPage.Text))
+            {
+                MessageBox.Show("Không thể để trống!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                showSPByCurrentPage(1);
+                txtCurrentPage.SelectionStart = txtCurrentPage.Text.Length; // Đặt lại con trỏ
+                return;
+            }
+            else if (int.Parse(txtCurrentPage.Text) < 1 || int.Parse(txtCurrentPage.Text) > maxPage)
+            {
+                MessageBox.Show("Trang bạn chọn không hợp lệ!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                showSPByCurrentPage(1);
+                txtCurrentPage.SelectionStart = txtCurrentPage.Text.Length; // Đặt lại con trỏ
+                return;
+            }
+            else
+            {
+                showSPByCurrentPage(int.Parse(txtCurrentPage.Text));
+                txtCurrentPage.Text = int.Parse(txtCurrentPage.Text).ToString();
+            }
+        }
+
+        private void btnBackPage_Click(object sender, EventArgs e)
+        {
+            int backPage = int.Parse(txtCurrentPage.Text) - 1;
+            if (backPage == 0)
+            {
+                MessageBox.Show("Không thể xem trang nhỏ hơn!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                showSPByCurrentPage(backPage);
+                txtCurrentPage.Text = backPage.ToString();
+
+            }
+        }
+
+        private void btnNextPage_Click(object sender, EventArgs e)
+        {
+            int nextPage = int.Parse(txtCurrentPage.Text) + 1;
+            int maxPage = int.Parse(txtTotalPage.Text);
+            if (nextPage > maxPage)
+            {
+                MessageBox.Show("Không thể xem trang lớn hơn!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                showSPByCurrentPage(nextPage);
+                txtCurrentPage.Text = nextPage.ToString();
+            }
         }
     }
 }

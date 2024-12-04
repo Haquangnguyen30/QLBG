@@ -193,6 +193,7 @@
             this.ClientSize = new System.Drawing.Size(375, 552);
             this.Controls.Add(this.guna2Panel3);
             this.Name = "ThemKhachHangGUI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ThemKhachHangGUI";
             this.Load += new System.EventHandler(this.ThemKhachHangGUI_Load);
             this.guna2Panel3.ResumeLayout(false);
