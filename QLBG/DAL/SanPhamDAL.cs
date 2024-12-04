@@ -19,7 +19,7 @@ namespace DAL
             try
             {
                 String sSql = "SELECT sp.maSP, sp.tenSP, sp.mau, sp.giaNhap FROM sanPham sp WHERE sp.tinhTrang = 1 " +
-                                $"AND (sp.tenSP LIKE '%{searchStr}%' OR sp.mau LIKE '%{searchStr}%')";
+                                $"AND (sp.tenSP LIKE '%{searchStr}%' OR sp.mau LIKE '%{searchStr}%' OR sp.maSP LIKE '%{searchStr}%')";
 
                 SqlDataReader reader = DatabaseConnect.queryData(sSql);
 

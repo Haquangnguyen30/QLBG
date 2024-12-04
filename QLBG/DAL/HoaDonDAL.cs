@@ -14,7 +14,7 @@ namespace DAL
     {
         public DataTable getDSHD()
         {
-            var cmd = new SqlCommand("SELECT maHD, maNV, maKH, ngayLap,tongTien,tienGiam,tienKhachDua,tienThua FROM dbo.hoaDon WHERE tinhTrang = 'True'", _conn);
+            var cmd = new SqlCommand("SELECT hd.maHD, hd.maNV, kh.tenKH, hd.ngayLap, hd.tongTien, hd.tienGiam, hd.tienKhachDua, hd.tienThua FROM hoaDon hd JOIN khachHang kh ON hd.maKH=kh.maKH WHERE tinhTrang = 'True'", _conn);
             var da = new SqlDataAdapter(cmd);
             var dt = new DataTable();
             da.Fill(dt);
@@ -83,40 +83,12 @@ namespace DAL
                 _conn.Close();
             }
         }
-        // tìm kiếm hóa đơn theo ngày 
-
-        public DataTable TimKiemHoaDonTheoKhoangNgay(DateTime fromDate, DateTime toDate)
-        {
-            try
-            {
-                using (var cmd = new SqlCommand("SELECT hd.*, kh.tenKH FROM hoaDon hd JOIN khachHang kh ON hd.maKH=kh.maKH WHERE ngayLap >= @fromDate AND ngayLap <= @toDate", _conn))
-                {
-                    cmd.Parameters.AddWithValue("@fromDate", fromDate);
-                    cmd.Parameters.AddWithValue("@toDate", toDate);
-                    var da = new SqlDataAdapter(cmd);
-                    var dt = new DataTable();
-                    da.Fill(dt);
-
-                    return dt;
-                }
-            }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-            finally
-            {
-                _conn.Close();
-            }
-        }
 
         public DataTable TimKiemHoaDon(string key)
         {
             try
             {
-                using (var cmd = new SqlCommand("SELECT hd.*, kh.tenKH FROM hoaDon hd JOIN khachHang kh ON hd.maKH=kh.maKH WHERE (hd.maHD LIKE @key OR hd.maNV LIKE @key OR hd.maKH LIKE @key)", _conn))
+                using (var cmd = new SqlCommand("SELECT hd.maHD, hd.maNV, kh.tenKH, hd.ngayLap, hd.tongTien, hd.tienGiam, hd.tienKhachDua, hd.tienThua FROM hoaDon hd JOIN khachHang kh ON hd.maKH=kh.maKH WHERE (hd.maHD LIKE @key OR hd.maNV LIKE @key OR hd.maKH LIKE @key)", _conn))
                 {
                     cmd.Parameters.AddWithValue("@key", "%" + key + "%");
                     var da = new SqlDataAdapter(cmd);
