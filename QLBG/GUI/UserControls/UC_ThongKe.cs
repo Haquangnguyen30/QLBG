@@ -73,9 +73,11 @@ namespace GUI.UserControls
                     tenSanPham[i].Visible = false;
                     soLuongDaBan[i].Visible = false;
                     hinhAnh[i].Visible = false;
+                    defaultPanel.Visible = true;
                 }
                 if (thongKeSanPham != null && thongKeSanPham.Count > 0)
                 {
+                    defaultPanel.Visible = false;
                     int maxProductsToShow = Math.Min(thongKeSanPham.Count, 5);
                         for (int i = 0; i < maxProductsToShow; i++)
                     {
@@ -85,7 +87,6 @@ namespace GUI.UserControls
                         soLuongDaBan[i].Visible = true;
                         hinhAnh[i].Visible = true;
 
-                        //hinhAnh[i].ImageLocation = product.hinhAnh;
                         hinhAnh[i].SizeMode = PictureBoxSizeMode.Zoom;
 
                         tenSanPham[i].Text = product.tenSP;
