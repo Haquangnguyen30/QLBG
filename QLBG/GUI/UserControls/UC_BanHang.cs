@@ -509,7 +509,7 @@ namespace GUI.UserControls
         }
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab.Name == "tabHoaDon")
+            if (guna2TabControl1.SelectedTab.Name == "pageHD")
             {
                 LoadHoaDonData(); // Tải lại dữ liệu nếu cần
             }
