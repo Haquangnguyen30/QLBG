@@ -507,7 +507,7 @@
             this.btnReloadSanPham.Name = "btnReloadSanPham";
             this.btnReloadSanPham.Size = new System.Drawing.Size(180, 45);
             this.btnReloadSanPham.TabIndex = 0;
-            this.btnReloadSanPham.Text = "Reload";
+            this.btnReloadSanPham.Text = "Làm mới";
             this.btnReloadSanPham.Click += new System.EventHandler(this.btnReloadSanPham_Click);
             // 
             // btnExportExcel
@@ -525,7 +525,7 @@
             this.btnExportExcel.Name = "btnExportExcel";
             this.btnExportExcel.Size = new System.Drawing.Size(180, 45);
             this.btnExportExcel.TabIndex = 3;
-            this.btnExportExcel.Text = "Export";
+            this.btnExportExcel.Text = "Xuất Excel";
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // btnImportExcel
@@ -543,7 +543,7 @@
             this.btnImportExcel.Name = "btnImportExcel";
             this.btnImportExcel.Size = new System.Drawing.Size(180, 45);
             this.btnImportExcel.TabIndex = 1;
-            this.btnImportExcel.Text = "Import";
+            this.btnImportExcel.Text = "Nhập Excel";
             this.btnImportExcel.Click += new System.EventHandler(this.btnImportExcel_Click);
             // 
             // btnXoaSanPham
@@ -596,6 +596,7 @@
             // 
             // txtGiaNhap
             // 
+            this.txtGiaNhap.BorderRadius = 10;
             this.txtGiaNhap.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtGiaNhap.DefaultText = "";
             this.txtGiaNhap.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -629,6 +630,7 @@
             // 
             // txtMau
             // 
+            this.txtMau.BorderRadius = 10;
             this.txtMau.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMau.DefaultText = "";
             this.txtMau.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -651,6 +653,7 @@
             // 
             // txtMaLoai
             // 
+            this.txtMaLoai.BorderRadius = 10;
             this.txtMaLoai.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaLoai.DefaultText = "";
             this.txtMaLoai.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -695,6 +698,7 @@
             // 
             // txtGiaBan
             // 
+            this.txtGiaBan.BorderRadius = 10;
             this.txtGiaBan.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtGiaBan.DefaultText = "";
             this.txtGiaBan.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -728,6 +732,7 @@
             // 
             // txtTenSanPham
             // 
+            this.txtTenSanPham.BorderRadius = 10;
             this.txtTenSanPham.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTenSanPham.DefaultText = "";
             this.txtTenSanPham.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -750,6 +755,7 @@
             // 
             // txtSoLuong
             // 
+            this.txtSoLuong.BorderRadius = 10;
             this.txtSoLuong.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSoLuong.DefaultText = "";
             this.txtSoLuong.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -794,6 +800,7 @@
             // 
             // txtMaSanPham
             // 
+            this.txtMaSanPham.BorderRadius = 10;
             this.txtMaSanPham.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaSanPham.DefaultText = "";
             this.txtMaSanPham.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -908,7 +915,7 @@
             this.btnReloadLoaiSanPham.Name = "btnReloadLoaiSanPham";
             this.btnReloadLoaiSanPham.Size = new System.Drawing.Size(180, 45);
             this.btnReloadLoaiSanPham.TabIndex = 7;
-            this.btnReloadLoaiSanPham.Text = "Reload";
+            this.btnReloadLoaiSanPham.Text = "Làm mới";
             this.btnReloadLoaiSanPham.Click += new System.EventHandler(this.btnReloadLoaiSanPham_Click);
             // 
             // btnThemLoai

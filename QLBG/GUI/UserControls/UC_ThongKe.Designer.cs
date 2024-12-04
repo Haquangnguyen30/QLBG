@@ -48,7 +48,6 @@
             this.labelTongBanHang = new System.Windows.Forms.Label();
             this.tenSP = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.chonNgay = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.btnLoc = new Guna.UI2.WinForms.Guna2Button();
             this.btn12Thang = new Guna.UI2.WinForms.Guna2Button();
@@ -78,6 +77,10 @@
             this.tenSP1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.defaultPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.chonNgay = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -99,6 +102,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.top1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.defaultPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -288,15 +293,6 @@
             this.panel1.Size = new System.Drawing.Size(1188, 69);
             this.panel1.TabIndex = 1;
             // 
-            // chonNgay
-            // 
-            this.chonNgay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chonNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.chonNgay.Location = new System.Drawing.Point(123, 14);
-            this.chonNgay.Name = "chonNgay";
-            this.chonNgay.Size = new System.Drawing.Size(128, 27);
-            this.chonNgay.TabIndex = 83;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -320,7 +316,7 @@
             this.btnLoc.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
             this.btnLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.btnLoc.ForeColor = System.Drawing.Color.White;
-            this.btnLoc.Location = new System.Drawing.Point(273, 5);
+            this.btnLoc.Location = new System.Drawing.Point(301, 5);
             this.btnLoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLoc.Name = "btnLoc";
             this.btnLoc.PressedColor = System.Drawing.Color.Aquamarine;
@@ -420,6 +416,7 @@
             this.guna2Panel4.BackColor = System.Drawing.Color.White;
             this.guna2Panel4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
             this.guna2Panel4.BorderRadius = 20;
+            this.guna2Panel4.Controls.Add(this.defaultPanel);
             this.guna2Panel4.Controls.Add(this.top5);
             this.guna2Panel4.Controls.Add(this.top4);
             this.guna2Panel4.Controls.Add(this.top3);
@@ -703,6 +700,64 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Top 5 sản phẩm bán chạy";
             // 
+            // defaultPanel
+            // 
+            this.defaultPanel.BackColor = System.Drawing.Color.Transparent;
+            this.defaultPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
+            this.defaultPanel.BorderRadius = 20;
+            this.defaultPanel.Controls.Add(this.pictureBox6);
+            this.defaultPanel.Controls.Add(this.label4);
+            this.defaultPanel.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
+            this.defaultPanel.FillColor = System.Drawing.Color.White;
+            this.defaultPanel.Location = new System.Drawing.Point(14, 59);
+            this.defaultPanel.Name = "defaultPanel";
+            this.defaultPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.defaultPanel.Size = new System.Drawing.Size(344, 784);
+            this.defaultPanel.TabIndex = 8;
+            this.defaultPanel.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Century", 12.2F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
+            this.label4.Location = new System.Drawing.Point(34, 188);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(275, 50);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Không có sản phẩm \r\ntrong thời gian thống kê";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chonNgay
+            // 
+            this.chonNgay.BorderRadius = 20;
+            this.chonNgay.Checked = true;
+            this.chonNgay.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
+            this.chonNgay.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.chonNgay.ForeColor = System.Drawing.Color.White;
+            this.chonNgay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.chonNgay.Location = new System.Drawing.Point(123, 5);
+            this.chonNgay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.chonNgay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.chonNgay.Name = "chonNgay";
+            this.chonNgay.Size = new System.Drawing.Size(172, 44);
+            this.chonNgay.TabIndex = 169;
+            this.chonNgay.Value = new System.DateTime(2024, 11, 28, 14, 11, 33, 184);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(29, 264);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(257, 240);
+            this.pictureBox6.TabIndex = 6;
+            this.pictureBox6.TabStop = false;
+            // 
             // UC_ThongKe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -743,6 +798,9 @@
             this.top1.ResumeLayout(false);
             this.top1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.defaultPanel.ResumeLayout(false);
+            this.defaultPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -768,7 +826,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private Guna.UI2.WinForms.Guna2Button btnLoc;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker chonNgay;
         private System.Windows.Forms.Panel panel3;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
         private System.Windows.Forms.Label label2;
@@ -792,5 +849,9 @@
         private System.Windows.Forms.Label soLuongBanRa1;
         private System.Windows.Forms.Label tenSP1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2Panel defaultPanel;
+        private System.Windows.Forms.Label label4;
+        private Guna.UI2.WinForms.Guna2DateTimePicker chonNgay;
+        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }
