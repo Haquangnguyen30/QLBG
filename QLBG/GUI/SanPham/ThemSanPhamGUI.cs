@@ -36,15 +36,10 @@ namespace GUI.SanPham
         {
             txtMaSanPham.Text = maSP;
 
-            DataTable lsp = lspBUS.getDSLoaiSanPham();
-            string[] arr = new string[lsp.Rows.Count];
-            for (int i = 0; i < lsp.Rows.Count; i++)
-            {
-                arr[i] = lsp.Rows[i]["maLoai"].ToString();
-            }
-            cbMaLoai.Items.Clear();
-            cbMaLoai.Items.AddRange(arr);
-            cbMaLoai.SelectedIndex = 0;
+            cbMaLoai.DataSource = lspBUS.getDSLoaiSanPham();
+
+            cbMaLoai.DisplayMember = "tenLoai";
+            cbMaLoai.ValueMember = "maLoai";
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -99,7 +94,7 @@ namespace GUI.SanPham
                 sanPham.giaBan = float.Parse(txtGiaBan.Text);
                 sanPham.giaNhap = float.Parse(txtGiaNhap.Text);
                 sanPham.mau = txtMau.Text;
-                sanPham.maLoai = int.Parse(cbMaLoai.SelectedItem.ToString());
+                sanPham.maLoai = int.Parse(cbMaLoai.SelectedValue.ToString());
                 sanPham.tinhTrang = true;
                 sanPham.img = txtMaSanPham.Text;
                 sanPham.soLuong = 0;

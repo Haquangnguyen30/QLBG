@@ -483,6 +483,42 @@ namespace GUI.UserControls
             int mahd = int.Parse(dgvHD.SelectedRows[0].Cells["maHD"].Value.ToString());
             dgvCTHD.DataSource = CTHDbll.GetChiTietHoaDon(mahd);
         }
+        private void dgvHD_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            String fileName = dgvHD.SelectedRows[0].Cells["maHD"].Value.ToString();
+            openPdf(fileName);
+        }
+
+        private void openPdf(String fileName)
+        {
+            // Lấy đường dẫn gốc của ứng dụng khi chạy
+            string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Tạo đường dẫn tới thư mục Resources (đường dẫn tương đối từ project)
+            string resourcePath = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\Import_HDInvoice");
+
+            String pdfPath = Path.Combine(resourcePath, fileName + ".pdf");
+            if (File.Exists(pdfPath))
+            {
+                try
+                {
+                    // Mở file PDF bằng ứng dụng mặc định
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                    {
+                        FileName = pdfPath,
+                        UseShellExecute = true // Dùng ứng dụng mặc định của hệ thống để mở
+                    });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error opening PDF: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("PDF file not found at: " + pdfPath);
+            }
+        }
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
 

@@ -34,14 +34,9 @@ namespace GUI.SanPham
 
         private void SuaSanPhamGUI_Load(object sender, EventArgs e)
         {
-            DataTable lsp = lspBUS.getDSLoaiSanPham();
-            string[] arr = new string[lsp.Rows.Count];
-            for (int i = 0; i < lsp.Rows.Count; i++)
-            {
-                arr[i] = lsp.Rows[i]["maLoai"].ToString();
-            }
-            cbMaLoai.Items.Clear();
-            cbMaLoai.Items.AddRange(arr);
+            cbMaLoai.DataSource = lspBUS.getDSLoaiSanPham();
+            cbMaLoai.DisplayMember = "tenLoai";
+            cbMaLoai.ValueMember = "maLoai";
             
 
             txtMaSanPham.Text = sanPham.maSP;
@@ -113,7 +108,7 @@ namespace GUI.SanPham
                 spUpdate.giaBan = float.Parse(txtGiaBan.Text);
                 spUpdate.giaNhap = float.Parse(txtGiaNhap.Text);
                 spUpdate.mau = txtMau.Text.Trim();
-                spUpdate.maLoai = int.Parse(cbMaLoai.SelectedItem.ToString());
+                spUpdate.maLoai = int.Parse(cbMaLoai.SelectedValue.ToString());
 
                 string currentImg = sanPham.img;
                 string[] imParts = currentImg.Split('_');

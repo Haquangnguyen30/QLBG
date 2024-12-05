@@ -77,16 +77,19 @@ namespace DAL
                                $"WHERE pn.ngayLap BETWEEN '{fromDate}' AND '{toDate}' " +
                                "GROUP BY CAST(pn.ngayLap AS DATE) " +
                                "ORDER BY Ngay"; 
-                SqlDataReader reader = DatabaseConnect.queryData(query);
-
                 List<ThongKeNgayDTO> tkpnList = new List<ThongKeNgayDTO>();
-
-                while (reader.Read())
+                using (SqlCommand cmd = new SqlCommand(query, _conn))
                 {
-                    ThongKeNgayDTO tkpn = new ThongKeNgayDTO();
-                    tkpn.ngayLap = reader.GetDateTime(0).Date; 
-                    tkpn.tongTien = reader.GetDouble(1) ;
-                    tkpnList.Add(tkpn);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            ThongKeNgayDTO tkpn = new ThongKeNgayDTO();
+                            tkpn.ngayLap = reader.GetDateTime(0).Date; 
+                            tkpn.tongTien = reader.GetDouble(1) ;
+                            tkpnList.Add(tkpn);
+                        }
+                    }
                 }
 
                 DateTime fromDateTime = DateTime.ParseExact(fromDate, "yyyy-MM-dd", CultureInfo.InvariantCulture);

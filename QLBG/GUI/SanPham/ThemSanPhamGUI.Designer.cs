@@ -316,7 +316,7 @@
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
             this.guna2HtmlLabel7.Size = new System.Drawing.Size(386, 40);
             this.guna2HtmlLabel7.TabIndex = 20;
-            this.guna2HtmlLabel7.Text = "Mã Loại:___";
+            this.guna2HtmlLabel7.Text = "Tên Loại:___";
             // 
             // guna2HtmlLabel2
             // 

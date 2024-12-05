@@ -58,8 +58,8 @@ namespace GUI.UserControls
             this.guna2Panel1.BackColor = System.Drawing.Color.White;
             this.guna2Panel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
             this.guna2Panel1.BorderRadius = 20;
-            this.guna2Panel1.Controls.Add(this.mauSp);
             this.guna2Panel1.Controls.Add(this.btnViewDetails);
+            this.guna2Panel1.Controls.Add(this.mauSp);
             this.guna2Panel1.Controls.Add(this.giaBanSP);
             this.guna2Panel1.Controls.Add(this.tenSP);
             this.guna2Panel1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(17)))), ((int)(((byte)(132)))));
