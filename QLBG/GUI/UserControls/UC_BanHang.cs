@@ -151,7 +151,14 @@ namespace GUI.UserControls
                 {
                     // Cập nhật số lượng nếu sản phẩm đã tồn tại
                     int currentQuantity = int.Parse(row.Cells["soLuong"].Value.ToString());
-                    currentQuantity += quantity;
+                    if(currentQuantity < quantity)
+                    {
+                        currentQuantity = currentQuantity + (quantity - currentQuantity);
+                    }else if(currentQuantity == quantity)
+                    {
+                        MessageBox.Show("Số lượng đạt tối đa");
+                        currentQuantity = quantity;
+                    }
                     row.Cells["soLuong"].Value = currentQuantity;
                     row.Cells["ThanhTien"].Value = product.giaBan * currentQuantity;
                     TinhTongTien();
@@ -357,6 +364,10 @@ namespace GUI.UserControls
                         {
                             col = 0;
                             row++;
+                            tabledulieusp.RowCount++;
+                        }
+                        while (tabledulieusp.RowCount < 4)
+                        {
                             tabledulieusp.RowCount++;
                         }
                     }

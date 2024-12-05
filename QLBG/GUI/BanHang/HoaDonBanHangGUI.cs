@@ -14,6 +14,7 @@ using iTextSharp.text.pdf;
 using iTextSharp.text;
 using GUI.UserControls;
 using Irony.Parsing;
+using System.Globalization;
 
 namespace GUI.BanHang
 {
@@ -341,7 +342,7 @@ namespace GUI.BanHang
             if (selectedValue != null && selectedValue.ToString() == "0") // Nếu là "Không" (mã khuyến mãi = 0)
             {
                 // Nếu không có khuyến mãi, giữ nguyên giá trị txtTongTien
-                txtTongTien.Text = txtTongTien.Text; // Giữ nguyên giá trị
+                txtTongTien.Text = TongTien+""; // Giữ nguyên giá trị
                 tienGiam = 0; // Không giảm giá
             }
             else
@@ -354,7 +355,10 @@ namespace GUI.BanHang
                     decimal giaTriGiam = Convert.ToDecimal(selectedRow["giaTriGiam"]);
 
                     // Tính giá trị giảm giá và lưu vào biến toàn cục
-                    decimal currentTotal = Convert.ToDecimal(txtTongTien.Text);  // Lấy giá trị tổng tiền hiện tại
+                    //decimal currentTotal = Convert.ToDecimal(txtTongTien.Text);  // Lấy giá trị tổng tiền hiện tại
+                    string input = TongTien+"".Replace(".", "").Replace(",", ".");
+                    decimal currentTotal = decimal.Parse(input, CultureInfo.InvariantCulture);
+                    Console.WriteLine(currentTotal);
                     tienGiam = (float)(currentTotal * giaTriGiam / 100);  // Lưu giá trị giảm giá vào biến toàn cục
                                                                           // Chuyển tienGiam từ float sang decimal để tính newTotal
                     decimal tienGiamDecimal = Convert.ToDecimal(tienGiam);
