@@ -1,9 +1,11 @@
-use QLBG
-
-create table loaiSP(
-	maLoai int not null primary key,
-	tenLoai nVarChar(20),
-	tinhTrang bit,
+CREATE DATABASE QLBG
+GO
+USE QLBG
+GO
+CREATE TABLE loaiSP(
+	maLoai INT NOT NULL PRIMARY KEY,
+	tenLoai NVARCHAR(20),
+	tinhTrang BIT
 );
 
 create table kichCo(
@@ -17,7 +19,7 @@ create table sanPham(
 	tenSP nVarChar(130),
 	giaBan float,
 	soLuong int,
-	img image,
+	img NVARCHAR(20),
 	giaNhap float,
 	mau nVarChar(20),
 	tinhTrang bit,
@@ -57,7 +59,8 @@ create table nhanVien(
 	diaChi nVarChar(130),
 	chucVu nVarChar(13),
 	ngaySinh datetime,
-	tinhTrang bit
+	tinhTrang bit,
+	email nVarChar(30)
 );
 
 create table phanQuyen(
@@ -101,7 +104,8 @@ create table phieuNhap(
 create table CT_PhieuNhap(
 	maPN int foreign key references phieuNhap(maPN),
 	maSP nVarChar(20) foreign key references sanPham(maSP),
-	constraint pk_CTPN primary key (maPN,maSP),
+    makichCo int foreign key references kichCo(maKichCo),
+	constraint pk_CTPN primary key (maPN,maSP,makichCo),
 	giaNhap float,
 	soLuong int,
 	thanhTien float,
@@ -114,22 +118,22 @@ create table hoaDon(
 	maKH int foreign key references khachHang(maKH),
 	ngayLap datetime,
 	tongTien float,
+	maKM INT NULL FOREIGN key references dbo.khuyenMai(maKM),
+	tienGiam FLOAT,	
 	tienKhachDua float,
 	tienThua float,
 	tinhTrang bit
 );
 
-create table CT_HoaDon(
-	maHD int foreign key references hoaDon(maHD),
-	maSP nVarChar(20) foreign key references sanPham(maSP),
-	constraint pk_CTHD primary key (maHD,maSP),
-	giaBan float,
-	soLuong int,
-	maKM int foreign key references khuyenMai(maKM),
-	thanhTien float,
-	maSPDoi nVarChar(20),
-	ngayDoi datetime,
-	tinhTrangDoi bit
+CREATE TABLE CT_HoaDon(
+    maHD INT FOREIGN KEY REFERENCES hoaDon(maHD),
+    maSP NVARCHAR(20) FOREIGN KEY REFERENCES sanPham(maSP),
+    maKichCo INT FOREIGN KEY REFERENCES dbo.kichCo(maKichCo), -- Thêm kích cỡ vào
+    CONSTRAINT pk_CTHD PRIMARY KEY (maHD, maSP, maKichCo), -- Thêm maKichCo vào khóa chính
+    giaBan FLOAT,
+    soLuong INT,
+    thanhTien FLOAT,
+    tinhTrang BIT
 );
 
 --loai sp
@@ -149,75 +153,134 @@ VALUES
 (5, 42, 1);
 
 --san pham
-INSERT INTO sanPham (maSP, tenSP, giaBan, img, giaNhap, mau, tinhTrang, maLoai)
-VALUES 
-(N'G001', N'Nike Air Max', 1500000, NULL, 1000000, N'White', 1, 1),
-(N'G002', N'Adidas Ultraboost', 1800000, NULL, 1200000, N'Black', 1, 1);
+INSERT INTO sanPham (maSP,tenSP,giaBan,soLuong,img,giaNhap,mau,tinhTrang,maLoai) VALUES
+	 (N'G001',N'Nike Air Max',1500000.0,0,'G001',1000000.0,N'White',1,1),
+	 (N'G002',N'Adidas Ultraboost',1800000.0,0,'G002',1200000.0,N'Black',1,1),
+	 (N'G003',N'Men Cloud X 3', 3000000.0,0,'G003',2500000.0,N'Grey',1,1),
+	 (N'G004', N'Puma RS-X', 2200000.0, 0, 'G004', 1800000.0, N'Red', 1, 1),
+     (N'G005', N'Converse Chuck', 1300000.0, 0, 'G005', 1000000.0, N'Black', 1, 2),
+     (N'G006', N'Vans Old Skool', 1200000.0, 0, 'G006', 900000.0, N'White', 1, 2),
+	 (N'G007', N'Reebok Club C', 1900000.0, 0, 'G007', 1500000.0, N'Blue and White', 1, 1),
+	 (N'G008', N'New Balance 574', 2100000.0, 0, 'G008', 1700000.0, N'Grey', 1, 1),
+	 (N'G009', N'Skechers D-Lite', 1700000.0, 0, 'G009', 1300000.0, N'Blue', 1, 3),
+	 (N'G010', N'Fila Disruptor', 2000000.0, 0, 'G010', 1600000.0, N'White', 1, 1),
+     (N'G011', N'Armour Hovr Phantom 3 Se Reflect', 2500000.0, 0, 'G011', 2200000.0, N'Black', 1, 1),
+     (N'G012', N'Asics Gel-Kayano', 2400000.0, 0, 'G012', 2000000.0, N'Blue', 1, 3),
+	 (N'G013',N'Adidas Ultraboost v2.0',1500000.0,0,N'G002',1000000.0,N'White',1,1),
+	 (N'G014',N'Adidas Ultraboost v3.0',1800000.0,0,N'G002',1200000.0,N'Black',1,1),
+	 (N'G015',N'Men Cloud X 3 v2.0',3000000.0,0,N'G003',2500000.0,N'Grey',1,1),
+	 (N'G016',N'Puma RS-X v2.0',2200000.0,0,N'G004',1800000.0,N'Red',1,1),
+	 (N'G017',N'Converse Chuck v2.0',1300000.0,0,N'G005',1000000.0,N'Black',1,2),
+	 (N'G018',N'Vans Old Skool v2.0',1200000.0,0,N'G006',900000.0,N'White',1,2),
+	 (N'G019',N'Reebok Club C v2.0',1900000.0,0,N'G007',1500000.0,N'Blue and White',1,1),
+	 (N'G020',N'New Balance 574 v2.0',2100000.0,0,N'G008',1700000.0,N'Grey',1,1),
+	 (N'G021',N'Skechers D-Lite v2.0',1700000.0,0,N'G009',1300000.0,N'Blue',1,3),
+	 (N'G022',N'Fila Disruptor v2.0',2000000.0,0,N'G010',1600000.0,N'White',1,1),
+	 (N'G023',N'Armour Hovr Phantom 3 Se Reflect v2.0',2500000.0,0,N'G011',2200000.0,N'Black',1,1),
+	 (N'G024',N'Asics Gel-Kayano v2.0',2400000.0,0,N'G012',2000000.0,N'Blue',1,3),
+	 (N'G025',N'Reebok Club C v3.0',1900000.0,0,N'G007',1500000.0,N'Blue and White',1,1),
+	 (N'G026',N'New Balance 574 v3.0',2100000.0,0,N'G008',1700000.0,N'Grey',1,1),
+	 (N'G027',N'Skechers D-Lite v3.0',1700000.0,0,N'G009',1300000.0,N'Blue',1,3),
+	 (N'G028',N'Fila Disruptor v3.0',2000000.0,0,N'G010',1600000.0,N'White',1,1),
+	 (N'G029',N'Armour Hovr Phantom 3 Se Reflect v3.0',2500000.0,0,N'G011',2200000.0,N'Black',1,1),
+	 (N'G030',N'Asics Gel-Kayano v3.0',2400000.0,0,N'G012',2000000.0,N'Blue',1,3);
 
 --so luong sp ở mỗi size
-INSERT INTO sanPham_KichCo (maSP, maKichCo, soLuong, tinhTrang)
-VALUES 
-(N'G001', 1, 15, 1), -- Sản phẩm G001, size 38, có 15 đôi
-(N'G001', 2, 10, 1), -- Sản phẩm G001, size 39, có 10 đôi
-(N'G002', 1, 5, 1),  -- Sản phẩm G002, size 38, có 5 đôi
-(N'G002', 3, 8, 1);  -- Sản phẩm G002, size 40, có 8 đôi
+INSERT INTO sanPham_KichCo (maSP,maKichCo,soLuong,tinhTrang) VALUES
+	 (N'G001',1,44,1),
+	 (N'G001',2,24,1),
+	 (N'G001',3,14,1),
+	 (N'G001',4,14,1),
+	 (N'G001',5,14,1),
+	 (N'G002',1,37,1),
+	 (N'G002',2,14,1),
+	 (N'G002',3,22,1),
+	 (N'G002',4,14,1),
+	 (N'G002',5,2,1),
+	 (N'G003',1,10,1),
+	 (N'G003',5,2,1),
+	 (N'G004',1,15,1),
+	 (N'G004',3,1,1),
+	 (N'G004',5,2,1);
 
 --khuyen mai
-INSERT INTO khuyenMai (maKM, tenKM, giaTriGiam, ngayBD, ngayKT, tinhTrang)
-VALUES 
-(1, N'End of Season Sale', 15, '2024-10-01', '2024-11-01', 1),
-(2, N'Black Friday Sale', 30, '2024-11-25', '2024-11-30', 1);
+INSERT INTO khuyenMai (maKM,tenKM,giaTriGiam,ngayBD,ngayKT,tinhTrang) VALUES
+	 (1,N'End of Season Sale',15,'2024-10-01 00:00:00.0','2024-11-01 00:00:00.0',1),
+	 (2,N'Black Friday Sale',30,'2024-11-25 00:00:00.0','2024-11-30 00:00:00.0',1),
+	 (0,N'Không',0,NULL,NULL,1);
 
 --khach hang
-INSERT INTO khachHang (maKH, tenKH, sdt)
-VALUES 
-(1, N'Nguyen Van A', '0123456789'),
-(2, N'Tran Thi B', '0987654321');
+INSERT INTO khachHang (maKH,tenKH,sdt) VALUES
+	 (1,N'Nguyen Van A',N'0357865238   '),
+	 (2,N'Tran Thi B',N'0377354211   ');
 
 --nhan vien
-INSERT INTO nhanVien (maNV, tenNV, gioiTinh, sdt, diaChi, chucVu, ngaySinh, tinhTrang)
-VALUES 
-(N'NV001', N'Le Quang', N'Nam', '0901234567', N'123 Le Loi, HCM', N'Quan ly', '1990-05-15', 1),
-(N'NV002', N'Nguyen Huyen', N'Nu', '0912345678', N'456 Hai Ba Trung, HCM', N'Nhan vien', '1995-08-20', 1);
-
+INSERT INTO nhanVien (maNV,tenNV,gioiTinh,sdt,diaChi,chucVu,ngaySinh,tinhTrang, email) VALUES
+	 (N'NV001',N'Le Quang',N'Nam',N'0901234567   ',N'123 Le Loi, HCM',N'Quan ly','1990-05-15 00:00:00.0',1,'nv1@gmail.com'),
+	 (N'NV002',N'Nguyen Huyen',N'Nu',N'0912345678   ',N'456 Hai Ba Trung, HCM',N'Nhan vien','1995-08-20 00:00:00.0',1,'nv2@gmail.com'),
+	 (N'NV003',N'Nguyễn Quang',N'Nam',N'0912345678   ',N'456 Hai Ba Trung, HCM',N'Nhan vien','1995-08-20 00:00:00.0',1,'nv3@gmail.com'),
+	 (N'NV004',N'Hồ Quang Hiếu',N'Nam',N'0987654321   ',N'273 An Duong Vuong',N'Thủ kho','1995-08-20 00:00:00.0',1,'nv4@gmail.com');
 --phan quyen
 INSERT INTO phanQuyen (maQuyen, tenQuyen, qLyTK, qLyBH, qLySP, qLyNV, qLyKH, qLyKM, qLyNH, xemThongKe)
 VALUES 
-(1, N'Admin', 1, 1, 1, 1, 1, 1, 1, 1),
-(2, N'Nhan vien', 0, 1, 1, 0, 1, 0, 0, 0);
+	 (1,N'Admin',1,0,0,0,0,0,0,0),
+	 (2,N'Quản lý',0,1,1,1,1,1,1,1),
+	 (3,N'Nhân viên',0,1,0,0,1,0,0,0),
+	 (4,N'Thủ kho',0,0,1,0,0,0,1,0);
 
 --tai khoan
 INSERT INTO taiKhoan (maNV, maQuyen, tenDangNhap, matKhau, tinhTrang)
 VALUES 
-(N'NV001', 1, N'admin', N'123456', 1),
-(N'NV002', 2, N'huyen123', N'654321', 1);
+	 (N'NV001',1,N'admin',N'123456',1),
+	 (N'NV002',2,N'quanly1',N'123456',1),
+	 (N'NV003',3,N'nhanvien1',N'123456',1),
+	 (N'NV004',4,N'thukho1',N'123456',1);
 
 --ncc
-INSERT INTO ncc (maNCC, tenNCC, sdt, diaChi, tinhTrang)
-VALUES 
-(1, N'Nike Supplier', '0900001111', N'789 Nguyen Trai, HCM', 1),
-(2, N'Adidas Supplier', '0911112222', N'456 Tran Hung Dao, HCM', 1);
+INSERT INTO ncc (maNCC,tenNCC,sdt,diaChi,tinhTrang) VALUES
+	 (1,N'Nike Supplier',N'0900001111',N'789 Nguyen Trai, HCM',1),
+	 (2,N'Adidas Supplier',N'0911112222',N'456 Tran Hung Dao, HCM',1),
+	 (3,N'PUMA',N'0123456782',N'Mỹ',1),
+	 (4,N'Hỏa Trâu',N'0192875934',N'Cát Tân, Phù Cát, Bình Định',1),
+	 (5,N'ABC',N'0123456789',N'273 An Duong Vuong',1),
+	 (6,N'DEF',N'0231435141',N'Thị Nghè',1),
+	 (7,N'QƯE',N'0988654323',N'Quận 5',1),
+	 (8,N'ZXC',N'0981237465',N'Quận 7',1),
+	 (9,N'aaa',N'0123456767',N'Nhà Bè',0),
+	 (13,N'Hỏa Bò',N'0192875934',N'Cát Tân, Phù Cát, Bình Định',1),
+	 (14,N'test',N'0918273645',N'Không nhớ',0),
+	 (15,N'CCC',N'0998982178',N'Cát Tân',0),
+	 (16,N'Heniken',N'0987654321',N'Quan 5',1);
 
 --phieu nhap
-INSERT INTO phieuNhap (maPN, maNV, maNCC, ngayLap, tongTien, tinhTrang)
-VALUES 
-(1, N'NV001', 1, '2024-09-01', 10000000, 1),
-(2, N'NV002', 2, '2024-10-05', 8000000, 1);
+INSERT INTO phieuNhap (maPN,maNV,maNCC,ngayLap,tongTien,tinhTrang) VALUES
+	 (1,N'NV001',1,'2024-09-01 00:00:00.0',25000000,1),
+	 (2,N'NV002',2,'2024-10-05 00:00:00.0',15600000,1),
+	 (3,N'NV001',1,'2024-10-10 00:00:00.0',10000000,1),
+	 (4,N'NV001',1,'2024-10-13 00:00:00.0',20000000,1),
+	 (5,N'NV002',2,'2024-10-17 00:00:00.0',30000000,1);
 
 --chi tiet phieu nhap
-INSERT INTO CT_PhieuNhap (maPN, maSP, giaNhap, soLuong, thanhTien, tinhTrang)
-VALUES 
-(1, N'G001', 1000000, 10, 10000000, 1),
-(2, N'G002', 1200000, 15, 18000000, 1);
-
+INSERT INTO CT_PhieuNhap (maPN,maSP,giaNhap,soLuong,thanhTien,tinhTrang,makichCo) VALUES
+	 (1,N'G002',1200000.0,2,2400000.0,1,2),
+	 (1,N'G003',1200000.0,2,2400000.0,1,3),
+	 (1,N'G001',1200000.0,1,1200000.0,1,4),
+	 (2,N'G001',1000000.0,30,30000000,1,2),
+	 (2,N'G001',1000000.0,25,25000000,1,1),
+	 (3,N'G001',1000000.0,20,20000000,1,1),
+	 (4,N'G002',1200000.0,1,1200000.0,1,1),
+	 (5,N'G002',1200000.0,1,1200000.0,1,1),
+	 (5,N'G003',1000000.0,1,1000000.0,1,1);
 --hoa don
-INSERT INTO hoaDon (maNV, maKH, ngayLap, tongTien, tienKhachDua, tienThua, tinhTrang)
-VALUES 
-(N'NV002', 1, '2024-10-15', 1500000, 2000000, 500000, 1);
+INSERT INTO hoaDon (maNV,maKH,ngayLap,tongTien,maKM,tienGiam,tienKhachDua,tienThua,tinhTrang) VALUES
+	 (N'NV002',1,'2024-10-15 00:00:00.0',1500000.0,0,0,2000000.0,500000.0,1),
+	 (N'NV002',2,'2024-10-27 00:00:00.0',1260000.0,2,540000.0,1500000.0,240000.0,1),
+	 (N'NV002',1,'2024-10-26 00:00:00.0',1500000.0,0,0,2000000.0,500000.0,1),
+	 (N'NV002',1,'2024-10-12 00:00:00.0',2520000.0,2,1080000.0,3000000.0,480000.0,1);
 
 --cT_hoa don
-INSERT INTO CT_HoaDon (maHD, maSP, giaBan, soLuong, maKM, thanhTien, maSPDoi, ngayDoi, tinhTrangDoi)
-VALUES 
-(1, N'G001', 1500000, 1, 1, 1275000, NULL, NULL, 1);
-
+INSERT INTO CT_HoaDon (maHD,maSP,maKichCo,giaBan,soLuong,thanhTien,tinhTrang) VALUES
+	 (1,N'G001',1,1500000.0,1,1500000.0,1),
+	 (1,N'G001',2,1500000.0,1,1500000.0,1),
+	 (2,N'G001',2,1500000.0,1,1500000.0,1);
 --bao hanh
