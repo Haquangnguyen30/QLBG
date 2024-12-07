@@ -64,5 +64,21 @@ namespace BLL
 
             return maHD; // Trả về mã hóa đơn vừa thêm
         }
+
+        public DataTable getHoaDonChuaDoi()
+        {
+            return dAL.getHoaDonChuaDoi();
+        }
+
+        public void updateTinhTrangHoaDon(String maHD)
+        {
+            dAL.updateTinhTrangHoaDon(maHD);
+        }
+
+        public int getMaKMByMaHD(int maHD)
+        {
+            return dAL.getMaKMByMaHD(maHD);
+        }
+
     }
 }

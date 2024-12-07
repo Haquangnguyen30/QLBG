@@ -6,15 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
-
+using DocumentFormat.OpenXml.Office.Word;
+using System.Windows.Forms;
 
 namespace DAL
 {
     public class HoaDonDAL : DatabaseConnect
     {
+        SqlConnection _conn = DatabaseConnect._conn;
         public DataTable getDSHD()
         {
-            var cmd = new SqlCommand("SELECT hd.maHD, hd.maNV, kh.tenKH, hd.ngayLap, hd.tongTien, hd.tienGiam, hd.tienKhachDua, hd.tienThua FROM hoaDon hd JOIN khachHang kh ON hd.maKH=kh.maKH WHERE tinhTrang = 'True'", _conn);
+            var cmd = new SqlCommand("SELECT hd.maHD, hd.maNV, kh.tenKH, hd.ngayLap, hd.tongTien, hd.tienGiam, hd.tienKhachDua, hd.tienThua, hd.tinhTrang FROM hoaDon hd JOIN khachHang kh ON hd.maKH=kh.maKH", _conn);
             var da = new SqlDataAdapter(cmd);
             var dt = new DataTable();
             da.Fill(dt);
@@ -88,7 +90,7 @@ namespace DAL
         {
             try
             {
-                using (var cmd = new SqlCommand("SELECT hd.maHD, hd.maNV, kh.tenKH, hd.ngayLap, hd.tongTien, hd.tienGiam, hd.tienKhachDua, hd.tienThua FROM hoaDon hd JOIN khachHang kh ON hd.maKH=kh.maKH WHERE (hd.maHD LIKE @key OR hd.maNV LIKE @key OR hd.maKH LIKE @key)", _conn))
+                using (var cmd = new SqlCommand("SELECT hd.maHD, hd.maNV, kh.tenKH, hd.ngayLap, hd.tongTien, hd.tienGiam, hd.tienKhachDua, hd.tienThua, hd.tinhTrang FROM hoaDon hd JOIN khachHang kh ON hd.maKH=kh.maKH WHERE (hd.maHD LIKE @key OR hd.maNV LIKE @key OR hd.maKH LIKE @key)", _conn))
                 {
                     cmd.Parameters.AddWithValue("@key", "%" + key + "%");
                     var da = new SqlDataAdapter(cmd);
@@ -103,6 +105,91 @@ namespace DAL
 
                 Console.WriteLine(ex.Message);
                 return null;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+
+        public DataTable getHoaDonChuaDoi()
+        {
+            try
+            {
+                if (_conn.State != ConnectionState.Open) _conn.Open();
+
+                String sql = "SELECT maHD, ngayLap FROM hoaDon WHERE tinhTrang = 1";
+
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("maHD");
+                dataTable.Columns.Add("ngayLap");
+
+                using (var cmd = new SqlCommand(sql, _conn))
+                {
+                    using (var da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dataTable);
+                    }
+                }
+
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lấy danh sách hóa đơn có thể đổi hàng: {ex.Message}");
+                return null;
+            }
+            finally
+            {
+                if (_conn.State == ConnectionState.Open)
+                    _conn.Close(); // Đảm bảo đóng kết nối nếu nó đang mở
+            }
+        }
+
+        public void updateTinhTrangHoaDon(String maHD)
+        {
+            try
+            {
+                if (_conn.State != ConnectionState.Open) _conn.Open();
+
+                String sql = @"UPDATE hoaDon SET tinhTrang = 0 WHERE maHD = @maHD";
+
+                using (SqlCommand cmd = new SqlCommand(sql, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@maHD", maHD);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+
+        public int getMaKMByMaHD(int maHD)
+        {
+            try
+            {
+                if (_conn.State != ConnectionState.Open) _conn.Open();
+
+                String sql = @"SELECT maKM FROM hoaDon WHERE maHD = @maHD";
+
+                using (SqlCommand cmd = new SqlCommand(sql, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@maHD", maHD);
+                    return (int)cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Lỗi lấy mã KM bằng mã HD: " + ex.Message);
+                return 0;
             }
             finally
             {

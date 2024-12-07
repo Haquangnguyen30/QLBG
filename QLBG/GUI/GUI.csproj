@@ -213,6 +213,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BanHang\DoiHangGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BanHang\DoiHangGUI.Designer.cs">
+      <DependentUpon>DoiHangGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="BanHang\HoaDonBanHangGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -401,6 +407,9 @@
     <Compile Include="UserControls\UC_ThongKe.Designer.cs">
       <DependentUpon>UC_ThongKe.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BanHang\DoiHangGUI.resx">
+      <DependentUpon>DoiHangGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BanHang\HoaDonBanHangGUI.resx">
       <DependentUpon>HoaDonBanHangGUI.cs</DependentUpon>
     </EmbeddedResource>

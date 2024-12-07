@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using BLL;
 using BUS;
 using DTO;
 using GUI.BanHang;
-using NPOI.SS.Formula.Functions;
 
 namespace GUI.UserControls
 {
@@ -25,17 +23,24 @@ namespace GUI.UserControls
         private List<KhachHangDTO> danhSachKhachHang;
         private int itemsPerPage = 12;
         private int startPage = 1;
+        private System.Threading.Timer checkTimer;
+        private NhanVienDTO currentNV;
         public UC_BanHang()
         {
             InitializeComponent();
+            autoUpdateTinhTrangHoaDon();
+            this.currentNV = UserSession.Instance.currentNV;
+        }
+
+        private void UC_BanHang_Load(object sender, EventArgs e)
+        {
             LoadProducts(); // Gọi hàm tải danh sách sản phẩm
             ConfigureCartGridBH(); //Cấu hình giỏ hàng
             LoadHoaDonData();
             danhSachKhachHang = khachHangBUS.getList();
             CapNhatComboBox(danhSachKhachHang);
-        }
-
-        // Hàm tải danh sách sản phẩm
+            btnDoiHang.Enabled = false;
+        }  
         // Hàm tải danh sách sản phẩm
         private void LoadProducts()
         {
@@ -193,15 +198,30 @@ namespace GUI.UserControls
             GioHangDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             GioHangDataGridView.ReadOnly = true;
         }
+
         private void LoadHoaDonData()
         {
             // Lấy dữ liệu từ HoaDonDAL
             DataTable dt = HDbll.getDSHD();
-            // Kiểm tra và gán dữ liệu vào DataGridView
             if (dt != null && dt.Rows.Count > 0)
             {
+                // Thêm cột "TinhTrangText" vào DataTable nếu chưa tồn tại
+                if (!dt.Columns.Contains("Được đổi hàng"))
+                {
+                    dt.Columns.Add("Được đổi hàng", typeof(string)); // Thêm cột hiển thị
+                }
+
+                // Duyệt qua từng hàng và gán giá trị cho "TinhTrangText"
+                foreach (DataRow row in dt.Rows)
+                {
+                    row["Được đổi hàng"] = row["tinhTrang"].ToString() == "True" ? "Có" : "Không";
+                }
+
                 // Gán dữ liệu vào DataGridView
                 dgvHD.DataSource = dt;
+
+                dgvHD.Columns["tinhTrang"].Visible = false;
+                dgvHD.Columns["tinhTrangText"].Visible = false;
 
                 // Kiểm tra và ánh xạ dữ liệu đúng với các cột
                 dgvHD.Columns["maHD"].DataPropertyName = "maHD";
@@ -214,18 +234,19 @@ namespace GUI.UserControls
                 dgvHD.Columns["tienGiam"].DefaultCellStyle.Format = "N0"; // Định dạng tiền tệ
                 dgvHD.Columns["tienKhachDua"].DataPropertyName = "tienKhachDua";
                 dgvHD.Columns["tienKhachDua"].DefaultCellStyle.Format = "N0"; // Định dạng tiền tệ
-                //dgvHD.Columns["tienThua"].DataPropertyName = "tienThua";
-                //dgvHD.Columns["tienThua"].DefaultCellStyle.Format = "N0"; // Định dạng tiền tệ
+
+                // Tùy chỉnh hiển thị
                 dgvHD.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvHD.AllowUserToAddRows = false; // Không cho phép người dùng thêm hàng thủ công
                 dgvHD.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Chọn toàn hàng
             }
             else
             {
-                // Nếu không có dữ liệu, có thể hiển thị thông báo hoặc làm gì đó tùy ý.
+                // Nếu không có dữ liệu
                 MessageBox.Show("Không có dữ liệu.");
             }
         }
+
         private void GioHangDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -491,6 +512,16 @@ namespace GUI.UserControls
         }
         private void dgvHD_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            String isDoiHang = dgvHD.SelectedRows[0].Cells["Được đổi hàng"].Value.ToString();
+            if (isDoiHang == "Có")
+            {
+                btnDoiHang.Enabled = true;
+            }
+            else if(isDoiHang == "Không") 
+            {
+                btnDoiHang.Enabled = false;
+            }
+
             int mahd = int.Parse(dgvHD.SelectedRows[0].Cells["maHD"].Value.ToString());
             dgvCTHD.DataSource = CTHDbll.GetChiTietHoaDon(mahd);
         }
@@ -505,31 +536,40 @@ namespace GUI.UserControls
             // Lấy đường dẫn gốc của ứng dụng khi chạy
             string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-            // Tạo đường dẫn tới thư mục Resources (đường dẫn tương đối từ project)
-            string resourcePath = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\Import_HDInvoice");
+            // Tạo đường dẫn tới hai thư mục Resources (đường dẫn tương đối từ project)
+            string importPath = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\Import_HDInvoice");
+            string exchangePath = Path.Combine(projectDirectory, @"..\..\..\GUI\Resources\Exchange_HDinvoice");
 
-            String pdfPath = Path.Combine(resourcePath, fileName + ".pdf");
-            if (File.Exists(pdfPath))
+            // Tạo đường dẫn đầy đủ cho file PDF trong từng thư mục
+            string importPdfPath = Path.Combine(importPath, fileName + ".pdf");
+            string exchangePdfPath = Path.Combine(exchangePath, fileName + ".pdf");
+
+            // Hàm mở file PDF nếu tồn tại
+            void OpenFileIfExist(string pdfPath)
             {
-                try
+                if (File.Exists(pdfPath))
                 {
-                    // Mở file PDF bằng ứng dụng mặc định
-                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                    try
                     {
-                        FileName = pdfPath,
-                        UseShellExecute = true // Dùng ứng dụng mặc định của hệ thống để mở
-                    });
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error opening PDF: " + ex.Message);
+                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                        {
+                            FileName = pdfPath,
+                            UseShellExecute = true // Dùng ứng dụng mặc định của hệ thống để mở
+                        });
+                    }
+                    catch
+                    {
+                        // Không làm gì khi lỗi mở file
+                    }
                 }
             }
-            else
-            {
-                MessageBox.Show("PDF file not found at: " + pdfPath);
-            }
+
+            // Mở cả hai file nếu tồn tại
+            OpenFileIfExist(importPdfPath);
+            OpenFileIfExist(exchangePdfPath);
         }
+
+
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -637,6 +677,69 @@ namespace GUI.UserControls
             {
                 showSPByCurrentPage(nextPage);
                 txtCurrentPage.Text = nextPage.ToString();
+            }
+        }
+
+        //private void checkButtonPagination()
+        //{
+        //    if(int.Parse(txtCurrentPage.Text) == 1)
+        //    {
+        //        btnBackPage.Enabled = false;
+        //    }
+            
+        //    if(int.Parse(txtCurrentPage.Text) == int.Parse(txtTotalPage.Text))
+        //    {
+        //        btnNextPage.Enabled = false;
+        //    }
+            
+        //    if(int.Parse(txtCurrentPage.Text) > 1 && int.Parse(txtCurrentPage.Text) < int.Parse(txtTotalPage.Text))
+        //    {
+        //        btnNextPage.Enabled= true;
+        //        btnBackPage.Enabled= true;
+        //    }
+        //}
+
+        private void autoUpdateTinhTrangHoaDon()
+        {
+            // Cài đặt Timer để kiểm tra mỗi giờ
+            checkTimer = new System.Threading.Timer(updateTinhTrangHoaDon, null, TimeSpan.Zero, TimeSpan.FromHours(1));
+        }
+
+        private void updateTinhTrangHoaDon(object state)
+        {
+            try
+            {
+                DataTable dt = HDbll.getHoaDonChuaDoi();
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    DateTime ngayLap = Convert.ToDateTime(row["ngayLap"]);
+                    //int tinhTrang = Convert.ToInt32(row["tinhTrang"]);
+
+                    if( (DateTime.Now - ngayLap).TotalHours >= 72)
+                    {
+                        HDbll.updateTinhTrangHoaDon(row["maHD"].ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi kiểm tra tình trạng: {ex.Message}");
+            }
+        }
+
+        private void btnDoiHang_Click(object sender, EventArgs e)
+        {
+            String maHD = dgvHD.SelectedRows[0].Cells["maHD"].Value.ToString();
+            String tenKH = dgvHD.SelectedRows[0].Cells["tenKH"].Value.ToString();
+            DoiHangGUI newForm = new DoiHangGUI(dgvCTHD, maHD, currentNV.tenNV, tenKH);
+            DialogResult result = newForm.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                dgvHD.DataSource = null;
+                LoadHoaDonData();
+                dgvCTHD.DataSource = null;
             }
         }
     }

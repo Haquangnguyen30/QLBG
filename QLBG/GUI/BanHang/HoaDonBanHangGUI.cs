@@ -357,6 +357,7 @@ namespace GUI.BanHang
                     // Tính giá trị giảm giá và lưu vào biến toàn cục
                     //decimal currentTotal = Convert.ToDecimal(txtTongTien.Text);  // Lấy giá trị tổng tiền hiện tại
                     string input = TongTien+"".Replace(".", "").Replace(",", ".");
+
                     decimal currentTotal = decimal.Parse(input, CultureInfo.InvariantCulture);
                     Console.WriteLine(currentTotal);
                     tienGiam = (float)(currentTotal * giaTriGiam / 100);  // Lưu giá trị giảm giá vào biến toàn cục

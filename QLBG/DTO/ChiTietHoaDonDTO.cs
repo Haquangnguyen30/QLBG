@@ -14,9 +14,7 @@ namespace DTO
         public int soLuong { get; set; }
         public float thanhTien { get; set; }
         public int maKC { get; set; }
-        public string maSPDoi { get; set; }
-        public DateTime? ngayDoi { get; set; }
-        public bool tinhTrangDoi    { get; set; }
+        public bool tinhTrang    { get; set; }
         
         public List<SanPhamDTO> DanhSachSanPham { get; set; }
 
@@ -28,9 +26,6 @@ namespace DTO
             this.soLuong = soLuong;
             this.thanhTien = thanhTien;
             this.maKC = maKC;
-            this.maSPDoi = maSPDoi;
-            this.ngayDoi = ngayDoi;
-            this.tinhTrangDoi = tinhTrangDoi;
             DanhSachSanPham = danhSachSanPham;
         }
 
